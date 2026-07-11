@@ -1,0 +1,30 @@
+{
+  "name": "elfui-docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "@elfui/runtime": "0.1.0-beta.0",
+    "@elfui/vite-plugin": "0.1.0-beta.0",
+    "@types/three": "^0.185.0",
+    "elfui": "0.1.0-beta.0",
+    "three": "^0.185.1",
+    "vitepress": "latest",
+    "vue": "latest"
+  },
+  "description": "Official documentation website for ElfUI.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bloom-lmh/elfui-docs.git"
+  },
+  "homepage": "https://github.com/bloom-lmh/elfui-docs",
+  "bugs": {
+    "url": "https://github.com/bloom-lmh/elfui-docs/issues"
+  }
+}
