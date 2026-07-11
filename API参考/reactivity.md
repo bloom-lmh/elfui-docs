@@ -4,7 +4,7 @@ title: reactivity API
 
 # reactivity API
 
-`@elfui/reactivity` 是可以独立使用的响应式入口。应用和宏组件优先从 `elfui` 导入；只有确实需要脱离组件运行时使用响应式系统时，才直接依赖这个包。
+`@elfui/reactivity` 是可以独立使用的响应式入口。应用和宏组件优先从 `@elfui/core` 导入；只有确实需要脱离组件运行时使用响应式系统时，才直接依赖这个包。
 
 ## 稳定应用 API
 
@@ -38,4 +38,4 @@ title: reactivity API
 - scheduler internals: `isSyncMode`
 - state flags: `REACTIVE_FLAG`、`REF_FLAG`、`STATE_FLAG`
 
-这些 API 仍受 beta 版本约束；它们不是 `elfui` 主入口的推荐 API，未来若要调整，会在 `@elfui/reactivity` 的变更记录中单独说明。
+这些 API 仍受 beta 版本约束；它们不是 `@elfui/core` 主入口的推荐 API，未来若要调整，会在 `@elfui/reactivity` 的变更记录中单独说明。

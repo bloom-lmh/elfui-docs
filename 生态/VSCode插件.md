@@ -13,7 +13,7 @@ VS Code 插件围绕宏组件主线提供三类能力：
 ## 目标体验
 
 ```ts
-import { defineHtml, html } from "elfui";
+import { defineHtml, html } from "@elfui/core";
 
 export const UserCard = defineHtml(html`
   <article>

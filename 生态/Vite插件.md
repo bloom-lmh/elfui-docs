@@ -33,7 +33,7 @@ export default defineConfig({
 ```
 
 ```ts
-import { defineHtml, html } from "elfui";
+import { defineHtml, html } from "@elfui/core";
 
 export const UserCard = defineHtml(html`<article><slot></slot></article>`);
 ```

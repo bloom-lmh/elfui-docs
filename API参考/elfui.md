@@ -1,10 +1,10 @@
 ---
-title: elfui API
+title: @elfui/core API
 ---
 
-# elfui API
+# @elfui/core API
 
-`elfui` 是新项目主入口，面向宏组件和应用启动。
+`@elfui/core` 是新项目主入口，面向宏组件和应用启动。
 
 ## 宏组件
 
@@ -34,4 +34,4 @@ createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 
 `provide`、`inject`、`hasInjectionContext`、`createInjectionKey`、`useScopedSlot`、`useHost`、`useRenderRoot`、`useShadowRoot`、`useAttrs`、`useAppConfig`、`useTemplateRef`、`defineExpose`、`useEventListener`、`useClickOutside`、`useEscapeKey`、`useScrollLock`、`useFocusTrap`、`useResizeObserver`、`useIntersectionObserver`、`useFormControlContext`
 
-链式 builder 不在 `elfui` 中导出。需要链式 API 时使用 `@elfui/chain`。
+链式 builder 不在 `@elfui/core` 中导出。需要链式 API 时使用 `@elfui/chain`。

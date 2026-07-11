@@ -4,7 +4,7 @@ title: runtime API
 
 # runtime API
 
-`@elfui/runtime` 是高级组件作者入口。业务应用通常从 `elfui` 导入即可。
+`@elfui/runtime` 是高级组件作者入口。业务应用通常从 `@elfui/core` 导入即可。
 
 ## 组件定义
 

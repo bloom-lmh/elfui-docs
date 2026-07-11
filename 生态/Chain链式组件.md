@@ -36,6 +36,6 @@ ElfUI.createComponent()
 
 ## 不和主线混写
 
-新项目文档和组件示例都使用 `elfui` 宏组件。Chain 是独立扩展，不在组件主线里穿插介绍。
+新项目文档和组件示例都使用 `@elfui/core` 宏组件。Chain 是独立扩展，不在组件主线里穿插介绍。
 
 如果项目已经有构建工具，优先迁移到宏组件；如果只是给旧 HTML 页面加几个 Web Components，Chain 会更轻松。
