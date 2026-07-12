@@ -53,62 +53,8 @@
       opacity: .52;
     }
 
-    .topnav {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 20;
-      height: var(--nav-h);
-      display: flex;
-      align-items: center;
-      background: linear-gradient(180deg, rgba(2, 7, 18, .9), rgba(2, 7, 18, .62));
-      border-bottom: 1px solid rgba(255, 255, 255, .075);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-    .topnav-inner {
-      width: min(1500px, calc(100vw - 72px));
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      color: #fff;
-      text-decoration: none;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 700;
-      font-size: 28px;
-      line-height: 1;
-      letter-spacing: -.05em;
-      text-shadow: 0 2px 14px rgba(255, 255, 255, .14);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 34px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: rgba(255, 255, 255, .78);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: color .25s ease;
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-
     .hero-snow {
-      position: fixed;
+      position: absolute;
       inset: 0;
       z-index: 10;
       width: 100vw;
@@ -180,6 +126,10 @@
         0 18px 54px rgba(0, 0, 0, .35);
     }
 
+    .title-en {
+      font-size: clamp(68px, 5.1vw, 102px);
+    }
+
     .sub {
       margin: 28px 0 0;
       color: var(--muted);
@@ -191,10 +141,10 @@
       white-space: nowrap;
     }
 
-    .actions {
+.actions {
       display: flex;
       align-items: center;
-      gap: 26px;
+  gap: 14px;
       margin-top: 36px;
     }
 
@@ -225,7 +175,7 @@
       background: rgba(255, 255, 255, .055);
     }
 
-    .btn.primary {
+.btn.primary {
       min-width: 178px;
       color: #061015;
       border-color: rgba(53, 230, 197, .8);
@@ -234,7 +184,17 @@
         0 16px 34px rgba(53, 230, 197, .17),
         0 0 46px rgba(53, 230, 197, .14),
         inset 0 1px 0 rgba(255, 255, 255, .34);
-    }
+}
+
+.github-btn {
+  min-width: 136px;
+}
+
+.github-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
 
     .btn .icon {
       font-size: 16px;
@@ -285,18 +245,6 @@
         --nav-h: 66px;
       }
 
-      .topnav-inner {
-        width: calc(100vw - 38px);
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .logo {
-        font-size: 25px;
-      }
-
       .page {
         background-position: 62% center;
       }
@@ -321,12 +269,12 @@
 
       .title {
         margin-top: 20px;
-        font-size: clamp(52px, 17vw, 72px);
+        font-size: clamp(50px, 15vw, 62px);
         line-height: .94;
       }
 
       .title .line {
-        white-space: normal;
+        white-space: nowrap;
       }
 
       .sub {
@@ -334,8 +282,8 @@
         font-size: 17px;
       }
 
-      .actions {
-        gap: 14px;
+  .actions {
+    gap: 14px;
         flex-wrap: wrap;
       }
 
@@ -345,8 +293,11 @@
         font-size: 15px;
       }
 
-      .btn.primary {
-        min-width: 160px;
-      }
-    }
+  .btn.primary {
+    min-width: 160px;
+  }
 
+  .github-btn {
+    min-width: 138px;
+  }
+}

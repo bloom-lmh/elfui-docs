@@ -281,9 +281,10 @@ body {
   overflow-x: hidden;
 }
 
-.elf-home #core,
-.elf-home #compare,
-.elf-home #eco {
+.elf-home #features,
+.elf-home #comparison,
+.elf-home #principles,
+.elf-home #ecosystem {
   scroll-margin-top: var(--home-nav-height);
 }
 
@@ -293,9 +294,44 @@ body {
   }
 }
 
-.elf-home-page .VPNav,
 .elf-home-page .VPFooter {
   display: none;
+}
+
+.elf-home-page .VPNav {
+  color: #f7fbff;
+}
+
+.elf-home-page .VPNavBar,
+.elf-home-page .VPNavBar.has-sidebar .content,
+.elf-home-page .VPNavBar.has-sidebar .curtain {
+  background: rgba(2, 7, 18, 0.74) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.elf-home-page .VPNavBarTitle .title,
+.elf-home-page .VPNavBarMenuLink,
+.elf-home-page .VPNavBarTranslations button,
+.elf-home-page .VPSocialLinks .VPSocialLink,
+.elf-home-page .VPSwitchAppearance {
+  color: rgba(247, 251, 255, 0.82);
+}
+
+.elf-home-page .VPNavBarMenuLink.active,
+.elf-home-page .VPNavBarMenuLink:hover,
+.elf-home-page .VPNavBarTitle:hover .title,
+.elf-home-page .VPSocialLinks .VPSocialLink:hover {
+  color: #35e6c5;
+}
+
+.elf-home-page .VPSwitchAppearance .switch {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(5, 15, 30, 0.56);
+}
+
+.elf-home-page .VPSwitchAppearance .check {
+  color: #35e6c5;
 }
 
 .elf-home-page .VPContent,
@@ -306,6 +342,29 @@ body {
   max-width: none;
   margin: 0;
   padding: 0;
+}
+
+/* Staggered intersection reveals keep dense content calm until it enters view. */
+.elf-home [data-home-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 680ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 680ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.elf-home [data-home-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elf-home [data-home-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ── cursor glow (global, used by component) ── */

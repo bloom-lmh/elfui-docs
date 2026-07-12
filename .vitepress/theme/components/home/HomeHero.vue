@@ -1,47 +1,57 @@
 <template>
-<main ref="root" class="home-hero page">
-    <header class="topnav">
-      <div class="topnav-inner">
-        <a class="logo" href="#">ElfUI</a>
-        <ul class="nav-links">
-          <li><a href="#core">核心机制</a></li>
-          <li><a href="/组件/概览">ElfUI 组件</a></li>
-          <li><a href="#compare">对比</a></li>
-          <li><a href="#eco">生态</a></li>
-          <li><a href="https://github.com/bloom-lmh/elfui" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
-      </div>
-    </header>
-
+  <main ref="root" class="home-hero page">
     <canvas ref="snowCanvas" class="hero-snow"></canvas>
 
     <section class="hero" aria-label="ElfUI hero">
-      <div class="hero-copy">
+      <div class="hero-copy" data-home-reveal>
         <div class="eyebrow">WEB COMPONENTS FRAMEWORK</div>
 
-        <h1 class="title">
+        <h1 v-if="isZh" class="title">
           <span class="line"><span class="white">原生</span><span class="mint">Web</span></span>
           <span class="line mint">Components</span>
           <span class="line mint">框架</span>
         </h1>
+        <h1 v-else class="title title-en">
+          <span class="line"><span class="white">Native</span><span class="mint">Web</span></span>
+          <span class="line mint">Components</span>
+          <span class="line mint">Framework</span>
+        </h1>
 
-        <p class="sub">TS 单文件组件，Vue API，标准 Custom Elements 输出</p>
+        <p class="sub">
+          {{
+            isZh
+              ? "TypeScript 单文件组件，熟悉的模板语法，输出标准 Custom Elements"
+              : "TypeScript components. Familiar templates. Standard Custom Elements."
+          }}
+        </p>
 
         <div class="actions">
-          <a class="btn primary" href="/起步/快速开始"><span class="icon">⚡</span><span>开始使用</span></a>
-          <a class="btn" href="/起步/简介"><span class="icon">📄</span><span>查看文档</span></a>
-          <a class="btn" href="https://github.com/bloom-lmh/elfui" target="_blank" rel="noopener"><span>GitHub</span></a>
+          <a class="btn primary" :href="isZh ? '/zh/起步/快速开始' : '/en/guide/quick-start'">
+            {{ isZh ? "开始使用" : "Get Started" }}
+          </a>
+          <a class="btn" :href="isZh ? '/zh/起步/简介' : '/en/guide/introduction'">
+            {{ isZh ? "查看文档" : "Read the Guide" }}
+          </a>
+          <a class="btn github-btn" href="https://github.com/bloom-lmh/elfui" target="_blank" rel="noopener">
+            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.91-2.78.62-3.37-1.2-3.37-1.2-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.54 1.05 1.54 1.05.9 1.55 2.35 1.1 2.92.84.09-.67.35-1.1.64-1.35-2.22-.26-4.56-1.15-4.56-5.11 0-1.13.4-2.05 1.06-2.77-.1-.27-.46-1.32.1-2.75 0 0 .87-.29 2.75 1.06A9.37 9.37 0 0 1 12 6.83c.85 0 1.7.12 2.5.34 1.88-1.35 2.75-1.06 2.75-1.06.56 1.43.2 2.48.1 2.75.66.72 1.06 1.64 1.06 2.77 0 3.97-2.34 4.84-4.57 5.1.36.32.68.93.68 1.88 0 1.36-.01 2.46-.01 2.8 0 .27.18.59.69.49A10.25 10.25 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" />
+            </svg>
+            GitHub
+          </a>
         </div>
       </div>
 
-      <a class="scroll-more" href="#core">了解更多</a>
+      <a class="scroll-more" href="#principles">{{ isZh ? "了解原理" : "How it works" }}</a>
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from "vue";
+import { useData } from "vitepress";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
+const { lang } = useData();
+const isZh = computed(() => lang.value.startsWith("zh"));
 const root = ref<HTMLElement | null>(null);
 const snowCanvas = ref<HTMLCanvasElement | null>(null);
 let stopSnow = () => {};

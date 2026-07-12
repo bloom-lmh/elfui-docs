@@ -1,4 +1,4 @@
-import { css, defineHtml, defineName, defineStyle, html, useComputed, useRef } from "elfui";
+import { css, defineHtml, defineName, defineStyle, html, useComputed, useRef } from "@elfui/core";
 
 defineName("elf-demo-counter");
 
@@ -112,9 +112,9 @@ defineStyle(css`
 
 const count = useRef(0);
 const tone = useComputed(() => {
-  if (count.value >= 8) return "响应很轻，DOM 只更新这一处文本。";
-  if (count.value >= 4) return "这就是宏组件里最小的动态点。";
-  return "点一下，感受组件状态更新。";
+  if (count.value >= 8) return "Only this text node updates.";
+  if (count.value >= 4) return "One state read, one fine-grained update.";
+  return "Click to update native DOM state.";
 });
 
 const increment = (): void => {
@@ -126,22 +126,22 @@ const reset = (): void => {
 };
 
 export const DemoCounter = defineHtml(html`
-  <section class="demo" aria-label="计数器组件体验">
+  <section class="demo" aria-label="Interactive ElfUI counter">
     <div class="preview">
       <div class="chip">native ElfUI component</div>
       <button class="counter" type="button" @click=${increment}>
         <span>${count}</span>
-        <b>点击计数</b>
+        <b>Increment</b>
       </button>
       <p>${tone}</p>
     </div>
     <div class="meta">
-      <h3>直接体验 ElfUI 组件行为</h3>
+      <h3>Run a native ElfUI component</h3>
       <p>
-        这个区域不是 Vue demo，而是由 <code>defineHtml(html)</code> 编译出的原生 Custom
-        Element。文档页只放一个 <code>&lt;elf-demo-counter&gt;</code> 标签。
+        This is a native Custom Element compiled from <code>defineHtml(html)</code>. The docs page
+        only renders an <code>&lt;elf-demo-counter&gt;</code> tag.
       </p>
-      <button class="reset" type="button" @click=${reset}>重置</button>
+      <button class="reset" type="button" @click=${reset}>Reset</button>
     </div>
   </section>
 `);
