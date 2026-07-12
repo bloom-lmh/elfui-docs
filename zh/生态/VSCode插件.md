@@ -4,26 +4,23 @@ title: VS Code 插件
 
 # VS Code 插件
 
-VS Code 插件围绕宏组件主线提供三类能力：
+ElfUI Language Tools 面向普通 `.ts/.tsx` 宏组件文件。它能识别导出的 `defineHtml(...)` 组件，并与 `@elfui/vite-plugin` 使用同一套模板编译模型。
 
-- 识别普通 `.ts/.tsx` 中导出的 `defineHtml()` 组件。
-- 提供宏组件 snippet。
-- 展示模板和宏 API 诊断。
+## 安装
 
-## 目标体验
+Marketplace 发布后，在 VS Code 扩展市场搜索 **ElfUI Language Tools**，或执行：
 
-```ts
-import { defineHtml, html } from "@elfui/core";
-
-export const UserCard = defineHtml(html`
-  <article>
-    <slot></slot>
-  </article>
-`);
+```bash
+code --install-extension SWUST-WEBLAB-LMH.elfui-language-features
 ```
 
-编辑器应该能围绕这个文件直接理解组件边界，而不是要求用户改成特殊文件格式。
+每个版本 tag 也会在 [Language Tools Releases](https://github.com/bloom-lmh/elfui-language-tools/releases) 附带可安装的 VSIX。Marketplace 上架前，可在仓库执行 `pnpm package:vsix` 构建本地 VSIX。
 
-## 兼容路径
+## 提供什么
 
-`.elf.ts` 和 pragma 文件会保留兼容，但 snippet 和官方文档以普通 `.ts/.tsx` 为主。
+- HTML 标签、ElfUI 组件标签、props、事件、指令、`${...}` 表达式与 `v-for` 局部变量补全。
+- 与编译器一致的模板、props、emits、slots、model 与局部组件注册诊断。
+- `html\`...\``、`css\`...\`` 中的 HTML/CSS 格式化、CSS 补全、悬停与 CSS 变量建议。
+- 跳转定义、引用、重命名、文档链接、代码片段、组件高亮和工作区组件索引。
+
+打开已配置 `@elfui/vite-plugin` 的 ElfUI 项目后，扩展会自动发现项目配置。

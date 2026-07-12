@@ -24,7 +24,7 @@ const englishSidebar: Sidebar = [
   section("Configuration", [["Global configuration", "/en/configuration/global"], ["CSP and bundle size", "/en/configuration/csp-and-bundle-size"]]),
   section("Error Handling", [["Overview", "/en/error-handling/overview"], ["Global error handling", "/en/error-handling/global"], ["Component error capture", "/en/error-handling/component-capture"], ["Error boundaries", "/en/error-handling/error-boundaries"], ["Compiler diagnostics", "/en/error-handling/compiler-diagnostics"]]),
   section("Plugins", [["Overview", "/en/plugins/overview"], ["Using plugins", "/en/plugins/using-plugins"], ["Custom plugins", "/en/plugins/custom-plugins"]]),
-  section("Ecosystem", [["Overview", "/en/ecosystem/overview"], ["Vite plugin", "/en/ecosystem/vite-plugin"], ["Chain components", "/en/ecosystem/chain"], ["VS Code plugin", "/en/ecosystem/language-tools"]]),
+  section("Ecosystem", [["Overview", "/en/ecosystem/overview"], ["Vite plugin", "/en/ecosystem/vite-plugin"], ["Router", "/en/ecosystem/router"], ["Chain components", "/en/ecosystem/chain"], ["VS Code plugin", "/en/ecosystem/language-tools"]]),
   section("Migration", [["From Vue", "/en/migration/from-vue"], ["From Chain to components", "/en/migration/from-chain"], ["Deprecated APIs", "/en/migration/deprecated-apis"]]),
   section("API Reference", [["@elfui/core", "/en/api/core"], ["Reactivity", "/en/api/reactivity"], ["Runtime", "/en/api/runtime"], ["Router", "/en/api/router"], ["Chain", "/en/api/chain"]])
 ];
@@ -43,7 +43,7 @@ const zhSidebar: Sidebar = [
   section("配置", [["全局配置", "/zh/配置/全局配置"], ["CSP 与体积", "/zh/配置/CSP与体积"]]),
   section("错误处理", [["概览", "/zh/错误处理/概览"], ["全局错误处理", "/zh/错误处理/全局错误处理"], ["组件错误捕获", "/zh/错误处理/组件错误捕获"], ["错误边界", "/zh/错误处理/错误边界"], ["编译诊断", "/zh/错误处理/编译诊断"]]),
   section("插件", [["概览", "/zh/插件/概览"], ["使用插件", "/zh/插件/使用插件"], ["自定义插件", "/zh/插件/自定义插件"]]),
-  section("生态", [["总览", "/zh/生态/总览"], ["Vite 插件", "/zh/生态/Vite插件"], ["Chain 链式组件", "/zh/生态/Chain链式组件"], ["VS Code 插件", "/zh/生态/VSCode插件"]]),
+  section("生态", [["总览", "/zh/生态/总览"], ["Vite 插件", "/zh/生态/Vite插件"], ["Router", "/zh/生态/Router"], ["Chain 链式组件", "/zh/生态/Chain链式组件"], ["VS Code 插件", "/zh/生态/VSCode插件"]]),
   section("迁移", [["从 Vue 迁移", "/zh/迁移/从Vue迁移"], ["从链式迁移到组件", "/zh/迁移/从链式迁移到组件"], ["废弃 API", "/zh/迁移/废弃API"]]),
   section("API 参考", [["@elfui/core", "/zh/API参考/elfui"], ["reactivity", "/zh/API参考/reactivity"], ["runtime", "/zh/API参考/runtime"], ["router", "/zh/API参考/router"], ["chain", "/zh/API参考/chain"]])
 ];
