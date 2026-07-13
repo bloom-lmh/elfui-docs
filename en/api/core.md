@@ -23,3 +23,11 @@ title: "@elfui/core API"
 `onBeforeMount`, `onMount`, `onBeforeUpdate`, `onUpdated`, `onBeforeUnmount`, `onUnmount`, `onActivated`, `onDeactivated`, `onAttributeChanged`, `onErrorCaptured`
 
 Chain builder APIs live in `@elfui/chain`, not in the main entry.
+
+## Import policy
+
+Import application APIs from this package so the compiler and editor tooling can recognize them consistently. The API reference lists exports; guide pages explain the component patterns in which to use them.
+
+```ts
+import { defineHtml, defineProps, html, useRef } from "@elfui/core";
+```

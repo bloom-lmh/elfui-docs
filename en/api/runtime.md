@@ -12,3 +12,7 @@ title: Runtime API
 - Built-in helpers: `teleport`, `transition`, `transitionGroup`, `keepAlive`, `suspense`, `dynamicComponent`
 
 Compiler-generated helpers live under `@elfui/runtime/internal` and are not application APIs.
+
+## Integration boundary
+
+Use runtime APIs only when building a component abstraction, renderer integration, or testing harness. Application components should stay on `@elfui/core`, which provides the stable compiler-aware surface. Do not import `internal` helpers directly because their signatures can change with compiler output.

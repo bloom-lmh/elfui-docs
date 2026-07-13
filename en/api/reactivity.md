@@ -14,3 +14,11 @@ title: Reactivity API
 - Utilities: `readonly`, `markRaw`, `toRaw`, `unref`, `toValue`
 
 Applications and macro components should normally import these APIs from `@elfui/core`.
+
+## When to use it
+
+Use the standalone package only when a library must share reactive state without depending on component macros. Keep that library free of DOM and lifecycle assumptions so it remains reusable.
+
+```ts
+import { useRef, useComputed } from "@elfui/reactivity";
+```

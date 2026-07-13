@@ -20,7 +20,6 @@ This repository is the official documentation site for ElfUI.
 - Use `pnpm`.
 - Install application APIs from `@elfui/core`.
 - Install the macro compiler as `@elfui/vite-plugin`.
-- The docs demo compiler currently needs `@elfui/runtime` as a development dependency.
 - Run `pnpm build` before handing off a change.
 
 ## Website conventions

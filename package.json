@@ -9,16 +9,11 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "@codemirror/commands": "^6.10.4",
-    "@codemirror/lang-javascript": "^6.2.5",
-    "@codemirror/state": "^6.7.1",
-    "@codemirror/view": "^6.43.6",
     "@elfui/compiler": "0.1.0-beta.1",
     "@elfui/core": "0.1.0-beta.1",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@elfui/runtime": "0.1.0-beta.1",
     "@elfui/vite-plugin": "0.1.0-beta.1",
     "vitepress": "^1.6.4",
     "vue": "^3"
