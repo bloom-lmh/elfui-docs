@@ -2,7 +2,7 @@
 
 ElfUI supports form-associated custom elements. After the component declares `formControl: true`, it can participate in native `<form>` submission, verification and reset.
 
-```ts
+```ts{1,11}
 import { defineHtml, defineOptions, html, useFormControlContext } from "@elfui/core";
 
 defineOptions({ formControl: true });
@@ -18,7 +18,7 @@ export const ElfInput = defineHtml(html` <input @input=${onInput} /> `);
 
 When used, put it into the form like a native field and provide `name`:
 
-```html
+```html{1}
 <form>
   <elf-input name="email"></elf-input>
   <button type="submit">提交</button>
@@ -27,7 +27,7 @@ When used, put it into the form like a native field and provide `name`:
 
 ## Verification and submission
 
-```ts
+```ts{1}
 form.rules([{ validator: (value) => value.length > 0 || "请输入内容" }]);
 
 const result = await form.validate();
@@ -38,8 +38,10 @@ if (!result.valid) form.report();
 
 ## reset
 
-```ts
+```ts{1}
 form.reset();
 ```
 
+::: warning
 The reset should go back to the component's declared default value. Business form layout, error copy and field linkage belong to the component library layer and should not be stuffed into the framework form helper.
+:::

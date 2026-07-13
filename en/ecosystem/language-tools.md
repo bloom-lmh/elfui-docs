@@ -9,7 +9,7 @@ ElfUI Language Tools targets the common `.ts/.tsx` macro component file. It reco
 
 After the Marketplace is released, search for **ElfUI Language Tools** in the VS Code extension market, or execute:
 
-```bash
+```bash{1}
 code --install-extension SWUST-WEBLAB-LMH.elfui-language-features
 ```
 

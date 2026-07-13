@@ -6,7 +6,7 @@ title: CSP 与体积
 
 宏组件主线在构建期编译模板，浏览器运行时不需要 `new Function`，更适合严格 CSP。
 
-```ts
+```ts{1}
 import { defineHtml, html } from "@elfui/core";
 ```
 
@@ -16,7 +16,7 @@ import { defineHtml, html } from "@elfui/core";
 
 `@elfui/chain` 支持：
 
-```ts
+```ts{1}
 ElfUI.createComponent().template(`<button>{{ count }}</button>`);
 ```
 
@@ -24,7 +24,9 @@ ElfUI.createComponent().template(`<button>{{ count }}</button>`);
 
 ## 建议
 
+::: tip
 生产应用优先：
+:::
 
 1. 使用 `@elfui/core` 主入口。
 2. 使用 `@elfui/vite-plugin` 编译宏组件。

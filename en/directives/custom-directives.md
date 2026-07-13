@@ -4,7 +4,7 @@ Custom instructions are suitable for encapsulating DOM behaviors, such as automa
 
 ## global directive
 
-```ts
+```ts{1,3}
 import { createApp } from "@elfui/core";
 
 const app = createApp(App);
@@ -21,7 +21,7 @@ app.mount("#app");
 
 Used in templates:
 
-```html
+```html{1}
 <input v-focus />
 ```
 
@@ -29,7 +29,7 @@ Used in templates:
 
 Use `defineDirective()` in macro component:
 
-```ts
+```ts{1}
 import { defineDirective } from "@elfui/core";
 
 defineDirective("focus", {

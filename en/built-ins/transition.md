@@ -2,7 +2,7 @@
 
 `Transition` provides enter/leave transitions for individual child nodes.
 
-```html
+```html{2}
 <Transition name="fade">
   <div v-if="open">内容</div>
 </Transition>
@@ -10,7 +10,7 @@
 
 Default class:
 
-```css
+```css{1}
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
@@ -26,7 +26,7 @@ Default class:
 
 `name` is the class prefix, which can write static values ​​or dynamic binding:
 
-```ts
+```ts{1,3-4,6}
 import { defineHtml, html, useRef } from "elfui";
 
 const open = useRef(true);
@@ -47,10 +47,12 @@ The above example will use `slide-enter-from`, `slide-enter-active`, `slide-leav
 
 ## appear
 
-```html
+```html{1}
 <Transition name="fade" appear>
   <div>首次挂载也过渡</div>
 </Transition>
 ```
 
+::: tip
 For complex animations, it is recommended to use CSS variables to control duration and easing.
+:::

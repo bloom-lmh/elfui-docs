@@ -2,7 +2,7 @@
 
 Configuration belongs to the application instance, not process-level global state. Create the app first, and then write the configuration before mounting:
 
-```ts
+```ts{1-2,4}
 import { createApp } from "@elfui/core";
 import { App } from "./App";
 
@@ -29,7 +29,7 @@ app.mount("#app");
 
 When you need to read the configuration in TypeScript logic in the macro component, use `useAppConfig()`:
 
-```ts
+```ts{1}
 import { useAppConfig } from "@elfui/core";
 
 const appName = useAppConfig().globalProperties.appName;
@@ -37,7 +37,7 @@ const appName = useAppConfig().globalProperties.appName;
 
 Template string expressions still respect TypeScript scoping; pure template expressions read `$app`:
 
-```ts
+```ts{1}
 defineHtml(html`<p>{{ $app.appName }}</p>`);
 ```
 
@@ -47,4 +47,6 @@ defineHtml(html`<p>{{ $app.appName }}</p>`);
 
 `tagPrefix` does not belong to application configuration. The macro component tag is determined at compile time, and the unified prefix can only be set in `@elfui/vite-plugin`.
 
+::: warning
 `@elfui/runtime` still reserves `configure/getConfig/resetConfig` for low-level packaging and testing; business applications should not use them from the `@elfui/core` main entry.
+:::

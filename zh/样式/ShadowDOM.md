@@ -6,7 +6,7 @@ title: Shadow DOM
 
 ElfUI 组件默认使用 Shadow DOM，让样式和 DOM 结构有明确边界。
 
-```ts
+```ts{1}
 defineOptions({
   shadow: "open"
 });
@@ -28,4 +28,6 @@ defineOptions({
 - 和旧页面渐进集成
 - 需要第三方 CSS 框架直接命中内部节点
 
+::: tip
 默认不建议关闭。Shadow DOM 是组件边界的一部分。
+:::

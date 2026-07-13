@@ -2,7 +2,7 @@
 
 Dynamic components are used to switch the components to be rendered at runtime.
 
-```ts
+```ts{1-3,5}
 import { defineHtml, html, useRef } from "@elfui/core";
 import { UserCard } from "./UserCard";
 import { TeamCard } from "./TeamCard";
@@ -14,7 +14,7 @@ export const Dashboard = defineHtml(html` <component :is=${current}></component>
 
 `:is` can be a component constructor or a registered tag name.
 
-```ts
+```ts{1}
 const current = useRef("elf-user-card");
 ```
 
@@ -22,10 +22,12 @@ const current = useRef("elf-user-card");
 
 When you need to cache the instance, use `<KeepAlive>` to wrap the dynamic component:
 
-```html
+```html{2}
 <KeepAlive>
   <component :is="current"></component>
 </KeepAlive>
 ```
 
+::: warning
 It is suitable for scenarios such as tabs, routing pages, editor panels, etc. that switch frequently but do not want to rebuild the state.
+:::

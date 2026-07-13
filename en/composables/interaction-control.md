@@ -4,7 +4,7 @@ Interaction control functions are used in pop-ups, drawers, prompts, and accessi
 
 ## ESC close
 
-```ts
+```ts{1}
 useEscapeKey(() => {
   open.set(false);
 });
@@ -12,7 +12,7 @@ useEscapeKey(() => {
 
 ## scroll lock
 
-```ts
+```ts{1}
 useScrollLock(() => open.value);
 ```
 
@@ -20,7 +20,7 @@ When `open` is true, `document.body` scrolling is locked and will be automatical
 
 ## focus trap
 
-```ts
+```ts{1}
 const host = useHost();
 
 useFocusTrap(host);

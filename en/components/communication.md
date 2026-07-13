@@ -13,7 +13,7 @@ For component communication, choose the simplest method first. Don’t cram all 
 
 ## Provide / Inject
 
-```ts
+```ts{1,3,5}
 import { createInjectionKey, provide } from "@elfui/core";
 
 export const themeKey = createInjectionKey<"light" | "dark">("theme");
@@ -23,24 +23,30 @@ provide(themeKey, "dark");
 
 Subcomponents:
 
-```ts
+```ts{1-2,4}
 import { inject } from "@elfui/core";
 import { themeKey } from "./keys";
 
 const theme = inject(themeKey, "light");
 ```
 
+::: warning
 Provide / Inject is suitable for hierarchical contexts such as forms, themes, and menus, and is not suitable for replacing ordinary props.
+:::
 
+::: warning
 `hasInjectionContext()` can be used as a general composable: it only determines whether it is currently in the injectable context of component setup and cannot replace the actual reading of `inject()`.
+:::
 
 ## Ref + Expose
 
 When a parent component must call a child component method, the child component is exposed with `defineExpose()` and the parent component is obtained with `useTemplateRef()`.
 
+::: warning
 This type of communication is an imperative API, suitable for `focus()`, `validate()`, `reset()`, and not suitable for ordinary data flows.
+:::
 
-```ts
+```ts{10,12}
 type SearchInputHost = HTMLElement & {
   focus(): void;
   clear(): void;

@@ -5,7 +5,7 @@ title: Events
 
 Components use events when notifying changes to the outside world. Use `defineEmits()` in the macro component to get the `emit` function.
 
-```ts
+```ts{1,3,13-14}
 import { defineEmits, defineHtml, html } from "@elfui/core";
 
 const emit = defineEmits<{
@@ -28,7 +28,7 @@ export const SearchBox = defineHtml(html`
 
 Listen to custom events in the parent component template:
 
-```ts
+```ts{5}
 const update = (event: CustomEvent<string>): void => {
   keyword.set(event.detail);
 };

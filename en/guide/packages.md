@@ -3,7 +3,9 @@ title: Packages
 ---
 # Packages and entrances
 
+::: warning
 ElfUI separates mainline capabilities and expansion capabilities. New projects start with `@elfui/core`, and chained components only use `@elfui/chain` when needed.
+:::
 
 ## Entrance selection
 
@@ -43,4 +45,6 @@ Current beta volume baseline:
 
 `@elfui/core` does not export the `createComponent()`, `ElementBuilder`, `compile()` or runtime string template capabilities. When you need a chained API, go to "Ecology/Chain Components".
 
+::: warning
 `@elfui/router` is a standalone package; only install it if routing is required. For the complete ecology, see [Ecosystem Overview] (/en/ecosystem/overview): Router, Extensions, UI Kit, Language Tools and Create ElfUI are all maintained independently in their respective warehouses.
+:::

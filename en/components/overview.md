@@ -5,7 +5,7 @@ title: Components
 
 ElfUI's components are standard Custom Elements. The main line of writing is macro components: the top-level TypeScript is responsible for logic, and `defineHtml(html`...`)` is responsible for declaring templates and component boundaries.
 
-```ts
+```ts{1,3,7}
 import { defineHtml, defineProps, html } from "@elfui/core";
 
 const props = defineProps<{ label: string }>({
@@ -30,4 +30,6 @@ export const SaveButton = defineHtml(html` <button>${props.label}</button> `);
 
 ## Recommended order
 
+::: tip
 Write props and events clearly first, then decide whether you need v-model, slots, provide/inject or expose. Don’t mix too many component communication methods. The fewer APIs, the more stable they are.
+:::

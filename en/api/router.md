@@ -8,7 +8,7 @@ This page is an index of the public `@elfui/router` API. See the Router guide fo
 
 ## Creation and history
 
-```ts
+```ts{1}
 createRouter(options): Router
 createWebHistory(base?): RouterHistory
 createWebHashHistory(base?): RouterHistory
@@ -17,7 +17,9 @@ setActiveRouter(router | null): void
 getActiveRouter(): Router | null
 ```
 
+::: tip
 `RouterOptions` accepts `routes`, `history` (preferred) or `mode`, plus `initialPath`, `sensitive`, `strict`, `scrollBehavior`, `linkActiveClass`, and `linkExactActiveClass`.
+:::
 
 ## Router instance
 

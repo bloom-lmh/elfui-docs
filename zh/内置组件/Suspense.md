@@ -6,7 +6,7 @@ title: Suspense
 
 `Suspense` 用来承接异步 setup 或异步内容，提供 pending、resolved、error 三种状态。
 
-```html
+```html{1}
 <Suspense>
   <template #default>
     <async-panel></async-panel>
@@ -18,4 +18,6 @@ title: Suspense
 
 ## 使用建议
 
+::: warning
 把异步边界放在页面区域或复杂组件外层，不要给每个小节点都包 Suspense。
+:::

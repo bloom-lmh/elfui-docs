@@ -2,7 +2,7 @@
 
 The macro component mainline compiles the template during the build period, and does not require `new Function` when the browser is running, which is more suitable for strict CSP.
 
-```ts
+```ts{1}
 import { defineHtml, html } from "@elfui/core";
 ```
 
@@ -12,7 +12,7 @@ The main entry of `@elfui/core` does not include the runtime compiler, and the c
 
 `@elfui/chain` supports:
 
-```ts
+```ts{1}
 ElfUI.createComponent().template(`<button>{{ count }}</button>`);
 ```
 
@@ -20,7 +20,9 @@ This requires a runtime compiler, is approximately 21.19 KB in size, and may als
 
 ## suggestion
 
+::: tip
 Production applications are preferred:
+:::
 
 1. Use the `@elfui/core` main entry.
 2. Compile the macro component using `@elfui/vite-plugin`.

@@ -29,7 +29,9 @@ title: Reactivity API
 
 ## High-level low-level API
 
+::: warning
 The following symbols are publicly exported and are mainly used by framework extensions, adapters and diagnostic tools; ordinary business code should not directly call or rely on their internal state.
+:::
 
 - effect: `effect`、`stop`、`ReactiveEffect`、`isTracking`、`pauseTracking`、`resetTracking`、`untrack`
 - Dependency graph: `track`, `trigger`, `triggerAll`
@@ -37,4 +39,6 @@ The following symbols are publicly exported and are mainly used by framework ext
 - scheduler internals: `isSyncMode`
 - state flags: `REACTIVE_FLAG`、`REF_FLAG`、`STATE_FLAG`
 
+::: tip
 These APIs are still subject to the beta version; they are not recommended APIs for the `@elfui/core` main entrance. If they are adjusted in the future, they will be separately stated in the change record of `@elfui/reactivity`.
+:::

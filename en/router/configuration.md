@@ -8,7 +8,7 @@ A route record describes what URL to match and what to render. Use names for loc
 
 ## A practical route table
 
-```ts
+```ts{1,3,8,12}
 import { createRouter, createWebHistory } from "@elfui/router";
 
 export const router = createRouter({
@@ -37,7 +37,7 @@ The configured base is included in browser-facing `href` values: `router.resolve
 
 Parameters are decoded into `route.params`. They support optional (`?`), zero-or-more (`*`), one-or-more (`+`), and custom regular-expression segments.
 
-```ts
+```ts{1}
 const routes = [
   { path: "/products/new", component: "product-editor" }, // static: matches first
   { path: "/products/:id(\\d+)", component: "product-page" },
@@ -48,7 +48,7 @@ const routes = [
 
 Static segments outrank dynamic segments, so `/products/new` is not treated as an `id`. Put a catch-all route last. By default matching is case-insensitive and ignores a trailing slash. Opt in when the distinction matters:
 
-```ts
+```ts{1}
 createRouter({
   history: createWebHistory(),
   sensitive: true, // /Users and /users differ
@@ -61,7 +61,7 @@ createRouter({
 
 Child paths are joined to the parent path, and matching a child produces a parent-to-child `route.matched` chain. Parent `meta` is merged into the child route; a child value wins for duplicate keys.
 
-```ts
+```ts{3,6-7}
 {
   path: "/settings",
   component: () => import("../pages/settings-layout"),
@@ -75,7 +75,7 @@ Child paths are joined to the parent path, and matching a child produces a paren
 
 The layout page renders the child outlet with `depth="1"`:
 
-```html
+```html{1}
 <h1>Settings</h1>
 <elf-router-view depth="1"></elf-router-view>
 ```
@@ -84,7 +84,7 @@ The layout page renders the child outlet with `depth="1"`:
 
 Set `props: true` to forward route parameters. Use an object for fixed props, or a function when the page needs transformed params or query values.
 
-```ts
+```ts{4-5}
 {
   path: "/reports/:year",
   components: {
@@ -100,7 +100,7 @@ Set `props: true` to forward route parameters. Use an object for fixed props, or
 
 Render a named outlet next to the default outlet:
 
-```html
+```html{1}
 <section><elf-router-view></elf-router-view></section>
 <aside><elf-router-view name="aside"></elf-router-view></aside>
 ```
@@ -109,7 +109,7 @@ Render a named outlet next to the default outlet:
 
 Dynamic routes suit feature flags, plugins, or permissions. `addRoute()` returns a disposer; a newly added route with the same name replaces the old one.
 
-```ts
+```ts{4}
 const removeBilling = router.addRoute({
   path: "/billing",
   name: "billing",
@@ -132,7 +132,7 @@ Pass a parent name to add a nested record: `router.addRoute("settings", { path: 
 
 `scrollBehavior(to, from, savedPosition)` runs after a successful navigation. Return `savedPosition` for back/forward restoration, a `{ top, left }` position for normal navigation, `{ el: "#id" }` for anchors, or `null` to leave scrolling unchanged. A promise is supported.
 
-```ts
+```ts{1,5-7}
 createRouter({
   history: createWebHistory(),
   routes,

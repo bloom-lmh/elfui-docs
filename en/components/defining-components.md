@@ -5,7 +5,7 @@ title: Defining Components
 
 A macro component file usually contains three parts: import API, top-level setup logic, and export component.
 
-```ts
+```ts{1,3,6-7}
 import { defineHtml, html, useRef } from "@elfui/core";
 
 const active = useRef(false);
@@ -25,7 +25,7 @@ export const TogglePanel = defineHtml(html`
 
 The application entry uses `createApp()`, and there is no need to hand-write the root component tag in `index.html`:
 
-```ts
+```ts{1-2,4}
 import { createApp } from "@elfui/core";
 import { App } from "./App";
 
@@ -51,7 +51,7 @@ If you need to unify the project prefix, please configure `tagPrefix` in `@elfui
 
 Component-level options use `defineOptions()`:
 
-```ts
+```ts{1,9}
 import { defineHtml, defineOptions, html } from "@elfui/core";
 
 defineOptions({

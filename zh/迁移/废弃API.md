@@ -17,4 +17,6 @@ title: 废弃 API
 | `defineTyped`                        | `defineHtml<Props, Emits, Slots>`      |
 | legacy `ElfUI.createComponent` | `@elfui/chain`                         |
 
+::: warning
 如果编译器发现旧宏别名，会给出迁移诊断。新代码不要继续使用这些入口。
+:::

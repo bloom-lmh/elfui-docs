@@ -2,7 +2,7 @@
 
 `useTemplateRef()` is used to get the DOM nodes in the template.
 
-```ts
+```ts{7,9}
 const input = useTemplateRef<HTMLInputElement>("input");
 
 const focus = (): void => {
@@ -17,7 +17,7 @@ export const SearchInput = defineHtml(html`
 
 ## Works with component exposure
 
-```ts
+```ts{1}
 defineExpose({
   focus
 });

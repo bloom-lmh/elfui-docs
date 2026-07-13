@@ -2,7 +2,7 @@
 
 ElfUI components use Shadow DOM by default, allowing clear boundaries between styles and DOM structures.
 
-```ts
+```ts{1}
 defineOptions({
   shadow: "open"
 });
@@ -24,4 +24,6 @@ Scenarios suitable for closing Shadow DOM:
 - Progressive integration with old pages
 - Requires third-party CSS framework to directly hit internal nodes
 
+::: tip
 It is not recommended to turn it off by default. Shadow DOM is part of the component boundary.
+:::

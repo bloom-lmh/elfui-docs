@@ -4,7 +4,9 @@ title: reactivity API
 
 # reactivity API
 
+::: tip
 `@elfui/reactivity` 是可以独立使用的响应式入口。应用和宏组件优先从 `@elfui/core` 导入；只有确实需要脱离组件运行时使用响应式系统时，才直接依赖这个包。
+:::
 
 ## 稳定应用 API
 
@@ -30,7 +32,9 @@ title: reactivity API
 
 ## 高级底层 API
 
+::: warning
 以下符号是公开导出，主要给框架扩展、适配器和诊断工具使用；普通业务代码不应直接调用或依赖它们的内部状态。
+:::
 
 - effect: `effect`、`stop`、`ReactiveEffect`、`isTracking`、`pauseTracking`、`resetTracking`、`untrack`
 - 依赖图: `track`、`trigger`、`triggerAll`
@@ -38,4 +42,6 @@ title: reactivity API
 - scheduler internals: `isSyncMode`
 - state flags: `REACTIVE_FLAG`、`REF_FLAG`、`STATE_FLAG`
 
+::: tip
 这些 API 仍受 beta 版本约束；它们不是 `@elfui/core` 主入口的推荐 API，未来若要调整，会在 `@elfui/reactivity` 的变更记录中单独说明。
+:::

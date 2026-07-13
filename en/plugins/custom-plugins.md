@@ -2,7 +2,7 @@
 
 Plugins can be written as functions:
 
-```ts
+```ts{1,3}
 import type { ElfUIAppPluginFn } from "@elfui/core";
 
 export const focusPlugin: ElfUIAppPluginFn = (app) => {
@@ -16,7 +16,7 @@ export const focusPlugin: ElfUIAppPluginFn = (app) => {
 
 It can also be written as an object:
 
-```ts
+```ts{1,3}
 import type { ElfUIAppPluginObject } from "@elfui/core";
 
 export const appPlugin: ElfUIAppPluginObject<{ appName?: string }> = {
@@ -39,4 +39,6 @@ What the plug-in gets is the application instance created by `createApp()`:
 | `app.provide(key, value)` | Inject application-level dependencies |
 | `app.config` | Application level configuration |
 
+::: warning
 In the same app instance, the same plug-in object will only be installed once. `provide/config/directive` is isolated by App; Custom Element tags are managed by the browser global registry, so different Apps cannot register different constructors for the same tag.
+:::

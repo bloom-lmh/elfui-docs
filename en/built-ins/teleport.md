@@ -1,8 +1,10 @@
 # Teleport
 
+::: warning
 `Teleport` renders content to a target container outside the current component tree, commonly used in Dialog, Drawer, and Tooltip.
+:::
 
-```html
+```html{1}
 <Teleport to="body">
   <div class="dialog">内容</div>
 </Teleport>
@@ -10,7 +12,7 @@
 
 ## disabled
 
-```html
+```html{1}
 <Teleport to="body" :disabled="inline">
   <div>内容</div>
 </Teleport>

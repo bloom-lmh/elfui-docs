@@ -2,7 +2,7 @@
 
 The update phase is used to observe DOM updates triggered by reactive bindings inside the component.
 
-```ts
+```ts{1}
 onBeforeUpdate(() => {
   console.log("before update");
 });
@@ -14,7 +14,9 @@ onUpdated(() => {
 
 ## Usage suggestions
 
+::: warning
 Prioritize driving the UI through responsive expressions, and do not put ordinary state synchronization into update hooks.
+:::
 
 Things that are suitable to put in the update hook:
 

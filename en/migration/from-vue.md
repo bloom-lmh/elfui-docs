@@ -14,14 +14,14 @@ ElfUI retains a lot of the template mentality familiar to Vue users, but the com
 
 ## state
 
-```ts
+```ts{1}
 const count = useRef(0);
 count.set(count.peek() + 1);
 ```
 
 Object:
 
-```ts
+```ts{1}
 const user = useReactive({ name: "Elf" });
 user.name = "ElfUI";
 ```
@@ -30,7 +30,7 @@ user.name = "ElfUI";
 
 The ElfUI component is a native tag after registration:
 
-```html
+```html{1}
 <elf-counter></elf-counter>
 ```
 

@@ -26,4 +26,6 @@ title: runtime API
 
 `teleport`、`transition`、`transitionGroup`、`keepAlive`、`suspense`、`dynamicComponent`、`projectLightDom`
 
+::: warning
 编译产物 helper 在 `@elfui/runtime/internal`，业务代码不要依赖 internal 子入口。
+:::

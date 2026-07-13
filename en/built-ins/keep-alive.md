@@ -2,7 +2,7 @@
 
 `KeepAlive` caches dynamic component instances and retains internal state when switching.
 
-```html
+```html{2}
 <KeepAlive>
   <component :is="current"></component>
 </KeepAlive>
@@ -10,7 +10,7 @@
 
 ## include / exclude / max
 
-```html
+```html{1-2}
 <KeepAlive :include="['user-page']" :max="10">
   <component :is="current"></component>
 </KeepAlive>

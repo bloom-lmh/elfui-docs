@@ -15,7 +15,7 @@ Built-in commands handle control flow, display switching, text, and forms in tem
 
 ## Example
 
-```html
+```html{1,3}
 <p v-if="loading">加载中</p>
 
 <li v-for="item in items" :key="item.id">{{ item.name }}</li>
@@ -23,4 +23,6 @@ Built-in commands handle control flow, display switching, text, and forms in tem
 <section v-show="open">内容</section>
 ```
 
+::: tip
 It is recommended to put complex expressions into TypeScript variables or `useComputed()` in advance so that the template remains readable.
+:::

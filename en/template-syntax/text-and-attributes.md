@@ -1,8 +1,10 @@
 # Text and attributes
 
+::: tip
 Text interpolation can use `${...}` or `&#123;&#123; ... &#125;&#125;`. It is recommended for new projects to use `${...}` in macro components because it directly references the current TypeScript scope.
+:::
 
-```ts
+```ts{1,3}
 const name = useRef("Elf");
 
 export const Hello = defineHtml(html` <p>Hello ${name}</p> `);
@@ -10,7 +12,7 @@ export const Hello = defineHtml(html` <p>Hello ${name}</p> `);
 
 ## Property binding
 
-```ts
+```ts{1}
 defineHtml(html`<button :disabled=${disabled}>保存</button>`);
 ```
 
@@ -20,11 +22,13 @@ Boolean properties are removed with values ​​`false`, `null`, `undefined`.
 
 Use `.prop` when you need to set DOM properties:
 
-```ts
+```ts{1}
 defineHtml(html`<input .value=${value} />`);
 ```
 
+::: tip
 For complex objects, it is recommended to use property instead of attribute.
+:::
 
 ::: tip Attribute and Property
 

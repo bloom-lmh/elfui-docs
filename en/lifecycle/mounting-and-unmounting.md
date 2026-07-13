@@ -2,7 +2,7 @@
 
 The mounting phase is suitable for DOM initialization, third-party library mounting and global event monitoring.
 
-```ts
+```ts{1}
 onMount(() => {
   console.log("host connected");
 });
@@ -10,7 +10,7 @@ onMount(() => {
 
 The unloading phase is used to release resources:
 
-```ts
+```ts{1}
 onUnmount(() => {
   console.log("host removed");
 });
@@ -18,7 +18,7 @@ onUnmount(() => {
 
 ## before hooks
 
-```ts
+```ts{1}
 onBeforeMount(() => {
   // 首次渲染前
 });

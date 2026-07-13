@@ -25,4 +25,6 @@ title: Runtime API
 
 `teleport`、`transition`、`transitionGroup`、`keepAlive`、`suspense`、`dynamicComponent`、`projectLightDom`
 
+::: warning
 The compiled product helper is in `@elfui/runtime/internal`, and the business code should not rely on the internal sub-entry.
+:::

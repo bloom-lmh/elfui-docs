@@ -5,9 +5,11 @@ title: Installation
 
 ## Create new project
 
+::: tip
 The official scaffolding is the recommended entrance. It creates a Vite application and automatically configures the Macro component mainline.
+:::
 
-```bash
+```bash{1}
 pnpm create elfui@beta my-app --install
 cd my-app
 pnpm dev
@@ -17,7 +19,7 @@ During interaction, you can choose TypeScript or JavaScript, Macro or Chain comp
 
 Create a routed project directly without interaction:
 
-```bash
+```bash{1}
 pnpm create elfui@beta my-app --router --install
 ```
 
@@ -27,12 +29,12 @@ This command will add `@elfui/router` and generate router module, page and navig
 
 Install the main package and Vite compilation plugin:
 
-```bash
+```bash{1}
 pnpm add @elfui/core
 pnpm add -D @elfui/vite-plugin
 ```
 
-```ts
+```ts{2-3,5}
 // vite.config.ts
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
@@ -44,7 +46,7 @@ export default defineConfig({
 
 As long as the ordinary TypeScript module exports `defineHtml(...)`, the plug-in will compile it into an ElfUI Macro component:
 
-```ts
+```ts{1,3}
 import { defineHtml, html } from "@elfui/core";
 
 export const Hello = defineHtml(html`<p>Hello ElfUI</p>`);

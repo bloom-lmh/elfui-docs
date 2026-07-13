@@ -4,7 +4,7 @@ Reactive tools are used to handle read-only, shallow responsiveness, primitive o
 
 ## readonly
 
-```ts
+```ts{1}
 const state = readonly(useReactive({ count: 0 }));
 ```
 
@@ -12,7 +12,7 @@ A warning will be given in the development environment when read-only objects ar
 
 ## shallow
 
-```ts
+```ts{1}
 const value = useShallowRef({ nested: { count: 0 } });
 const state = useShallowReactive({ nested: { count: 0 } });
 ```
@@ -21,7 +21,7 @@ Shallow response only tracks the top level, suitable for large objects or third-
 
 ## markRaw / toRaw
 
-```ts
+```ts{1}
 const editor = markRaw(createEditor());
 ```
 
@@ -29,7 +29,7 @@ const editor = markRaw(createEditor());
 
 ## effectScope
 
-```ts
+```ts{4}
 const scope = effectScope();
 
 scope.run(() => {

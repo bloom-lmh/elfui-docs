@@ -23,7 +23,7 @@ title: "@elfui/core API"
 
 Application-level plug-ins, instructions, and configuration usage:
 
-```ts
+```ts{1}
 createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 ```
 

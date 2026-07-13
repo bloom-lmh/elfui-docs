@@ -2,7 +2,7 @@
 
 The ElfUI plug-in is used to register global directives in batches, modify runtime configurations, or encapsulate project conventions.
 
-```ts
+```ts{1-2,4}
 import { createApp } from "@elfui/core";
 import { AppRoot } from "./AppRoot";
 
@@ -17,4 +17,6 @@ A plug-in can be a function or an object with `install()`.
 - Install project-level default configuration
 - Encapsulate monitoring, logging, and topic initialization
 
+::: warning
 Do not make the local dependencies of the component itself into plug-ins. Use `useComponents()` first.
+:::

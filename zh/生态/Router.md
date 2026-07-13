@@ -6,19 +6,19 @@ title: Router
 
 Router 是独立包。只有应用需要客户端路由时才安装：
 
-```bash
+```bash{1}
 pnpm add @elfui/router
 ```
 
 也可以在创建项目时由脚手架加入：
 
-```bash
+```bash{1}
 pnpm create elfui@beta my-app --router --install
 ```
 
 在独立模块中创建路由，并在挂载应用前导入它：
 
-```ts
+```ts{2,4,7-8}
 // src/router/index.ts
 import { createRouter } from "@elfui/router";
 
@@ -31,7 +31,7 @@ export const router = createRouter({
 });
 ```
 
-```ts
+```ts{2-4,6}
 // src/main.ts
 import "./router";
 import { createApp } from "@elfui/core";
@@ -40,7 +40,7 @@ import App from "./App";
 createApp(App).mount("#app");
 ```
 
-```html
+```html{1}
 <elf-link to="/">首页</elf-link>
 <elf-router-view></elf-router-view>
 ```

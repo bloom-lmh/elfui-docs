@@ -5,7 +5,7 @@ title: Watchers
 
 `watch()` is used to monitor specific data sources.
 
-```ts
+```ts{1}
 watch(search, (value, oldValue) => {
   console.log(value, oldValue);
 });
@@ -13,7 +13,7 @@ watch(search, (value, oldValue) => {
 
 The data source can be a ref, getter, or array:
 
-```ts
+```ts{1}
 watch(
   () => user.name,
   (name) => {
@@ -26,7 +26,7 @@ watch(
 
 `watchEffect()` will automatically track the reactive dependencies read in the function:
 
-```ts
+```ts{1}
 watchEffect(() => {
   console.log(user.name, count.value);
 });
@@ -34,7 +34,7 @@ watchEffect(() => {
 
 `onWatcherCleanup()` can register the same round of cleaning tasks in the synchronization callback of `watch()` or `watchEffect()`:
 
-```ts
+```ts{1}
 watchEffect(() => {
   const timer = window.setTimeout(refresh, 300);
   onWatcherCleanup(() => window.clearTimeout(timer));
@@ -43,7 +43,7 @@ watchEffect(() => {
 
 ## flush mode
 
-```ts
+```ts{1}
 watch(source, callback, { flush: "post" });
 ```
 

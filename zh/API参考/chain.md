@@ -10,7 +10,7 @@ title: chain API
 
 `ElfUI.createComponent()` / `createComponent()` 返回 `ElementBuilder`。
 
-```ts
+```ts{1}
 createComponent()
   .name("elf-demo")
   .props({})

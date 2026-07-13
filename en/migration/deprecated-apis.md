@@ -13,4 +13,6 @@ The 1.0 beta mainline has been closed, and the old API no longer enters the offi
 | `defineTyped`                        | `defineHtml<Props, Emits, Slots>`      |
 | legacy `ElfUI.createComponent` | `@elfui/chain`                         |
 
+::: warning
 If the compiler finds an old macro alias, it will give a migration diagnostic. New code should not continue to use these entries.
+:::

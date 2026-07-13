@@ -5,7 +5,7 @@ title: Props
 
 Props are external inputs to the component. Declared with `defineProps()` in the macro component.
 
-```ts
+```ts{1,3,11-12}
 import { defineHtml, defineProps, html } from "@elfui/core";
 
 const props = defineProps<{
@@ -33,16 +33,18 @@ export const ElfButton = defineHtml(html`
 
 ElfUI outputs Custom Element, so you can write either attribute or property externally:
 
-```html
+```html{1}
 <elf-button label="提交"></elf-button>
 ```
 
-```ts
+```ts{1}
 const el = document.querySelector("elf-button")!;
 el.disabled = true;
 ```
 
+::: tip
 `String`, `Number`, `Boolean`, `Array`, `Object` will perform basic conversion according to props options. It is recommended to pass complex objects through properties.
+:::
 
 ## boundary
 

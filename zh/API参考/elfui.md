@@ -24,7 +24,7 @@ title: "@elfui/core API"
 
 应用级插件、指令、配置使用：
 
-```ts
+```ts{1}
 createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 ```
 

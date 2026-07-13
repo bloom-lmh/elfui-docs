@@ -8,7 +8,8 @@
     "build": "vitepress build",
     "preview": "vitepress preview",
     "sync:english-examples": "node scripts/sync-english-examples.mjs",
-    "translate:zh-to-en": "node scripts/translate-zh-to-en.mjs"
+    "translate:zh-to-en": "node scripts/translate-zh-to-en.mjs",
+    "beautify:vitepress": "node scripts/beautify-vitepress.mjs"
   },
   "dependencies": {
     "@elfui/compiler": "0.1.0-beta.1",

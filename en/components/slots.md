@@ -4,7 +4,7 @@ Slots allow parent components to pass content to child components. ElfUI exports
 
 ## Default slot
 
-```ts
+```ts{1}
 export const Card = defineHtml(html`
   <article class="card">
     <slot></slot>
@@ -12,13 +12,13 @@ export const Card = defineHtml(html`
 `);
 ```
 
-```html
+```html{1}
 <elf-card>内容</elf-card>
 ```
 
 ## named slot
 
-```ts
+```ts{1}
 export const Panel = defineHtml(html`
   <header><slot name="title"></slot></header>
   <main><slot></slot></main>
@@ -26,7 +26,7 @@ export const Panel = defineHtml(html`
 `);
 ```
 
-```html
+```html{1}
 <elf-panel>
   <h2 slot="title">标题</h2>
   正文
@@ -36,9 +36,11 @@ export const Panel = defineHtml(html`
 
 ## scope slot
 
+::: warning
 Web Components do not have native scope slots. ElfUI supports common writing methods through compile-time bridging, and sub-components use `useScopedSlot()` for consumption.
+:::
 
-```ts
+```ts{1,5}
 import { defineHtml, html, useScopedSlot } from "@elfui/core";
 
 const itemSlot = useScopedSlot<{ item: string }>("item");
@@ -52,7 +54,7 @@ export const ListBox = defineHtml(html`
 
 The parent component provides the rendering function with `<template #name="...">` with scope parameters:
 
-```ts
+```ts{1}
 export const UserListPage = defineHtml(html`
   <user-list>
     <template #item="{ item, index }">

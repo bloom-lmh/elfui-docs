@@ -2,7 +2,7 @@
 
 Component internal styles use `defineStyle()` and `css`.
 
-```ts
+```ts{1,3,10}
 import { css, defineHtml, defineStyle, html } from "@elfui/core";
 
 defineStyle(css`
@@ -21,7 +21,7 @@ The style will enter the Shadow DOM along with the component definition, without
 
 `defineStyle()` can be called multiple times and is suitable for splitting basic styles and status styles.
 
-```ts
+```ts{1-2}
 defineStyle(baseStyle);
 defineStyle(stateStyle);
 ```

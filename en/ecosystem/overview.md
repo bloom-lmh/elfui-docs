@@ -5,7 +5,7 @@ title: Ecosystem
 
 ElfUI keeps the core of the framework focused and puts larger capabilities with different iteration rhythms into independent projects. New Macro applications often start with scaffolding, with additional parts added as needed.
 
-```bash
+```bash{1}
 pnpm create elfui@beta my-app --install
 ```
 

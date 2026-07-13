@@ -2,7 +2,7 @@
 
 Lifecycle functions can only be called during the component setup synchronization phase, which is the top level of the macro component.
 
-```ts
+```ts{1,11}
 import { defineHtml, html, onMount, onUnmount } from "@elfui/core";
 
 onMount(() => {
@@ -32,4 +32,6 @@ export const Demo = defineHtml(html`<p>Demo</p>`);
 
 Error-related capabilities are placed in "error handling".
 
+::: tip
 `onAttributeChanged((name, oldValue, newValue) => {})` is suitable for compatibility with native attributes that are not declared as props; regular data flows that have declared props preferentially use props and reactive binding.
+:::

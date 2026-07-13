@@ -6,7 +6,7 @@ title: DOM 事件
 
 `useEventListener()` 会在挂载时添加事件监听，在卸载前自动移除。
 
-```ts
+```ts{1}
 useEventListener(window, "resize", () => {
   console.log(window.innerWidth);
 });
@@ -14,7 +14,7 @@ useEventListener(window, "resize", () => {
 
 ## 点击外部
 
-```ts
+```ts{1}
 const host = useHost();
 
 useClickOutside(host, () => {
@@ -26,4 +26,6 @@ useClickOutside(host, () => {
 
 ## 使用建议
 
+::: tip
 组件内部节点的普通点击事件优先写在模板里。全局对象、document、window 或跨 Shadow DOM 的事件，更适合内置组合式函数。
+:::

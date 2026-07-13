@@ -6,7 +6,7 @@ title: Props
 
 Props 是组件的外部输入。宏组件里用 `defineProps()` 声明。
 
-```ts
+```ts{1,3,11-12}
 import { defineHtml, defineProps, html } from "@elfui/core";
 
 const props = defineProps<{
@@ -34,16 +34,18 @@ export const ElfButton = defineHtml(html`
 
 ElfUI 输出 Custom Element，所以外部既可以写 attribute，也可以写 property：
 
-```html
+```html{1}
 <elf-button label="提交"></elf-button>
 ```
 
-```ts
+```ts{1}
 const el = document.querySelector("elf-button")!;
 el.disabled = true;
 ```
 
+::: tip
 `String`、`Number`、`Boolean`、`Array`、`Object` 会按 props 选项做基础转换。复杂对象建议通过 property 传递。
+:::
 
 ## 边界
 

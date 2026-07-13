@@ -8,7 +8,7 @@ title: router API
 
 ## 创建与 history
 
-```ts
+```ts{1}
 createRouter(options): Router
 createWebHistory(base?): RouterHistory
 createWebHashHistory(base?): RouterHistory
@@ -17,7 +17,9 @@ setActiveRouter(router | null): void
 getActiveRouter(): Router | null
 ```
 
+::: tip
 `RouterOptions` 支持 `routes`、推荐使用的 `history`（或兼容的 `mode`）、`initialPath`、`sensitive`、`strict`、`scrollBehavior`、`linkActiveClass` 与 `linkExactActiveClass`。
+:::
 
 ## Router 实例
 

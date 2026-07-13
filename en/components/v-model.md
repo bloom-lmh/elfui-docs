@@ -2,7 +2,7 @@
 
 `v-model` is used to express the bidirectional status between father and son. The macro component uses `defineModel()` internally.
 
-```ts
+```ts{1,9}
 import { defineHtml, defineModel, html } from "@elfui/core";
 
 const value = defineModel<string>({ default: "" });
@@ -16,7 +16,7 @@ export const TextField = defineHtml(html` <input .value=${value} @input=${onInpu
 
 Parent component uses:
 
-```ts
+```ts{1,3-4}
 const name = useRef("");
 
 export const Page = defineHtml(html`
@@ -27,13 +27,13 @@ export const Page = defineHtml(html`
 
 ## Name model
 
-```ts
+```ts{1}
 const open = defineModel<boolean>("open", { default: false });
 ```
 
 Parent component:
 
-```html
+```html{1}
 <elf-dialog v-model:open="visible"></elf-dialog>
 ```
 

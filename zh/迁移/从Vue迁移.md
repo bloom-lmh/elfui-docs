@@ -18,14 +18,14 @@ ElfUI 保留了很多 Vue 用户熟悉的模板心智，但组件模型和运行
 
 ## 状态
 
-```ts
+```ts{1}
 const count = useRef(0);
 count.set(count.peek() + 1);
 ```
 
 对象：
 
-```ts
+```ts{1}
 const user = useReactive({ name: "Elf" });
 user.name = "ElfUI";
 ```
@@ -34,7 +34,7 @@ user.name = "ElfUI";
 
 ElfUI 组件注册后是原生标签：
 
-```html
+```html{1}
 <elf-counter></elf-counter>
 ```
 

@@ -5,19 +5,19 @@ title: Router
 
 Router is a standalone package. Install only if your application requires client routing:
 
-```bash
+```bash{1}
 pnpm add @elfui/router
 ```
 
 It can also be added by scaffolding when creating the project:
 
-```bash
+```bash{1}
 pnpm create elfui@beta my-app --router --install
 ```
 
 Create the route in a standalone module and import it before mounting the application:
 
-```ts
+```ts{2,4,7-8}
 // src/router/index.ts
 import { createRouter } from "@elfui/router";
 
@@ -30,7 +30,7 @@ export const router = createRouter({
 });
 ```
 
-```ts
+```ts{2-4,6}
 // src/main.ts
 import "./router";
 import { createApp } from "@elfui/core";
@@ -39,7 +39,7 @@ import App from "./App";
 createApp(App).mount("#app");
 ```
 
-```html
+```html{1}
 <elf-link to="/">首页</elf-link>
 <elf-router-view></elf-router-view>
 ```

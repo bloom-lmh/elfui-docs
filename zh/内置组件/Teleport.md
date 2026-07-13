@@ -6,7 +6,7 @@ title: Teleport
 
 `Teleport` 把内容渲染到当前组件树之外的目标容器，常用于 Dialog、Drawer、Tooltip。
 
-```html
+```html{1}
 <Teleport to="body">
   <div class="dialog">内容</div>
 </Teleport>
@@ -14,7 +14,7 @@ title: Teleport
 
 ## disabled
 
-```html
+```html{1}
 <Teleport to="body" :disabled="inline">
   <div>内容</div>
 </Teleport>
@@ -24,4 +24,6 @@ title: Teleport
 
 ## 使用建议
 
+::: tip
 弹层类组件通常需要配合 `useScrollLock()`、`useEscapeKey()`、`useFocusTrap()` 和 `useClickOutside()`。
+:::
