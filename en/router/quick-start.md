@@ -1,48 +1,98 @@
+---
+title: Route Quick Start
+---
+
 # Route quick start
 
-Routing is independent of `@elfui/core`. Existing applications need to be installed separately:
+`@elfui/router` is a client-side router for ElfUI Custom Elements. It owns the URL, chooses the matching page component, and renders it through `<elf-router-view>`.
+
+## Install
 
 ```bash
 pnpm add @elfui/router
 ```
 
-New projects can also select Router in the scaffolding interaction, or execute directly:
+The project generator can also add it for a new application:
 
 ```bash
 pnpm create elfui@beta my-app --router --install
 ```
 
-The scaffolding will automatically install the routing package and generate `src/router/index.ts`.
+## Build a small application
 
-Create route:
+Create `src/router/index.ts`. Route components can be element tag names, Custom Element constructors, or lazy import functions. Lazy functions are recommended for pages because they create a separate bundle.
 
 ```ts
-import { createRouter } from "@elfui/router";
+// src/router/index.ts
+import { createRouter, createWebHistory } from "@elfui/router";
 
 export const router = createRouter({
-  mode: "hash",
+  history: createWebHistory(),
   routes: [
-    { path: "/", component: () => import("./pages/Home") },
-    { path: "/users/:id", component: () => import("./pages/User") }
+    { path: "/", name: "home", component: () => import("../pages/home-page") },
+    {
+      path: "/users/:id",
+      name: "user",
+      component: () => import("../pages/user-page"),
+      props: true
+    },
+    { path: "/:pathMatch(.*)*", name: "not-found", component: () => import("../pages/not-found-page") }
   ]
 });
 ```
 
-Used in the page:
-
-```html
-<elf-link to="/">首页</elf-link> <elf-router-view></elf-router-view>
-```
-
-`createRouter()` will set the active router and register the routing element.
-
-First import the router module at the application entry, and then mount the root component:
+Import that module before mounting the application. `createRouter()` registers the router elements and makes this router available to `useRouter()` and `useRoute()`.
 
 ```ts
-// main.ts
+// src/main.ts
 import "./router";
 import { createApp } from "@elfui/core";
-import App from "./App";
+import App from "./app";
 
 createApp(App).mount("#app");
 ```
+
+Place links and one route outlet in the app shell:
+
+```html
+<!-- src/app.ts -->
+<header>
+  <elf-link to="/">Home</elf-link>
+  <elf-link :to=${{ name: "user", params: { id: "42" } }}>My profile</elf-link>
+</header>
+
+<main>
+  <elf-router-view></elf-router-view>
+</main>
+```
+
+When `/users/42` is visited, the router loads `user-page` and renders it in the route view. With `props: true`, the route parameter is passed to the page as an `id` property.
+
+```ts
+// src/pages/user-page.ts
+import { defineComponent } from "@elfui/core";
+
+export default defineComponent({
+  props: { id: String },
+  template: `<h1>User ${this.id}</h1>`
+});
+```
+
+## Wait for the first navigation
+
+The router starts the initial navigation when it is created. If bootstrap code depends on the first matched page and its guards/lazy module being finished, await `isReady()`:
+
+```ts
+import { createApp } from "@elfui/core";
+import App from "./app";
+import { router } from "./router";
+
+await router.isReady();
+createApp(App).mount("#app");
+```
+
+## Pick a history mode
+
+`createWebHistory()` creates normal URLs such as `/users/42`; the server must return `index.html` for unknown application paths. `createWebHashHistory()` creates `/#/users/42` and works on static hosts without a rewrite rule. `createMemoryHistory()` never touches the browser URL and is useful for tests, SSR-like hosts, and embedded applications.
+
+See [Route Configuration](./configuration) for bases, matching rules, nested routes, and dynamic route registration.

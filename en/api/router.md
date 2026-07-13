@@ -1,24 +1,41 @@
 ---
 title: Router API
 ---
-# router API
 
-`@elfui/router` provides Web Component routing capabilities aligned with Vue Router 4 navigation semantics.
+# Router API
 
-## Create and history
+This page is an index of the public `@elfui/router` API. See the Router guide for full examples.
 
-`createRouter`、`createWebHistory`、`createWebHashHistory`、`createMemoryHistory`、`setActiveRouter`、`getActiveRouter`
+## Creation and history
 
-`RouterOptions` supports `history` (or compatible `mode`), `routes`, `initialPath`, `scrollBehavior`, `sensitive`, `strict`, `linkActiveClass` and `linkExactActiveClass`.
+```ts
+createRouter(options): Router
+createWebHistory(base?): RouterHistory
+createWebHashHistory(base?): RouterHistory
+createMemoryHistory(base?): RouterHistory
+setActiveRouter(router | null): void
+getActiveRouter(): Router | null
+```
+
+`RouterOptions` accepts `routes`, `history` (preferred) or `mode`, plus `initialPath`, `sensitive`, `strict`, `scrollBehavior`, `linkActiveClass`, and `linkExactActiveClass`.
 
 ## Router instance
 
-`current` and `currentRoute` are responsive refs. Examples provide `listening`, `push`, `replace`, `back`, `forward`, `go`, `resolve`, various guard registration methods, dynamic routing management methods and `isReady`.
+| Member | Description |
+| --- | --- |
+| `current`, `currentRoute` | Reactive refs containing the current `RouteLocation`. |
+| `push(to)`, `replace(to)` | Navigate and resolve to `void` or `NavigationFailure`. |
+| `back()`, `forward()`, `go(delta)` | Traverse history. |
+| `resolve(to, currentLocation?)` | Resolve without navigating. |
+| `beforeEach`, `beforeResolve`, `afterEach`, `onError` | Register hooks; each returns an unregister function. |
+| `addRoute`, `removeRoute`, `clearRoutes`, `hasRoute`, `getRoutes` | Change or inspect route records. |
+| `isReady()` | Resolve after initial navigation, guards, and lazy page loading. |
+| `listening` | Whether browser history events are observed. |
 
-`isReady()` will wait for first navigation, including initial guarding and lazy page loading.
+## Elements and composables
 
-## Components, Composable APIs and Tools
+`registerRouterElements()` registers `<elf-router-view>`, `<elf-router-link>`, and the `<elf-link>` alias. `useRouter()` returns the active `Router` or `null`; `useRoute()` returns a stable readonly current location; `useLink()` supplies headless link behavior. `onBeforeRouteLeave()` and `onBeforeRouteUpdate()` register component guards.
 
-`registerRouterElements`、`<elf-link>`、`<elf-router-link>`、`<elf-router-view>`、`useRouter`、`useRoute`、`useLink`、`onBeforeRouteLeave`、`onBeforeRouteUpdate`、`parseQuery`、`stringifyQuery`、`isNavigationFailure`、`NavigationFailureType`
+## Utilities and types
 
-Common types: `Router`, `RouterOptions`, `RouterHistory`, `RouteRecord`, `RouteLocation`, `RouteLocationRaw`, `NavigationGuard`, `ScrollBehaviorFn`.
+`parseQuery()`, `stringifyQuery()`, `isNavigationFailure()`, and `NavigationFailureType` are exported helpers. The main types are `Router`, `RouterOptions`, `RouterHistory`, `RouteRecord`, `RouteLocation`, `RouteLocationRaw`, `RouteQuery`, `NavigationGuard`, `NavigationFailure`, and `ScrollBehaviorFn`.

@@ -4,22 +4,38 @@ title: router API
 
 # router API
 
-`@elfui/router` 提供与 Vue Router 4 导航语义对齐的 Web Component 路由能力。
+本页索引 `@elfui/router` 的公开 API；完整案例请阅读路由指南。
 
 ## 创建与 history
 
-`createRouter`、`createWebHistory`、`createWebHashHistory`、`createMemoryHistory`、`setActiveRouter`、`getActiveRouter`
+```ts
+createRouter(options): Router
+createWebHistory(base?): RouterHistory
+createWebHashHistory(base?): RouterHistory
+createMemoryHistory(base?): RouterHistory
+setActiveRouter(router | null): void
+getActiveRouter(): Router | null
+```
 
-`RouterOptions` 支持 `history`（或兼容的 `mode`）、`routes`、`initialPath`、`scrollBehavior`、`sensitive`、`strict`、`linkActiveClass` 和 `linkExactActiveClass`。
+`RouterOptions` 支持 `routes`、推荐使用的 `history`（或兼容的 `mode`）、`initialPath`、`sensitive`、`strict`、`scrollBehavior`、`linkActiveClass` 与 `linkExactActiveClass`。
 
 ## Router 实例
 
-`current` 与 `currentRoute` 是响应式 ref。实例提供 `listening`、`push`、`replace`、`back`、`forward`、`go`、`resolve`、各类守卫注册方法、动态路由管理方法及 `isReady`。
+| 成员 | 说明 |
+| --- | --- |
+| `current`、`currentRoute` | 包含当前 `RouteLocation` 的响应式 ref。 |
+| `push(to)`、`replace(to)` | 导航；结果为 `void` 或 `NavigationFailure`。 |
+| `back()`、`forward()`、`go(delta)` | 在 history 中移动。 |
+| `resolve(to, currentLocation?)` | 只解析，不导航。 |
+| `beforeEach`、`beforeResolve`、`afterEach`、`onError` | 注册钩子；每个都会返回注销函数。 |
+| `addRoute`、`removeRoute`、`clearRoutes`、`hasRoute`、`getRoutes` | 修改或检查路由记录。 |
+| `isReady()` | 在首次导航、守卫与懒页面加载完成后 resolve。 |
+| `listening` | 是否监听浏览器 history 事件。 |
 
-`isReady()` 会等待首次导航，包括初始守卫和懒页面加载。
+## 元素与组合式 API
 
-## 组件、组合式 API 与工具
+`registerRouterElements()` 会注册 `<elf-router-view>`、`<elf-router-link>` 与 `<elf-link>` 别名。`useRouter()` 返回当前 `Router` 或 `null`；`useRoute()` 返回稳定的只读当前 location；`useLink()` 提供无头链接行为。`onBeforeRouteLeave()`、`onBeforeRouteUpdate()` 注册组件守卫。
 
-`registerRouterElements`、`<elf-link>`、`<elf-router-link>`、`<elf-router-view>`、`useRouter`、`useRoute`、`useLink`、`onBeforeRouteLeave`、`onBeforeRouteUpdate`、`parseQuery`、`stringifyQuery`、`isNavigationFailure`、`NavigationFailureType`
+## 工具与类型
 
-常用类型：`Router`、`RouterOptions`、`RouterHistory`、`RouteRecord`、`RouteLocation`、`RouteLocationRaw`、`NavigationGuard`、`ScrollBehaviorFn`。
+导出的工具有 `parseQuery()`、`stringifyQuery()`、`isNavigationFailure()` 与 `NavigationFailureType`。主要类型包括 `Router`、`RouterOptions`、`RouterHistory`、`RouteRecord`、`RouteLocation`、`RouteLocationRaw`、`RouteQuery`、`NavigationGuard`、`NavigationFailure` 与 `ScrollBehaviorFn`。
