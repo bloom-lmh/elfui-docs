@@ -4,18 +4,30 @@ title: Router API
 
 # Router API
 
-`@elfui/router` provides routing for ElfUI applications.
+`@elfui/router` provides Web Component routing with Vue Router 4-aligned navigation semantics.
 
-- Creation: `createRouter`, `setActiveRouter`, `getActiveRouter`
-- Elements: `registerRouterElements`, `<elf-link>`, `<elf-router-view>`
-- Composition: `useRouter`, `useRoute`, `useLink`
-- Guards: `onBeforeRouteLeave`, `onBeforeRouteUpdate`
-- Failures: `isNavigationFailure`, `NavigationFailureType`
+## Creation and history
 
-## Typical imports
+- `createRouter`
+- `createWebHistory`, `createWebHashHistory`, `createMemoryHistory`
+- `setActiveRouter`, `getActiveRouter`
 
-Create one router instance at application startup, then use link and view elements in the application shell. Prefer named routes for programmatic navigation and typed parameters.
+`RouterOptions` accepts `history` (or the legacy `mode`), `routes`, `initialPath`, `scrollBehavior`, `sensitive`, `strict`, `linkActiveClass`, and `linkExactActiveClass`.
 
-```ts
-import { createRouter, useRoute, useRouter } from "@elfui/router";
-```
+## Router instance
+
+`current` and `currentRoute` are reactive refs. The instance also exposes `listening`, `push`, `replace`, `back`, `forward`, `go`, `resolve`, `beforeEach`, `beforeResolve`, `afterEach`, `onError`, `addRoute`, `removeRoute`, `clearRoutes`, `hasRoute`, `getRoutes`, and `isReady`.
+
+`isReady()` waits for the first navigation, including lazy page loading and initial guards.
+
+## Elements and composition
+
+- `registerRouterElements`, `<elf-link>`, `<elf-router-link>`, `<elf-router-view>`
+- `useRouter`, `useRoute`, `useLink`
+- `onBeforeRouteLeave`, `onBeforeRouteUpdate`
+
+## Utilities and types
+
+- `parseQuery`, `stringifyQuery`
+- `isNavigationFailure`, `NavigationFailureType`
+- `Router`, `RouterOptions`, `RouterHistory`, `RouteRecord`, `RouteLocation`, `RouteLocationRaw`, `NavigationGuard`, `ScrollBehaviorFn`
