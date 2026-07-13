@@ -31,13 +31,16 @@ title: Transition
 `name` 就是 class 前缀，可写静态值或动态绑定：
 
 ```ts
+import { defineHtml, html, useRef } from "elfui";
+
+const open = useRef(true);
 const transitionName = useRef("slide");
 
-html`
+export const SlidingAside = defineHtml(html`
   <Transition :name=${transitionName} :duration=${{ enter: 180, leave: 260 }}>
     <aside v-if=${open}>内容</aside>
   </Transition>
-`;
+`);
 ```
 
 上例会使用 `slide-enter-from`、`slide-enter-active`、`slide-leave-to` 等 class。未提供 `name` 时前缀为 `v`。

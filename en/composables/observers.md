@@ -1,5 +1,30 @@
-# Observers
+# observer
 
-Observer composables wrap browser observer APIs such as resize and intersection observers. They react to layout or visibility changes without polling and disconnect automatically with their owner.
+ElfUI provides life cycle encapsulation of ResizeObserver and IntersectionObserver.
 
-Observe the smallest practical target and keep callbacks inexpensive.
+## useResizeObserver
+
+```ts
+const host = useHost();
+const width = useRef(0);
+
+useResizeObserver(host, (entry) => {
+  width.set(entry.width);
+});
+```
+
+Suitable for layout, elastic layer positioning, and responsive component size calculation.
+
+## useIntersectionObserver
+
+```ts
+const root = useTemplateRef<HTMLElement>("root");
+
+useIntersectionObserver(root.value, (entry) => {
+  if (entry.isIntersecting) {
+    visible.set(true);
+  }
+});
+```
+
+Suitable for lazy loading, scroll triggering, and Tour guide positioning.

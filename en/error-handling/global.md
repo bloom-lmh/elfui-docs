@@ -1,5 +1,23 @@
 # Global error handling
 
-Global error handling is the last line of defense for uncaught application errors. Use it to report diagnostic details, show a safe user-facing message, and preserve enough context for investigation.
+Errors and warnings are configured on the instance returned by `createApp()` and should be completed before `mount()`:
 
-Do not expose internal stack traces or sensitive values in production UI.
+```ts
+import { createApp } from "@elfui/core";
+
+const app = createApp(App);
+
+app.config.errorHandler = (error, info) => {
+  reportError(error, { info });
+};
+
+app.config.warnHandler = (message, ...args) => {
+  console.warn("[ElfUI]", message, ...args);
+};
+
+app.mount("#app");
+```
+
+`errorHandler` receives component setup/render errors; `warnHandler` receives framework warnings in the App component context, such as expose overwriting the original host property.
+
+Do not put business recovery logic into the global handler. Partially recoverable errors should be handled by `onErrorCaptured()` or `errorBoundary()`.

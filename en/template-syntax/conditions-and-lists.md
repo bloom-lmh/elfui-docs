@@ -1,5 +1,36 @@
 # Conditions and lists
 
-Conditional rendering adds or removes UI based on a boolean condition. List rendering creates repeated UI from an iterable; give every item a stable key so the renderer can retain the correct DOM and component state.
+Conditions and lists belong to control flow, and instructions are used to make them clearer.
 
-Avoid using an array index as the key when items can move, be inserted, or be removed.
+## Conditional rendering
+
+```html
+<p v-if="loading">加载中</p>
+<p v-else-if="error">加载失败</p>
+<p v-else>完成</p>
+```
+
+`v-if` creates and destroys nodes. Just use `v-show` when toggling visibility.
+
+```html
+<section v-show="open">内容</section>
+```
+
+## List rendering
+
+```html
+<li v-for="item in items" :key="item.id">{{ item.name }}</li>
+```
+
+List recommendations always provide stable `key`. ElfUI will use keyed list updates to insert, delete, and rearrange only necessary nodes.
+
+## template group
+
+```html
+<template v-if="ready">
+  <h2>标题</h2>
+  <p>正文</p>
+</template>
+```
+
+`<template>` is only used as a transparent group and will not be rendered into real elements.

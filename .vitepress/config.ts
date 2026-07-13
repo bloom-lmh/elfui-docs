@@ -235,6 +235,39 @@ const zhSidebar: Sidebar = [
 
 const baseTheme = {
   logo: "/logo.png",
+  // English and Chinese routes use translated directory names. Fall back to
+  // each locale's home page instead of generating a non-existent equivalent URL.
+  i18nRouting: false,
+  search: {
+    provider: "local" as const,
+    options: {
+      locales: {
+        zh: {
+          translations: {
+            button: {
+              buttonText: "搜索",
+              buttonAriaLabel: "搜索文档"
+            },
+            modal: {
+              displayDetails: "显示详情",
+              resetButtonTitle: "清空搜索",
+              backButtonTitle: "关闭搜索",
+              noResultsText: "没有找到相关结果",
+              footer: {
+                selectText: "选择",
+                selectKeyAriaLabel: "回车",
+                navigateText: "切换",
+                navigateUpKeyAriaLabel: "上方向键",
+                navigateDownKeyAriaLabel: "下方向键",
+                closeText: "关闭",
+                closeKeyAriaLabel: "Esc"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   socialLinks: [{ icon: "github" as const, link: "https://github.com/bloom-lmh/elfui" }],
   outline: { level: [2, 3] as [2, 3] }
 };
@@ -272,6 +305,9 @@ export default defineConfig({
     ["link", { rel: "icon", type: "image/png", href: "/logo.png" }],
     ["link", { rel: "apple-touch-icon", href: "/logo.png" }]
   ],
+  themeConfig: {
+    search: baseTheme.search
+  },
   locales: {
     root: { lang: "en" },
     en: { label: "English", lang: "en", link: "/en/", themeConfig: englishTheme },
@@ -279,6 +315,10 @@ export default defineConfig({
   },
   vite: {
     plugins: [elfuiMacroPlugin({ macroImport: "@elfui/core" })],
-    resolve: { alias: { elfui: "@elfui/core" } }
+    resolve: {
+      alias: {
+        elfui: "@elfui/core"
+      }
+    }
   }
 });

@@ -1,5 +1,25 @@
 # DOM events
 
-Use the DOM-event composables when an interaction is attached to the document, window, or a changing element reference. They register listeners with component ownership so the listener is removed automatically when it is no longer needed.
+`useEventListener()` will add an event listener when mounting and automatically remove it before uninstalling.
 
-Keep global listeners scoped and clean them up promptly.
+```ts
+useEventListener(window, "resize", () => {
+  console.log(window.innerWidth);
+});
+```
+
+## click outside
+
+```ts
+const host = useHost();
+
+useClickOutside(host, () => {
+  open.set(false);
+});
+```
+
+`useClickOutside()` is judged using composed path and is suitable for Shadow DOM components.
+
+## Usage suggestions
+
+Ordinary click events on internal nodes of the component are first written in the template. Global objects, documents, windows, or events across Shadow DOM are more suitable for built-in combined functions.

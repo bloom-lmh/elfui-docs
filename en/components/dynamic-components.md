@@ -1,5 +1,31 @@
-# Dynamic components
+# dynamic components
 
-Use a dynamic component when the component type is selected from state at runtime. Preserve stateful views with `KeepAlive` when switching between them should not reset their local state.
+Dynamic components are used to switch the components to be rendered at runtime.
 
-Keep the set of possible component types explicit for predictable rendering.
+```ts
+import { defineHtml, html, useRef } from "@elfui/core";
+import { UserCard } from "./UserCard";
+import { TeamCard } from "./TeamCard";
+
+const current = useRef<typeof UserCard | typeof TeamCard>(UserCard);
+
+export const Dashboard = defineHtml(html` <component :is=${current}></component> `);
+```
+
+`:is` can be a component constructor or a registered tag name.
+
+```ts
+const current = useRef("elf-user-card");
+```
+
+## Cooperate with KeepAlive
+
+When you need to cache the instance, use `<KeepAlive>` to wrap the dynamic component:
+
+```html
+<KeepAlive>
+  <component :is="current"></component>
+</KeepAlive>
+```
+
+It is suitable for scenarios such as tabs, routing pages, editor panels, etc. that switch frequently but do not want to rebuild the state.

@@ -1,16 +1,26 @@
-# Built-in directives
+# built-in commands
 
-Built-in directives express common template behavior such as conditional rendering, list rendering, binding, and event handling. They are compiled as part of the template, so use them for declarative UI rather than manual DOM updates.
+Built-in commands handle control flow, display switching, text, and forms in templates.
 
-Choose the directive that matches the DOM behavior you want to describe.
+| Command | Purpose |
+| ------------------------------- | ------------------ |
+| `v-if` / `v-else-if` / `v-else` | Conditional rendering |
+| `v-for` | List rendering |
+| `v-show` | display switch |
+| `v-model` | Two-way binding of forms and components |
+| `v-text` | Set text |
+| `v-html` | Set HTML |
+| `v-once` | Render only once |
+| `v-memo` | Skip updates by dependency |
 
-## Choosing a directive
+## Example
 
-Use bindings for values, event bindings for user input, and conditional or list directives for structure. Keep a directive expression side-effect free when it runs during rendering; update state from an event handler instead.
+```html
+<p v-if="loading">加载中</p>
 
-```ts
-export const Status = defineHtml(html`
-  <p ?hidden=${() => !ready.value}>Ready</p>
-  <button @click=${reload}>Reload</button>
-`);
+<li v-for="item in items" :key="item.id">{{ item.name }}</li>
+
+<section v-show="open">内容</section>
 ```
+
+It is recommended to put complex expressions into TypeScript variables or `useComputed()` in advance so that the template remains readable.

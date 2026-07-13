@@ -1,12 +1,11 @@
 ---
 title: Installation
 ---
+# Install
 
-# Installation
+## Create new project
 
-## Create a new project
-
-The official scaffold is the recommended starting point. It creates a Vite application and configures the Macro component path for you.
+The official scaffolding is the recommended entrance. It creates a Vite application and automatically configures the Macro component mainline.
 
 ```bash
 pnpm create elfui@beta my-app --install
@@ -14,19 +13,19 @@ cd my-app
 pnpm dev
 ```
 
-During the interactive flow, choose TypeScript or JavaScript, Macro or Chain components, CSS/SCSS/Less, and optional Router, Vitest, ESLint, and Prettier support. New applications should choose **Macro**.
+During interaction, you can choose TypeScript or JavaScript, Macro or Chain components, CSS/SCSS/Less, and optionally Router, Vitest, ESLint, and Prettier. Please select **Macro** for new projects.
 
-To generate a routed application without the prompts:
+Create a routed project directly without interaction:
 
 ```bash
 pnpm create elfui@beta my-app --router --install
 ```
 
-This adds `@elfui/router` and generates the router module, route pages, and navigation shell. Use `--bare` when you want the smallest project instead of the teaching example.
+This command will add `@elfui/router` and generate router module, page and navigation skeleton. Use `--bare` when a minimal empty project is required, it does not generate tutorial examples.
 
-## Add ElfUI to an existing Vite project
+## Access existing Vite projects
 
-Install the main package and the Vite compiler plugin:
+Install the main package and Vite compilation plugin:
 
 ```bash
 pnpm add @elfui/core
@@ -35,15 +34,15 @@ pnpm add -D @elfui/vite-plugin
 
 ```ts
 // vite.config.ts
-import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 import { defineConfig } from "vite";
+import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 
 export default defineConfig({
   plugins: [elfuiMacroPlugin()]
 });
 ```
 
-Any TypeScript module that exports `defineHtml(...)` can be compiled as an ElfUI Macro component.
+As long as the ordinary TypeScript module exports `defineHtml(...)`, the plug-in will compile it into an ElfUI Macro component:
 
 ```ts
 import { defineHtml, html } from "@elfui/core";
@@ -53,11 +52,11 @@ export const Hello = defineHtml(html`<p>Hello ElfUI</p>`);
 
 ## Optional packages
 
-| Package | Install it when |
+| Packages | When to install |
 | --- | --- |
-| `@elfui/router` | The application needs client-side routing. It is independent from `@elfui/core`. |
-| `@elfui/chain` | You need Chain components for legacy pages, small demos, or a no-build environment. |
-| `@elfui/reactivity` | You only need the reactive system. |
-| `@elfui/runtime` | You are building advanced Custom Element abstractions. |
+| `@elfui/router` | The application requires client routing. It is independent of `@elfui/core`. |
+| `@elfui/chain` | Old pages, small demos or no build environments require the Chain component. |
+| `@elfui/reactivity` | Only a responsive system is required. |
+| `@elfui/runtime` | To encapsulate advanced Custom Element runtime capabilities. |
 
-For a full map of packages, repositories, and tooling, see [Ecosystem](/en/ecosystem/overview).
+For the complete relationship between packages, warehouses and tools, see [Ecological Overview] (/en/ecosystem/overview).

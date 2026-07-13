@@ -1,5 +1,24 @@
-# KeepAlive lifecycle
+# KeepAlive life cycle
 
-A kept-alive component is deactivated instead of unmounted when it leaves the view, then activated when it returns. Use activation hooks to resume work and deactivation hooks to pause it.
+Dynamic components cached by `<KeepAlive>` are not destroyed on switch, but switch between activation and deactivation.
 
-Unmount cleanup still runs when the cached instance is finally discarded.
+```ts
+onActivated(() => {
+  console.log("active again");
+});
+
+onDeactivated(() => {
+  console.log("cached but hidden");
+});
+```
+
+## The difference between mount/unmount
+
+| Scene | Trigger |
+| -------------- | ------------------------- |
+| First creation | `onMount` + `onActivated` |
+| Restore from cache | `onActivated` |
+| Cut away but keep cache | `onDeactivated` |
+| Really remove cache | `onUnmount` |
+
+Suitable for caching routing pages, tab panels, complex forms or editor instances.

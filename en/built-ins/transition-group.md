@@ -1,5 +1,23 @@
 # TransitionGroup
 
-`TransitionGroup` animates insertion, removal, and movement in a keyed list. Each child needs a stable key so the renderer can identify which item moved.
+`TransitionGroup` is used for list enter/leave and keyed reflow animations.
 
-Use it for small, meaningful list transitions rather than every routine update.
+```html
+<TransitionGroup name="list" tag="ul">
+  <li v-for="item in items" :key="item.id">{{ item.name }}</li>
+</TransitionGroup>
+```
+
+## move class
+
+The move class is applied when the list is reordered:
+
+```css
+.list-move {
+  transition: transform 0.2s ease;
+}
+```
+
+## Usage suggestions
+
+List items must have stable keys. Lists without keys cannot reliably calculate movement animations.

@@ -1,17 +1,16 @@
 ---
 title: Navigation
 ---
+# navigation
 
-# Navigation
-
-Use `<elf-link>` in templates. It is an alias of `<elf-router-link>` and accepts the same route locations as `router.push()`.
+`<elf-link>` is used in the template; it is an alias for `<elf-router-link>`.
 
 ```html
-<elf-link to="/users/1">User</elf-link>
-<elf-link :to=${{ name: "user", params: { id: 1 } }}>Profile</elf-link>
+<elf-link to="/users/1">用户</elf-link>
+<elf-link :to=${{ name: "user", params: { id: 1 } }}>个人页</elf-link>
 ```
 
-Links support `replace`, `active-class`, `exact-active-class`, `aria-current-value`, and `custom`. Router-wide defaults are configured with `linkActiveClass` and `linkExactActiveClass`.
+Supports `replace`, `active-class`, `exact-active-class`, `aria-current-value`, `custom`. The global default class can be configured through `linkActiveClass` and `linkExactActiveClass`.
 
 ## Programmatic navigation
 
@@ -29,21 +28,16 @@ router.go(-2);
 const target = router.resolve("../settings");
 ```
 
-`replace: true` can also be included in a location passed to `push()`. `force: true` re-runs navigation for the current URL. Browser history state is preserved through `state`; it is available through the browser's `history.state`.
+The location passed to `push()` can also be written as `replace: true`. `force: true` will re-execute navigation for the current URL. `state` will be saved to the browser history entry and can be read from `history.state`.
 
-`push()` and `replace()` resolve to a `NavigationFailure` when navigation is aborted, cancelled, or duplicated. Check it with `isNavigationFailure()`; `afterEach()` receives the same failure as its third argument.
+`NavigationFailure` will be returned when navigation is canceled, competition is canceled or repeated; use `isNavigationFailure()` to judge. The third parameter of `afterEach(to, from, failure)` will also receive a failure message.
 
 ## Current route and query
 
-```ts
-const route = useRoute();
-const id = useComputed(() => route.params.id);
-```
+`useRoute()` returns a stable, read-only, and responsive current routing facade, including `href`, `path`, `fullPath`, `params`, `query`, `hash`, `meta`, `matched`, and `redirectedFrom`.
 
-`useRoute()` returns a stable, read-only reactive facade. It exposes `href`, `path`, `fullPath`, `params`, `query`, `hash`, `meta`, `matched`, and `redirectedFrom`.
+`parseQuery()` and `stringifyQuery()` can be used in tool code that needs to keep the same rules as routers: query keys without `=` are resolved to `null`, and duplicate keys are resolved to arrays.
 
-Use `parseQuery()` and `stringifyQuery()` when a utility needs the same query normalization as the router. A key without `=` becomes `null`; repeated keys become arrays.
+## Custom link
 
-## Custom links
-
-`useLink(to)` and `useLink({ to, replace })` return `href`, `isActive`, `isExactActive`, and `navigate()`. `<elf-link custom>` exposes the same values through its default scoped slot.
+`useLink(to)` and `useLink({ to, replace })` both return `href`, `isActive`, `isExactActive` and `navigate()`. The default scope slot of `<elf-link custom>` also exposes these values.

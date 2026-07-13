@@ -1,18 +1,48 @@
-# Router quick start
+# Route quick start
 
-Install the router package, create a router with your route records, and mount its view component in the application shell. Use route links for in-app navigation so navigation state remains in sync with the URL.
+Routing is independent of `@elfui/core`. Existing applications need to be installed separately:
 
-Start with a small route table and add nested routes as the application grows.
+```bash
+pnpm add @elfui/router
+```
 
-## Minimal route table
+New projects can also select Router in the scaffolding interaction, or execute directly:
+
+```bash
+pnpm create elfui@beta my-app --router --install
+```
+
+The scaffolding will automatically install the routing package and generate `src/router/index.ts`.
+
+Create route:
 
 ```ts
-const router = createRouter({
+import { createRouter } from "@elfui/router";
+
+export const router = createRouter({
+  mode: "hash",
   routes: [
-    { path: "/", component: HomePage },
-    { path: "/settings", component: SettingsPage }
+    { path: "/", component: () => import("./pages/Home") },
+    { path: "/users/:id", component: () => import("./pages/User") }
   ]
 });
 ```
 
-Use route metadata for page titles and access policies. Keep data loading close to the route component unless a guard must decide whether navigation is allowed.
+Used in the page:
+
+```html
+<elf-link to="/">首页</elf-link> <elf-router-view></elf-router-view>
+```
+
+`createRouter()` will set the active router and register the routing element.
+
+First import the router module at the application entry, and then mount the root component:
+
+```ts
+// main.ts
+import "./router";
+import { createApp } from "@elfui/core";
+import App from "./App";
+
+createApp(App).mount("#app");
+```

@@ -1,18 +1,14 @@
-# Composables overview
+# Overview of built-in combined functions
 
-Composables package reusable stateful logic into functions. They should accept clear inputs, return the state and operations a component needs, and clean up side effects with the component lifecycle.
+The built-in combined function is the official `useXxx()` capability provided by ElfUI. They are not reactive primitives, but DOM, Host, event, observer, and form wrappers for service component authors.
 
-Use composables to share behavior without forcing unrelated components into one inheritance hierarchy.
+| Classification | API |
+| -------- | ------------------------------------------------------- |
+| Host     | `useHost`、`useRenderRoot`、`useShadowRoot`、`useAttrs` |
+| Template reference | `useTemplateRef` |
+| DOM events | `useEventListener`, `useClickOutside` |
+| Observer | `useResizeObserver`, `useIntersectionObserver` |
+| Interactive control | `useEscapeKey`, `useScrollLock`, `useFocusTrap` |
+| Form controls | `useFormControlContext`, `createFormControlContext` |
 
-## Design a composable API
-
-Return the smallest useful surface: reactive values for rendering and methods for intentional state changes. Accept callbacks or refs only when the composable needs to react to them over time.
-
-```ts
-export function useCounter(initial = 0) {
-  const count = useRef(initial);
-  return { count, increment: () => count.set(count.value + 1) };
-}
-```
-
-Document ownership clearly when a composable creates listeners, observers, or other browser resources.
+These functions must be called during the component setup synchronization phase, which is the top level of the macro component.

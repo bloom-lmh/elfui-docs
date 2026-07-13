@@ -1,5 +1,20 @@
-# Component error capture
+# Component error catching
 
-Capture errors close to the component subtree that can recover from them. A local handler can replace a failed feature with a fallback while leaving the rest of the application usable.
+`onErrorCaptured()` captures errors that bubble up from subcomponents.
 
-Report captured errors as well as rendering the fallback.
+```ts
+onErrorCaptured((err) => {
+  console.error(err);
+  return false;
+});
+```
+
+Returning `false` means preventing upward bubbling.
+
+## Usage scenarios
+
+- local error message
+- Show fallback after subcomponent fails
+- Prevent errors from polluting the entire page
+
+If you need the full fallback/retry structure, error bounds can be used.

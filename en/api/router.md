@@ -1,33 +1,24 @@
 ---
 title: Router API
 ---
+# router API
 
-# Router API
+`@elfui/router` provides Web Component routing capabilities aligned with Vue Router 4 navigation semantics.
 
-`@elfui/router` provides Web Component routing with Vue Router 4-aligned navigation semantics.
+## Create and history
 
-## Creation and history
+`createRouter`、`createWebHistory`、`createWebHashHistory`、`createMemoryHistory`、`setActiveRouter`、`getActiveRouter`
 
-- `createRouter`
-- `createWebHistory`, `createWebHashHistory`, `createMemoryHistory`
-- `setActiveRouter`, `getActiveRouter`
-
-`RouterOptions` accepts `history` (or the legacy `mode`), `routes`, `initialPath`, `scrollBehavior`, `sensitive`, `strict`, `linkActiveClass`, and `linkExactActiveClass`.
+`RouterOptions` supports `history` (or compatible `mode`), `routes`, `initialPath`, `scrollBehavior`, `sensitive`, `strict`, `linkActiveClass` and `linkExactActiveClass`.
 
 ## Router instance
 
-`current` and `currentRoute` are reactive refs. The instance also exposes `listening`, `push`, `replace`, `back`, `forward`, `go`, `resolve`, `beforeEach`, `beforeResolve`, `afterEach`, `onError`, `addRoute`, `removeRoute`, `clearRoutes`, `hasRoute`, `getRoutes`, and `isReady`.
+`current` and `currentRoute` are responsive refs. Examples provide `listening`, `push`, `replace`, `back`, `forward`, `go`, `resolve`, various guard registration methods, dynamic routing management methods and `isReady`.
 
-`isReady()` waits for the first navigation, including lazy page loading and initial guards.
+`isReady()` will wait for first navigation, including initial guarding and lazy page loading.
 
-## Elements and composition
+## Components, Composable APIs and Tools
 
-- `registerRouterElements`, `<elf-link>`, `<elf-router-link>`, `<elf-router-view>`
-- `useRouter`, `useRoute`, `useLink`
-- `onBeforeRouteLeave`, `onBeforeRouteUpdate`
+`registerRouterElements`、`<elf-link>`、`<elf-router-link>`、`<elf-router-view>`、`useRouter`、`useRoute`、`useLink`、`onBeforeRouteLeave`、`onBeforeRouteUpdate`、`parseQuery`、`stringifyQuery`、`isNavigationFailure`、`NavigationFailureType`
 
-## Utilities and types
-
-- `parseQuery`, `stringifyQuery`
-- `isNavigationFailure`, `NavigationFailureType`
-- `Router`, `RouterOptions`, `RouterHistory`, `RouteRecord`, `RouteLocation`, `RouteLocationRaw`, `NavigationGuard`, `ScrollBehaviorFn`
+Common types: `Router`, `RouterOptions`, `RouterHistory`, `RouteRecord`, `RouteLocation`, `RouteLocationRaw`, `NavigationGuard`, `ScrollBehaviorFn`.

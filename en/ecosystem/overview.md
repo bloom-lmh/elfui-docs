@@ -1,23 +1,22 @@
 ---
 title: Ecosystem
 ---
+# Ecological Overview
 
-# Ecosystem
-
-ElfUI keeps the framework core focused and gives larger concerns their own home. New Macro applications usually begin with the scaffold, then add only the pieces they need.
+ElfUI keeps the core of the framework focused and puts larger capabilities with different iteration rhythms into independent projects. New Macro applications often start with scaffolding, with additional parts added as needed.
 
 ```bash
 pnpm create elfui@beta my-app --install
 ```
 
-| Project | Role | When to reach for it |
+| Projects | Responsibilities | When to use |
 | --- | --- | --- |
-| [ElfUI](https://github.com/bloom-lmh/elfui) | Framework core | Macro components, reactivity, runtime, compiler, and Vite integration. |
-| [create-elfui](https://github.com/bloom-lmh/create-elfui) | Project scaffold | Starting a new Vite application with optional Router and quality tooling. |
-| [ElfUI Router](https://github.com/bloom-lmh/elfui-router) | Routing | Adding client-side navigation without putting Router in the core package. |
-| [ElfUI Kit](https://github.com/bloom-lmh/elfui-kit) | UI components | Building product interfaces from official components. |
-| [ElfUI Extensions](https://github.com/bloom-lmh/elfui-extensions) | Optional extensions | Using Chain and future platform integrations. |
-| [ElfUI Language Tools](https://github.com/bloom-lmh/elfui-language-tools) | Editor tooling | Working with the VS Code extension and language service. |
-| [elfui-docs](https://github.com/bloom-lmh/elfui-docs) | Documentation | Reading the complete guide and API reference. |
+| [ElfUI](https://github.com/bloom-lmh/elfui) | Framework core | Macro components, reactivity, runtime, compiler and Vite integration. |
+| [create-elfui](https://github.com/bloom-lmh/create-elfui) | Project scaffolding | Create a Vite application and add Router and quality tools as needed. |
+| [ElfUI Router](https://github.com/bloom-lmh/elfui-router) | Routing | Need client navigation, but don't want Router to go into the core package. |
+| [ElfUI Kit](https://github.com/bloom-lmh/elfui-kit) | UI component library | Use official components to build product interfaces. |
+| [ElfUI Extensions](https://github.com/bloom-lmh/elfui-extensions) | Optional extensions | Use Chain to integrate with future platforms. |
+| [ElfUI Language Tools](https://github.com/bloom-lmh/elfui-language-tools) | Editor Tools | Use VS Code plug-ins and language services. |
+| [elfui-docs](https://github.com/bloom-lmh/elfui-docs) | Documentation Site | Check out the complete guide and API reference. |
 
-Macro components and `@elfui/vite-plugin` are the default path for new projects. Chain is an extension for legacy pages, no-build usage, and its fluent builder model; it is not a second default.
+The default route for new projects is the Macro component plus `@elfui/vite-plugin`. Chain is an extension prepared for old pages, no-build scenarios and chain builder models. It is not the second default main line.

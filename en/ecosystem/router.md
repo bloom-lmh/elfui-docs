@@ -1,22 +1,21 @@
 ---
 title: Router
 ---
-
 # Router
 
-Router is an independent package. Install it only when the application needs client-side navigation:
+Router is a standalone package. Install only if your application requires client routing:
 
 ```bash
 pnpm add @elfui/router
 ```
 
-The scaffold can add it during project creation:
+It can also be added by scaffolding when creating the project:
 
 ```bash
 pnpm create elfui@beta my-app --router --install
 ```
 
-Create the router in its own module, then import that module before mounting the application:
+Create the route in a standalone module and import it before mounting the application:
 
 ```ts
 // src/router/index.ts
@@ -41,8 +40,8 @@ createApp(App).mount("#app");
 ```
 
 ```html
-<elf-link to="/">Home</elf-link>
+<elf-link to="/">首页</elf-link>
 <elf-router-view></elf-router-view>
 ```
 
-`createRouter()` activates the router and registers the router elements. It supports hash, history, and memory modes, nested routes, guards, redirects, aliases, and lazy components.
+`createRouter()` will activate routing and register routing elements, support hash, history, memory mode, nested routing, guard, redirection, alias and asynchronous components.

@@ -1,33 +1,36 @@
 ---
 title: "@elfui/core API"
 ---
-
 # @elfui/core API
 
-`@elfui/core` is the recommended application entry point.
+`@elfui/core` is the main entrance of the new project, which is for macro components and application startup.
 
-## Macro components
+## macro component
 
-`defineHtml`, `html`, `css`, `defineProps`, `defineEmits`, `defineModel`, `defineSlots`, `defineStyle`, `defineOptions`, `defineDirective`, `defineName`, `useComponents`
+`defineHtml`、`html`、`css`、`defineProps`、`defineEmits`、`defineModel`、`defineSlots`、`defineStyle`、`defineOptions`、`defineDirective`、`defineName`、`useComponents`
 
-## Reactivity
+## Responsive
 
-`useRef`, `useReactive`, `useShallowRef`, `useShallowReactive`, `useComputed`, `computed`, `useEffect`, `watch`, `watchEffect`, `watchPostEffect`, `watchSyncEffect`, `onWatcherCleanup`, `nextTick`
+`useRef`、`useReactive`、`useShallowRef`、`useShallowReactive`、`useComputed`、`computed`、`useEffect`、`watch`、`watchEffect`、`watchPostEffect`、`watchSyncEffect`、`onWatcherCleanup`、`nextTick`
 
-## Application and runtime
+## life cycle
 
-`createApp`, `registerComponents`, `defineComponent`, `defineCustomElement`, `ensureCustomElement`
+`onBeforeMount`、`onMount`、`onBeforeUpdate`、`onUpdated`、`onBeforeUnmount`、`onUnmount`、`onActivated`、`onDeactivated`、`onAttributeChanged`、`onErrorCaptured`
 
-## Lifecycle
+## Application and Runtime User API
 
-`onBeforeMount`, `onMount`, `onBeforeUpdate`, `onUpdated`, `onBeforeUnmount`, `onUnmount`, `onActivated`, `onDeactivated`, `onAttributeChanged`, `onErrorCaptured`
+`createApp`、`registerComponents`、`defineComponent`、`defineCustomElement`、`ensureCustomElement`
 
-Chain builder APIs live in `@elfui/chain`, not in the main entry.
-
-## Import policy
-
-Import application APIs from this package so the compiler and editor tooling can recognize them consistently. The API reference lists exports; guide pages explain the component patterns in which to use them.
+Application-level plug-ins, instructions, and configuration usage:
 
 ```ts
-import { defineHtml, defineProps, html, useRef } from "@elfui/core";
+createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 ```
+
+`app.directive()` is isolated by App; `app.component(Component)` only accepts the component constructor and registers the browser global Custom Element according to its established tag.
+
+## Built-in combined functions
+
+`provide`、`inject`、`hasInjectionContext`、`createInjectionKey`、`useScopedSlot`、`useHost`、`useRenderRoot`、`useShadowRoot`、`useAttrs`、`useAppConfig`、`useTemplateRef`、`defineExpose`、`useEventListener`、`useClickOutside`、`useEscapeKey`、`useScrollLock`、`useFocusTrap`、`useResizeObserver`、`useIntersectionObserver`、`useFormControlContext`
+
+Chained builders are not exported in `@elfui/core`. Use `@elfui/chain` when chained API is required.

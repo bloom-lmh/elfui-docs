@@ -1,24 +1,40 @@
 ---
 title: Reactivity API
 ---
+# reactivity API
 
-# Reactivity API
+`@elfui/reactivity` is a responsive portal that can be used independently. Application and macro components are first imported from `@elfui/core`; only when you really need to use the reactive system without component runtime, you can directly rely on this package.
 
-`@elfui/reactivity` can be used independently from the component runtime.
+## Stable application API
 
-- State: `useRef`, `useReactive`, `useShallowRef`, `useShallowReactive`
-- Derived state: `useComputed`
-- Effects: `useEffect`, `watch`, `watchEffect`, `watchPostEffect`, `watchSyncEffect`
-- Scheduling: `nextTick`, `queueJob`, `queuePostFlushJob`, `flushSync`
-- Scopes: `effectScope`, `getCurrentScope`, `onScopeDispose`
-- Utilities: `readonly`, `markRaw`, `toRaw`, `unref`, `toValue`
+### state
 
-Applications and macro components should normally import these APIs from `@elfui/core`.
+`useRef`、`useReactive`、`useShallowRef`、`useShallowReactive`
 
-## When to use it
+### Derivations and side effects
 
-Use the standalone package only when a library must share reactive state without depending on component macros. Keep that library free of DOM and lifecycle assumptions so it remains reusable.
+`useComputed`、`useEffect`、`watch`、`watchEffect`、`watchPostEffect`、`watchSyncEffect`、`onWatcherCleanup`
 
-```ts
-import { useRef, useComputed } from "@elfui/reactivity";
-```
+### Scheduling
+
+`nextTick`、`queueJob`、`queuePostFlushJob`、`flushSync`
+
+### tool
+
+`readonly`、`isReadonly`、`isState`、`isRef`、`isReactive`、`isProxy`、`markRaw`、`toRaw`、`unref`、`toValue`
+
+### Scope
+
+`effectScope`、`getCurrentScope`、`onScopeDispose`
+
+## High-level low-level API
+
+The following symbols are publicly exported and are mainly used by framework extensions, adapters and diagnostic tools; ordinary business code should not directly call or rely on their internal state.
+
+- effect: `effect`、`stop`、`ReactiveEffect`、`isTracking`、`pauseTracking`、`resetTracking`、`untrack`
+- Dependency graph: `track`, `trigger`, `triggerAll`
+- scope internals: `EffectScope`、`recordEffectScope`
+- scheduler internals: `isSyncMode`
+- state flags: `REACTIVE_FLAG`、`REF_FLAG`、`STATE_FLAG`
+
+These APIs are still subject to the beta version; they are not recommended APIs for the `@elfui/core` main entrance. If they are adjusted in the future, they will be separately stated in the change record of `@elfui/reactivity`.

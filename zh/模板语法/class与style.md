@@ -9,17 +9,17 @@ title: class 与 style
 ## class
 
 ```ts
-html`<button :class=${{ active: open, disabled }}></button>`;
+defineHtml(html`<button :class=${{ active: open, disabled }}></button>`);
 ```
 
 ```ts
-html`<button :class=${["btn", open && "is-open"]}></button>`;
+defineHtml(html`<button :class=${["btn", open && "is-open"]}></button>`);
 ```
 
-`html` 是 TypeScript tagged template，未加 `${...}` 的内容只是 HTML 字符串；因此下面这种无引号对象/数组写法不支持，属性值会在空格处被 HTML 解析截断：
+`defineHtml(html`...`)` 使用 TypeScript tagged template；未加 `${...}` 的内容只是 HTML 字符串。因此下面这种无引号对象/数组写法不支持，属性值会在空格处被 HTML 解析截断：
 
 ```ts
-html`<button :class={ active: open, disabled }></button>`; // 不支持
+defineHtml(html`<button :class={ active: open, disabled }></button>`); // 不支持
 ```
 
 兼容 Vue 风格时可以写带引号的模板表达式 `:class="{ active: open }"`，但宏组件推荐 `${...}`：它有 TypeScript 类型检查、跳转和重构支持。
@@ -27,13 +27,13 @@ html`<button :class={ active: open, disabled }></button>`; // 不支持
 ## style
 
 ```ts
-html` <div :style=${{ width: `${width}px`, display: visible ? "" : "none" }}></div> `;
+defineHtml(html` <div :style=${{ width: `${width}px`, display: visible ? "" : "none" }}></div> `);
 ```
 
 静态 class 会和动态 class 合并：
 
 ```ts
-html`<button class="btn" :class=${{ active }}></button>`;
+defineHtml(html`<button class="btn" :class=${{ active }}></button>`);
 ```
 
 ## 组件样式

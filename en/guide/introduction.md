@@ -1,31 +1,44 @@
 ---
 title: Introduction
 ---
-
 # Introduction
 
-ElfUI is a compiler-first framework for native Web Components. Components are authored in regular TypeScript files and exported with `defineHtml(html\`...\`)`. During a Vite build, `@elfui/vite-plugin` compiles every dynamic template point into a direct DOM update.
+ElfUI is a front-end framework for Web Components. Its main writing method is **macro component**: write TypeScript logic in an ordinary `.ts/.tsx` file, use `defineHtml(html`...`)` to export the component, and use `@elfui/vite-plugin` to precompile the template during construction.
 
 ```ts
 import { defineHtml, html, useRef } from "@elfui/core";
 
 const count = useRef(0);
-const increment = (): void => count.set(count.peek() + 1);
+const inc = (): void => count.set(count.peek() + 1);
 
-export const Counter = defineHtml(html`
-  <button @click=${increment}>Count: ${count}</button>
-`);
+export const Counter = defineHtml(html` <button @click=${inc}>点了 ${count} 次</button> `);
 ```
 
-ElfUI does not use a virtual DOM or a patch phase. Text, attributes, events, conditions, and lists subscribe only to the state they read.
+The core approach of ElfUI is compile-time fine-grained responsiveness. The text, attributes, events, conditions and lists in the template will be compiled into runtime helpers that directly update the DOM. Each dynamic point only subscribes to the state it actually reads.
 
-## Where it fits
+## What projects are suitable for
 
-| Use case | Why ElfUI fits |
-| --- | --- |
-| Component libraries | Produces standard Custom Elements |
-| Vite applications | Templates are compiled ahead of time |
-| Progressive adoption | Components work as native HTML tags |
-| Size-sensitive interfaces | The compiler stays out of the runtime bundle |
+ElfUI is suitable for these types of scenarios:
 
-ElfUI combines familiar template syntax with fine-grained updates and standards-based output. It is not built on Vue and does not ship a VNode runtime.
+| Scene | Reasons for recommendation |
+| ---------------- | ------------------------------------ |
+| Component library | Output standard Custom Element, reused across frameworks |
+| Standalone Vite application | Macro component pre-compiled without runtime compiler |
+| Progressive transformation | You can register components as native tags and put them into old pages |
+| Size-sensitive project | Main entry ~10.52 KB gzip, does not include compiler |
+
+## Relationship with Vue/Lit/Solid
+
+ElfUI draws on Vue’s template experience, Lit’s Web Components output, and Solid’s fine-grained update ideas, but it is not Vue internally, and there is no VNode/patch.
+
+| Dimensions | ElfUI |
+| -------- | ---------------------------------------- |
+| Component file | Common `.ts/.tsx` |
+| Template | ``defineHtml(html`...`)`` template declaration, compiled during build time |
+| Responsive | `useRef` / `useReactive` / `useComputed` |
+| Output | Standard Custom Elements |
+| Chain component | Placed in `@elfui/chain` ecological extension |
+
+## learning route
+
+Read "Quick Start" and "Components/Defining Components" first. After you can write components, you can look at responsiveness, directives, styles, routing, and built-in combined functions as needed.

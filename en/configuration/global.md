@@ -1,15 +1,50 @@
-# Global configuration
+# Application configuration
 
-Global configuration defines application-level defaults shared by ElfUI components and runtime services. Configure it once near application creation, then override behavior locally only when a feature truly needs different defaults.
-
-Keep configuration values serializable and documented for application maintainers.
-
-## Configuration boundary
-
-Set defaults once while the application is created, then let components receive local overrides through props. Avoid changing global configuration after components mount because it makes behavior depend on initialization order.
+Configuration belongs to the application instance, not process-level global state. Create the app first, and then write the configuration before mounting:
 
 ```ts
-configure({ locale: "en-US", theme: "system" });
+import { createApp } from "@elfui/core";
+import { App } from "./App";
+
+const app = createApp(App);
+
+app.config.globalProperties.appName = "Console";
+app.config.warnHandler = (message, ...args) => {
+  console.warn("[Console]", message, ...args);
+};
+app.config.errorHandler = (error, info) => {
+  reportError(error, { info });
+};
+
+app.mount("#app");
 ```
 
-Wrap environment-specific configuration in one module so development, preview, and production use the same documented contract.
+## Configuration items
+
+| Options | Function |
+| ------------------ | -------------------------------------------------------------------------------------- |
+| `globalProperties` | Application-level read-only convention value; component setup reads from `ctx.config.globalProperties` and template reads from `$app` |
+| `warnHandler` | Receive runtime warnings for this App component |
+| `errorHandler` | Receive setup/render error for this App |
+
+When you need to read the configuration in TypeScript logic in the macro component, use `useAppConfig()`:
+
+```ts
+import { useAppConfig } from "@elfui/core";
+
+const appName = useAppConfig().globalProperties.appName;
+```
+
+Template string expressions still respect TypeScript scoping; pure template expressions read `$app`:
+
+```ts
+defineHtml(html`<p>{{ $app.appName }}</p>`);
+```
+
+`globalProperties` itself is not a reactive container. When runtime updates are required, put the return value of `useRef()` or `useReactive()` into it.
+
+## boundary
+
+`tagPrefix` does not belong to application configuration. The macro component tag is determined at compile time, and the unified prefix can only be set in `@elfui/vite-plugin`.
+
+`@elfui/runtime` still reserves `configure/getConfig/resetConfig` for low-level packaging and testing; business applications should not use them from the `@elfui/core` main entry.

@@ -1,5 +1,17 @@
 # Suspense
 
-`Suspense` coordinates asynchronous component dependencies with fallback content. It lets a view show a deliberate loading state until its async branch is ready.
+`Suspense` is used to undertake asynchronous setup or asynchronous content, providing three states of pending, resolved, and error.
 
-Keep fallbacks concise and make errors visible through the application's error-handling strategy.
+```html
+<Suspense>
+  <template #default>
+    <async-panel></async-panel>
+  </template>
+  <template #fallback> 加载中... </template>
+  <template #error="{ error }"> 加载失败：{{ error.message }} </template>
+</Suspense>
+```
+
+## Usage suggestions
+
+Place the asynchronous boundary outside the page area or complex components, and do not wrap Suspense for every small node.

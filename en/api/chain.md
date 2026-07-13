@@ -1,10 +1,13 @@
 ---
 title: Chain API
 ---
+# chain API
 
-# Chain API
+`@elfui/chain` is a chain component expansion package.
 
-`@elfui/chain` is the optional chain-style component package.
+## Builder
+
+`ElfUI.createComponent()` / `createComponent()` returns `ElementBuilder`.
 
 ```ts
 createComponent()
@@ -16,8 +19,14 @@ createComponent()
   .register();
 ```
 
-The builder supports `name`, `props`, `setup`, `render`, `template`, `style`, `shadow`, `formControl`, `emits`, `use`, `directive`, `build`, and `register`.
+## Builder method
 
-## Migration use
+`name`、`props`、`setup`、`render`、`template`、`style`、`shadow`、`formControl`、`emits`、`emitOptions`、`use`、`directive`、`build`、`register`、`toDefinition`
 
-Use Chain at the edge of an incremental migration, then move shared behavior into components and composables. New application code is easier to maintain when it exposes props, events, and slots directly.
+## Reuse
+
+`extend()`、`variant()`
+
+## Other exports
+
+Chain will re-export common reactivity/runtime APIs to facilitate single-entry use in chained scenarios. But it does not export the macro component API.

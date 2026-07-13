@@ -175,6 +175,29 @@ body {
   color: var(--elf-yellow);
 }
 
+.VPNavBarTranslations {
+  display: none !important;
+}
+
+.elf-language-switcher {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 12px;
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.elf-language-switcher:hover {
+  color: var(--vp-c-brand-1);
+}
+
+@media (max-width: 767px) {
+  .elf-language-switcher {
+    display: none;
+  }
+}
+
 .VPSidebar {
   border-right: 1px solid var(--elf-sidebar-border);
   background: var(--elf-sidebar-bg);

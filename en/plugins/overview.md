@@ -1,15 +1,20 @@
-# Plugins overview
+# Plugin overview
 
-Plugins extend an ElfUI application with capabilities that should be installed once, such as global services, directives, or configuration. A plugin should have a clear installation contract and avoid surprising global side effects.
-
-Install plugins near application creation so their order is explicit.
-
-## Plugin responsibilities
-
-A plugin may register components, directives, or a configured service. It should not silently mutate unrelated global state, and it should document the order in which it must be installed.
+The ElfUI plug-in is used to register global directives in batches, modify runtime configurations, or encapsulate project conventions.
 
 ```ts
-app.use(createAnalyticsPlugin({ endpoint, enabled: isProduction }));
+import { createApp } from "@elfui/core";
+import { AppRoot } from "./AppRoot";
+
+createApp(AppRoot).use(myPlugin, options).mount("#app");
 ```
 
-Expose feature-level behavior as a composable instead when it does not need application-wide installation.
+A plug-in can be a function or an object with `install()`.
+
+## Suitable for what to do
+
+- Register a set of global directives
+- Install project-level default configuration
+- Encapsulate monitoring, logging, and topic initialization
+
+Do not make the local dependencies of the component itself into plug-ins. Use `useComponents()` first.

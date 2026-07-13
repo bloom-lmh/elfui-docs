@@ -1,13 +1,37 @@
-# Migrating from Vue
+# Migrate from Vue
 
-Move one feature at a time: translate component boundaries, replace framework-specific runtime assumptions, and verify browser behavior with native Web Components in mind. Keep existing application contracts stable while the implementation changes.
+ElfUI retains a lot of the template mentality familiar to Vue users, but the component model and runtime are different.
 
-Use the migration as an opportunity to simplify implicit global dependencies.
+| Vue             | ElfUI                           |
+| --------------- | ------------------------------- |
+| SFC | Common `.ts/.tsx` macro component |
+| `ref()`         | `useRef()`                      |
+| `reactive()`    | `useReactive()`                 |
+| `computed()` | `useComputed()` or `computed()` |
+| `emit()`        | `defineEmits()`                 |
+| `defineModel()` | `defineModel()`                 |
+| Vue Component | Custom Element |
 
-## Recommended sequence
-
-Start with leaf components, keep their public props and events stable, then replace parent integration points. Verify each step with browser-level tests because Custom Element upgrades, attributes, and Shadow DOM have different boundaries from Vue components.
+## state
 
 ```ts
-const props = defineProps<{ open: boolean }>();
+const count = useRef(0);
+count.set(count.peek() + 1);
 ```
+
+Object:
+
+```ts
+const user = useReactive({ name: "Elf" });
+user.name = "ElfUI";
+```
+
+## Component output
+
+The ElfUI component is a native tag after registration:
+
+```html
+<elf-counter></elf-counter>
+```
+
+This allows it to be used by Vue, React, Angular or plain HTML.

@@ -1,16 +1,44 @@
-# Reactivity utilities
+# Responsive tools
 
-Reactivity utilities help adapt values at API boundaries, derive readonly views, and work with individual properties while preserving reactive connections. Use them when a composable must accept either a value or a reactive source.
+Reactive tools are used to handle read-only, shallow responsiveness, primitive objects, and effect scopes.
 
-Avoid unwrapping reactive state too early, because doing so loses its connection to updates.
-
-## Preserve the reactive source
-
-Composables should return refs or reactive objects when consumers need to observe future changes. Convert a value only at the boundary where a plain snapshot is required, such as an HTTP request payload.
+## readonly
 
 ```ts
-const total = useComputed(() => price.value * quantity.value);
-const readonlyTotal = readonly(total);
+const state = readonly(useReactive({ count: 0 }));
 ```
 
-Derived values belong in computed state; effects are for work outside the reactive graph.
+A warning will be given in the development environment when read-only objects are written.
+
+## shallow
+
+```ts
+const value = useShallowRef({ nested: { count: 0 } });
+const state = useShallowReactive({ nested: { count: 0 } });
+```
+
+Shallow response only tracks the top level, suitable for large objects or third-party instance packaging.
+
+## markRaw / toRaw
+
+```ts
+const editor = markRaw(createEditor());
+```
+
+`markRaw()` marks the object not to be proxied, `toRaw()` retrieves the original object.
+
+## effectScope
+
+```ts
+const scope = effectScope();
+
+scope.run(() => {
+  useEffect(() => {
+    // ...
+  });
+});
+
+scope.stop();
+```
+
+Scope is suitable for batch management of effects in plug-ins, elastic layers, and temporary modules.

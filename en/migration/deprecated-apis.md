@@ -1,5 +1,16 @@
-# Deprecated APIs
+# Deprecated API
 
-Deprecated APIs remain temporarily to ease upgrades, but new code should use their supported replacements. Address deprecation warnings during normal maintenance rather than waiting for a breaking release.
+The 1.0 beta mainline has been closed, and the old API no longer enters the official website main path.
 
-Consult the release notes when an API is removed or its migration path changes.
+| Old API | Replacement |
+| ------------------------------------ | -------------------------------------- |
+| `useState`                           | `useRef` / `useReactive`               |
+| `useShallowState`                    | `useShallowRef` / `useShallowReactive` |
+| `useName`                            | `defineName`                           |
+| `useProps`                           | `defineProps`                          |
+| `useEmit`                            | `defineEmits`                          |
+| `useStyle`                           | `defineStyle`                          |
+| `defineTyped`                        | `defineHtml<Props, Emits, Slots>`      |
+| legacy `ElfUI.createComponent` | `@elfui/chain`                         |
+
+If the compiler finds an old macro alias, it will give a migration diagnostic. New code should not continue to use these entries.

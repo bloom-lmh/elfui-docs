@@ -1,5 +1,25 @@
-# Update phase
+# update stage
 
-Component updates follow reactive state changes. Use an update hook only when integrating with code that must observe the committed DOM; do not use it to calculate values that can be computed from state.
+The update phase is used to observe DOM updates triggered by reactive bindings inside the component.
 
-Avoid changing the same state unconditionally from an update hook.
+```ts
+onBeforeUpdate(() => {
+  console.log("before update");
+});
+
+onUpdated(() => {
+  console.log("updated");
+});
+```
+
+## Usage suggestions
+
+Prioritize driving the UI through responsive expressions, and do not put ordinary state synchronization into update hooks.
+
+Things that are suitable to put in the update hook:
+
+- Read updated layout dimensions
+- Adjust scroll position
+- Synchronize with third-party DOM plugins
+
+If you just want to monitor a certain status change, it is more direct to use `watch()`.

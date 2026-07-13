@@ -1,14 +1,31 @@
-# Component styles
+# Component style
 
-Place component-specific styles beside the component they describe. Use clear class names and keep structural styling separate from theme values when possible.
+Component internal styles use `defineStyle()` and `css`.
 
-Component boundaries make style ownership easier to reason about and maintain.
+```ts
+import { css, defineHtml, defineStyle, html } from "@elfui/core";
 
-## Styling contract
+defineStyle(css`
+  button {
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+`);
 
-Use CSS custom properties for values that a consumer may theme, and reserve internal class names for implementation details. This gives consumers a stable customization surface without relying on selectors that cross component boundaries.
-
-```css
-:host { --button-accent: #0ea5e9; }
-.button { background: var(--button-accent); }
+export const ElfButton = defineHtml(html` <button><slot></slot></button> `);
 ```
+
+The style will enter the Shadow DOM along with the component definition, without polluting the overall page.
+
+## multi-paragraph style
+
+`defineStyle()` can be called multiple times and is suitable for splitting basic styles and status styles.
+
+```ts
+defineStyle(baseStyle);
+defineStyle(stateStyle);
+```
+
+## Dynamic styles
+
+Component state changes are first mapped to class, attribute or CSS variables, and then processed by CSS.

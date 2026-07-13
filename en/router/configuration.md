@@ -1,10 +1,9 @@
 ---
 title: Route Configuration
 ---
+# Routing configuration
 
-# Route Configuration
-
-Route records support paths, names, metadata, redirects, aliases, children, route guards, props, and named views.
+`RouteRecord` supports paths, names, metadata, redirects, aliases, subroutes, guards, props and named views.
 
 ```ts
 const routes = [
@@ -20,11 +19,11 @@ const routes = [
 ];
 ```
 
-Child metadata is merged into `route.meta`; a child key overrides the same parent key. Matching prefers static paths over dynamic paths, independent of declaration order. Parameters support `?`, `*`, `+`, and custom regular expressions such as `:id(\\d+)`.
+The child route will merge with the parent `meta`, and the key with the same name shall be subject to the child. Static paths have higher priority than dynamic paths; parameters support custom regular patterns such as `?`, `*`, `+` and `:id(\\d+)`.
 
 ## History and base
 
-Use Vue Router-style history factories for new applications. The legacy `mode` option remains available.
+It is recommended for new projects to use the history factory consistent with Vue Router:
 
 ```ts
 import {
@@ -39,42 +38,19 @@ createRouter({ history: createWebHashHistory(), routes });
 createRouter({ history: createMemoryHistory(), routes });
 ```
 
-`history` uses the browser History API and needs an HTML fallback on the server. `hash` works on static hosts. `memory` is useful for tests and non-browser rendering. `router.resolve()` returns an `href` that includes the configured base.
+The original `mode: "history" | "hash" | "memory"` is still available. `history` mode requires the server to fallback unknown paths to `index.html`; `hash` is suitable for static deployment; `memory` is suitable for testing and non-browser environments. The `href` returned by `router.resolve()` will contain the configured base.
 
-Set `sensitive: true` for case-sensitive matching and `strict: true` to distinguish a trailing slash.
+`sensitive: true` enables case-sensitive matching; `strict: true` allows trailing slashes to participate in matching.
 
-## Nested routes and props
+## Nesting, props and named views
 
-```ts
-{
-  path: "/settings",
-  component: SettingsLayout,
-  children: [
-    { path: "", component: SettingsHome },
-    { path: "profile", component: ProfilePage }
-  ]
-}
-```
-
-Place `<elf-router-view depth="1">` in the parent page for the child outlet. `props: true` passes params to the page; an object provides static props and a function can derive props from the location.
-
-```ts
-{
-  path: "/reports/:id",
-  component: ReportPage,
-  props: (route) => ({ id: route.params.id, compact: route.query.compact === "1" })
-}
-```
-
-## Named views and dynamic routes
-
-Use `components` for multiple outlets. A props map can provide props per view.
+The parent page uses `<elf-router-view depth="1">` to place the child route exit. `props: true` passes params; you can also pass static objects or functions that calculate props based on route.
 
 ```ts
 {
   path: "/workspace",
   components: { default: WorkspacePage, aside: WorkspaceAside },
-  props: { default: { compact: false }, aside: { heading: "Tools" } }
+  props: { default: { compact: false }, aside: { heading: "工具" } }
 }
 ```
 
@@ -83,4 +59,6 @@ Use `components` for multiple outlets. A props map can provide props per view.
 <elf-router-view name="aside"></elf-router-view>
 ```
 
-`addRoute()` returns a removal callback. Use `removeRoute(name)`, `clearRoutes()`, `hasRoute(name)`, and `getRoutes()` to manage routes at runtime. Adding a route with an existing name replaces the old record.
+## Dynamic routing and scrolling
+
+`addRoute()` returns the remove function; the route with the same name replaces the old record. Routing tables can also be managed using `removeRoute(name)`, `clearRoutes()`, `hasRoute(name)`, and `getRoutes()`. `scrollBehavior` can return `{ top, left }`, `{ el }` or Promise; the forward/backward movement of the browser and memory history will pass in the saved scroll position.

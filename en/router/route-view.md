@@ -1,24 +1,18 @@
 ---
 title: Route View
 ---
+# routing view
 
-# Route View
-
-`<elf-router-view>` renders the matched page component.
+`<elf-router-view>` renders the currently matching page component.
 
 ```html
 <elf-router-view></elf-router-view>
-```
-
-Use `depth` for nested routes and `name` for a named view.
-
-```html
 <elf-router-view depth="1"></elf-router-view>
 <elf-router-view name="aside"></elf-router-view>
 ```
 
-Route props can come from params, a static object, or a route-to-props function. For named views, pass a props map keyed by view name.
+`depth` selects the nested routing level, `name` selects the named view. Page props can come from params, static objects, or route-to-props functions; named views can use a props map keyed by the view name.
 
-The default scoped slot receives `Component`, `route`, `record`, `props`, `depth`, and `name`. Use it to implement a custom page shell or error presentation.
+Default scope slots are available `Component`, `route`, `record`, `props`, `depth` and `name`, suitable for encapsulating page shells, error displays or custom transitions.
 
-Lazy page modules are cached across RouterViews. They can default-export a page component or export exactly one recognizable component. `transition="fade" duration="200"` adds enter and leave classes when the rendered page changes.
+Asynchronous page modules are cached across RouterViews and can export components by default or only export an identifiable component. `transition="fade" duration="200"` will append the enter/leave class when replacing the page.
