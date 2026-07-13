@@ -2,7 +2,7 @@
 
 The runtime provides `errorBoundary()` and `captureError()` for building recoverable error regions.
 
-```ts{1,3}
+```ts{3}
 import { captureError, useRef } from "@elfui/core";
 
 const error = useRef<unknown>(null);

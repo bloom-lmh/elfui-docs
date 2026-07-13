@@ -10,7 +10,7 @@ Guards run before the route becomes current. A guard may return nothing to conti
 
 Keep authorization policy in route metadata and enforce it in one global guard:
 
-```ts{2-3,5}
+```ts{1}
 router.beforeEach(async (to) => {
   if (!to.meta.requiresAuth) return;
   if (auth.session.value) return;
@@ -51,7 +51,7 @@ router.onError(error => reportError(error));
 `beforeEnter` only belongs to the record being entered. It accepts one guard or an array, which is helpful for routing-local validation.
 :::
 
-```ts{3}
+```ts{1}
 {
   path: "/admin",
   component: () => import("../pages/admin-page"),
@@ -63,7 +63,7 @@ router.onError(error => reportError(error));
 
 Call component guard composables while a route component is being set up. They automatically unregister when the element unmounts.
 
-```ts{1,6}
+```ts{3}
 import { onBeforeRouteLeave, onBeforeRouteUpdate, useRoute } from "@elfui/router";
 
 const route = useRoute();

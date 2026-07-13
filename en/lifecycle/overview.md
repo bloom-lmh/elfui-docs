@@ -2,7 +2,7 @@
 
 Lifecycle functions can only be called during the component setup synchronization phase, which is the top level of the macro component.
 
-```ts{1,11}
+```ts{11}
 import { defineHtml, html, onMount, onUnmount } from "@elfui/core";
 
 onMount(() => {

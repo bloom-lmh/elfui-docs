@@ -5,7 +5,7 @@ title: Events
 
 Components use events when notifying changes to the outside world. Use `defineEmits()` in the macro component to get the `emit` function.
 
-```ts{1,3,13-14}
+```ts{13-16}
 import { defineEmits, defineHtml, html } from "@elfui/core";
 
 const emit = defineEmits<{

@@ -24,7 +24,7 @@ pnpm create elfui@beta my-app --router --install
 Create `src/router/index.ts`. Route components can be element tag names, Custom Element constructors, or lazy import functions. Lazy functions are recommended for pages because they create a separate bundle.
 :::
 
-```ts{2,4,7,11}
+```ts{4}
 // src/router/index.ts
 import { createRouter, createWebHistory } from "@elfui/router";
 
@@ -45,7 +45,7 @@ export const router = createRouter({
 
 Import that module before mounting the application. `createRouter()` registers the router elements and makes this router available to `useRouter()` and `useRoute()`.
 
-```ts{2-4,6}
+```ts{6}
 // src/main.ts
 import "./router";
 import { createApp } from "@elfui/core";
@@ -56,7 +56,7 @@ createApp(App).mount("#app");
 
 Place links and one route outlet in the app shell:
 
-```html{4}
+```html{2}
 <!-- src/app.ts -->
 <header>
   <elf-link to="/">Home</elf-link>
@@ -70,7 +70,7 @@ Place links and one route outlet in the app shell:
 
 When `/users/42` is visited, the router loads `user-page` and renders it in the route view. With `props: true`, the route parameter is passed to the page as an `id` property.
 
-```ts{2,4}
+```ts{2}
 // src/pages/user-page.ts
 import { defineComponent } from "@elfui/core";
 
@@ -84,7 +84,7 @@ export default defineComponent({
 
 The router starts the initial navigation when it is created. If bootstrap code depends on the first matched page and its guards/lazy module being finished, await `isReady()`:
 
-```ts{1-3,6}
+```ts{6}
 import { createApp } from "@elfui/core";
 import App from "./app";
 import { router } from "./router";

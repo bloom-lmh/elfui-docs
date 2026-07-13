@@ -19,9 +19,13 @@ Install [ElfUI Language Tools](https://marketplace.visualstudio.com/items?itemNa
 Search for `ElfUI Language Tools` in the VS Code Extensions view, or install it from the link above. It activates automatically when you open an ElfUI component in a `.ts`, `.tsx`, `.js`, or `.jsx` file.
 :::
 
+::: tip Try it online
+Do not want to set up a local environment first? [Open the ElfUI Playground](https://stackblitz.com/fork/github/bloom-lmh/elfui-playground?startScript=dev&title=ElfUI%20Playground) to edit, run, and preview an example in the browser. The link creates your own StackBlitz workspace and leaves the official starter unchanged.
+:::
+
 ## Create component
 
-```ts{2,4-5,7-8}
+```ts{7-9}
 // Counter.ts
 import { defineHtml, html, useRef } from "@elfui/core";
 
@@ -39,7 +43,7 @@ The top-level code is the component’s setup logic. `${count}` in the template 
 
 ## Mount application
 
-```ts{2-3,5}
+```ts{5}
 // main.ts
 import { createApp } from "@elfui/core";
 import { Counter } from "./Counter";
@@ -71,7 +75,7 @@ If you need to customize a single component name, you can use `defineName()`; if
 
 ## Add style
 
-```ts{1,3-10,15-16}
+```ts{3-9}
 import { css, defineHtml, defineStyle, html, useRef } from "@elfui/core";
 
 defineStyle(css`

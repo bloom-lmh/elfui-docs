@@ -8,7 +8,7 @@ title: Vite 插件
 `@elfui/vite-plugin` 负责把普通 `.ts/.tsx` 宏组件编译为运行时 render 函数。新项目推荐始终安装并启用它。
 :::
 
-```ts{1-2,4}
+```ts{5}
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 
@@ -23,7 +23,7 @@ export default defineConfig({
 宏组件的 tag 名称在编译期确定，因此 `tagPrefix` 只能配置在 Vite 插件里，不能通过运行时 `configure()` 修改。
 :::
 
-```ts{1-2,4}
+```ts{6}
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 
@@ -36,7 +36,7 @@ export default defineConfig({
 });
 ```
 
-```ts{1,3}
+```ts{3}
 import { defineHtml, html } from "@elfui/core";
 
 export const UserCard = defineHtml(html`<article><slot></slot></article>`);
@@ -54,7 +54,7 @@ export const UserCard = defineHtml(html`<article><slot></slot></article>`);
 export const Button = defineHtml(html`<button><slot></slot></button>`);
 ```
 
-```ts{1,3}
+```ts{1}
 const Button = defineHtml(html`<button><slot></slot></button>`);
 
 export { Button };

@@ -4,7 +4,7 @@ The macro component main package provides `useExtend()` and `useVariant()`, whic
 
 ## useExtend
 
-```ts{1-2,4}
+```ts{4}
 import { useExtend } from "@elfui/core";
 import { Button } from "./Button";
 
@@ -18,7 +18,7 @@ export const PrimaryButton = useExtend(Button)
 
 ## useVariant
 
-```ts{1-2,4}
+```ts{4}
 import { useVariant } from "@elfui/core";
 import { Button } from "./Button";
 

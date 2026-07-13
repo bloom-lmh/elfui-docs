@@ -2,7 +2,7 @@
 
 `TransitionGroup` is used for list enter/leave and keyed reflow animations.
 
-```html{2}
+```html{1}
 <TransitionGroup name="list" tag="ul">
   <li v-for="item in items" :key="item.id">{{ item.name }}</li>
 </TransitionGroup>

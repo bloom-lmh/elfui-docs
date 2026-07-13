@@ -5,7 +5,7 @@ title: Components
 
 ElfUI's components are standard Custom Elements. The main line of writing is macro components: the top-level TypeScript is responsible for logic, and `defineHtml(html`...`)` is responsible for declaring templates and component boundaries.
 
-```ts{1,3,7}
+```ts{7}
 import { defineHtml, defineProps, html } from "@elfui/core";
 
 const props = defineProps<{ label: string }>({

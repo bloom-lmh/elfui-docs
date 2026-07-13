@@ -2,7 +2,7 @@
 
 Configuration belongs to the application instance, not process-level global state. Create the app first, and then write the configuration before mounting:
 
-```ts{1-2,4}
+```ts{4}
 import { createApp } from "@elfui/core";
 import { App } from "./App";
 
@@ -29,7 +29,7 @@ app.mount("#app");
 
 When you need to read the configuration in TypeScript logic in the macro component, use `useAppConfig()`:
 
-```ts{1}
+```ts{3}
 import { useAppConfig } from "@elfui/core";
 
 const appName = useAppConfig().globalProperties.appName;

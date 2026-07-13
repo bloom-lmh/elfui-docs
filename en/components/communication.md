@@ -13,7 +13,7 @@ For component communication, choose the simplest method first. Don’t cram all 
 
 ## Provide / Inject
 
-```ts{1,3,5}
+```ts{5}
 import { createInjectionKey, provide } from "@elfui/core";
 
 export const themeKey = createInjectionKey<"light" | "dark">("theme");
@@ -23,7 +23,7 @@ provide(themeKey, "dark");
 
 Subcomponents:
 
-```ts{1-2,4}
+```ts{4}
 import { inject } from "@elfui/core";
 import { themeKey } from "./keys";
 
@@ -46,7 +46,7 @@ When a parent component must call a child component method, the child component 
 This type of communication is an imperative API, suitable for `focus()`, `validate()`, `reset()`, and not suitable for ordinary data flows.
 :::
 
-```ts{10,12}
+```ts{10-13}
 type SearchInputHost = HTMLElement & {
   focus(): void;
   clear(): void;

@@ -5,7 +5,7 @@ title: Props
 
 Props are external inputs to the component. Declared with `defineProps()` in the macro component.
 
-```ts{1,3,11-12}
+```ts{11-13}
 import { defineHtml, defineProps, html } from "@elfui/core";
 
 const props = defineProps<{

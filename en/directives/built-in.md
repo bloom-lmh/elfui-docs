@@ -15,7 +15,7 @@ Built-in commands handle control flow, display switching, text, and forms in tem
 
 ## Example
 
-```html{1,3}
+```html{1}
 <p v-if="loading">加载中</p>
 
 <li v-for="item in items" :key="item.id">{{ item.name }}</li>

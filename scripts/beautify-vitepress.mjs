@@ -3,7 +3,6 @@ import { join } from "node:path";
 
 const roots = ["en", "zh"];
 const supportedLanguages = new Set(["ts", "tsx", "js", "jsx", "html", "css", "json", "bash", "sh"]);
-const keyCode = /\b(import|export|defineHtml|defineStyle|defineName|createApp|createRouter|registerComponents|useRef|useComputed|useEffect|watch|provide|inject|defineProps|defineEmits|defineSlots|defineExpose|return)\b|@(?:click|input|change)|v-(?:if|for|model)|:\w+=/;
 const warningZh = /(?:\u4e0d\u8981|\u4e0d\u5e94|\u4e0d\u80fd|\u5fc5\u987b|\u4ec5\u9002\u5408|\u4e0d\u9002\u5408|\u9650\u5236\u5728)/;
 const tipZh = /(?:\u63a8\u8350|\u5efa\u8bae|\u4f18\u5148)/;
 const adviceHeadingZh = /(?:\u5efa\u8bae|\u63a8\u8350|\u6ce8\u610f)/;
@@ -31,22 +30,47 @@ function formatLines(lines) {
   return ranges.map(([start, end]) => start === end ? start : `${start}-${end}`).join(",");
 }
 
+function firstMeaningfulLine(lines) {
+  return lines.findIndex((line) => {
+    const value = line.trim();
+    return value && !value.startsWith("//") && !value.startsWith("<!--");
+  });
+}
+
+function statementRange(lines, start) {
+  const end = lines.findIndex((line, index) => index >= start && /^\s*`?\);\s*$/.test(line));
+  return end === -1 ? [start + 1] : Array.from({ length: end - start + 1 }, (_, index) => start + index + 1);
+}
+
+function keyLines(language, body) {
+  const lines = body.split("\n");
+  const find = (pattern) => lines.findIndex((line) => pattern.test(line));
+  const style = find(/\bdefineStyle\s*\(\s*css`/);
+  if (style !== -1) return statementRange(lines, style);
+
+  const template = find(/\bdefineHtml\s*\(\s*html`/);
+  if (template !== -1) return statementRange(lines, template);
+
+  const primary = find(/\bcreateApp\([^\n]*\)\.mount\(|\bregisterComponents\(|\bcreateRouter\(|\belfuiMacroPlugin\(|\bdefine(?:Props|Emits|Slots|Model|Expose)\(|\buse(?:Ref|Reactive|Computed|Effect|TemplateRef)\(|\b(?:watch|watchEffect|provide|inject|onMounted|onUnmounted)\(/);
+  if (primary !== -1) return [primary + 1];
+
+  if (language === "css" || language === "html") {
+    const root = firstMeaningfulLine(lines);
+    return root === -1 ? [] : [root + 1];
+  }
+
+  const declaration = find(/^\s*(?:export\s+)?(?:type|interface|class|function|const)\b/);
+  if (declaration !== -1) return [declaration + 1];
+  const fallback = firstMeaningfulLine(lines);
+  return fallback === -1 ? [] : [fallback + 1];
+}
+
 function addCodeHighlights(markdown) {
-  return markdown.replace(/^```([^\n{}]+)\n([\s\S]*?)^```$/gm, (block, rawLanguage, body) => {
+  return markdown.replace(/^```([^\n{}]+)(?:\{[^\n}]+\})?\n([\s\S]*?)^```$/gm, (block, rawLanguage, body) => {
     const language = rawLanguage.trim();
     if (!supportedLanguages.has(language)) return block;
-    const lines = body.split("\n");
-    const significant = lines
-      .map((line, index) => ({ line, number: index + 1 }))
-      .filter(({ line }) => line.trim() && !line.trim().startsWith("//") && !line.trim().startsWith("<!--"));
-    if (!significant.length) return block;
-
-    const highlighted = significant
-      .filter(({ line }) => keyCode.test(line))
-      .map(({ number }) => number)
-      .slice(0, 4);
-    if (!highlighted.length) highlighted.push(significant[0].number);
-    return `\`\`\`${language}{${formatLines(highlighted)}}\n${body}\`\`\``;
+    const highlighted = keyLines(language, body);
+    return highlighted.length ? `\`\`\`${language}{${formatLines(highlighted)}}\n${body}\`\`\`` : block;
   });
 }
 

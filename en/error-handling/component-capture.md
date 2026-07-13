@@ -2,7 +2,7 @@
 
 `onErrorCaptured()` captures errors that bubble up from subcomponents.
 
-```ts{3}
+```ts{1}
 onErrorCaptured((err) => {
   console.error(err);
   return false;

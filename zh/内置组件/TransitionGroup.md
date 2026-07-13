@@ -6,7 +6,7 @@ title: TransitionGroup
 
 `TransitionGroup` 用于列表 enter/leave 和 keyed 重排动画。
 
-```html{2}
+```html{1}
 <TransitionGroup name="list" tag="ul">
   <li v-for="item in items" :key="item.id">{{ item.name }}</li>
 </TransitionGroup>

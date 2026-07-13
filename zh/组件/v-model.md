@@ -6,7 +6,7 @@ title: v-model
 
 `v-model` 用来表达父子之间的双向状态。宏组件内部使用 `defineModel()`。
 
-```ts{1,9}
+```ts{9}
 import { defineHtml, defineModel, html } from "@elfui/core";
 
 const value = defineModel<string>({ default: "" });
@@ -20,7 +20,7 @@ export const TextField = defineHtml(html` <input .value=${value} @input=${onInpu
 
 父组件使用：
 
-```ts{1,3-4}
+```ts{3-6}
 const name = useRef("");
 
 export const Page = defineHtml(html`

@@ -34,7 +34,7 @@ pnpm add @elfui/core
 pnpm add -D @elfui/vite-plugin
 ```
 
-```ts{2-3,5}
+```ts{6}
 // vite.config.ts
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
@@ -46,7 +46,7 @@ export default defineConfig({
 
 As long as the ordinary TypeScript module exports `defineHtml(...)`, the plug-in will compile it into an ElfUI Macro component:
 
-```ts{1,3}
+```ts{3}
 import { defineHtml, html } from "@elfui/core";
 
 export const Hello = defineHtml(html`<p>Hello ElfUI</p>`);

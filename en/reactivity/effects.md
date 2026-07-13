@@ -5,7 +5,7 @@ title: Effects
 
 `useEffect()` is used to run logic that produces side effects and automatically track dependencies.
 
-```ts{1,3}
+```ts{1}
 const count = useRef(0);
 
 useEffect(() => {
@@ -19,7 +19,7 @@ When `count` changes, the effect will be re-executed.
 
 Effects can return cleanup functions:
 
-```ts{1,3}
+```ts{1}
 useEffect(() => {
   const id = window.setInterval(tick, 1000);
   return () => window.clearInterval(id);

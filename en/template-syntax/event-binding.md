@@ -34,7 +34,7 @@ defineHtml(html` <button @click=${(event) => remove(item.id, event)}>删除</but
 
 Common event modifiers are placed in "Instructions/Event Modifiers":
 
-```html{2}
+```html{1}
 <form @submit.prevent="submit"></form>
 <button @click.stop="select"></button>
 ```

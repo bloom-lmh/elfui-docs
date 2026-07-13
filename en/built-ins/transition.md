@@ -2,7 +2,7 @@
 
 `Transition` provides enter/leave transitions for individual child nodes.
 
-```html{2}
+```html{1}
 <Transition name="fade">
   <div v-if="open">内容</div>
 </Transition>
@@ -26,7 +26,7 @@ Default class:
 
 `name` is the class prefix, which can write static values ​​or dynamic binding:
 
-```ts{1,3-4,6}
+```ts{6-10}
 import { defineHtml, html, useRef } from "elfui";
 
 const open = useRef(true);

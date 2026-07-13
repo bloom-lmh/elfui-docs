@@ -4,7 +4,7 @@ Custom instructions are suitable for encapsulating DOM behaviors, such as automa
 
 ## global directive
 
-```ts{1,3}
+```ts{3}
 import { createApp } from "@elfui/core";
 
 const app = createApp(App);

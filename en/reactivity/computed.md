@@ -5,7 +5,7 @@ title: Computed Values
 
 `useComputed()` is used to declare derived values. It automatically tracks reactive dependencies read in getters.
 
-```ts{1-2,4}
+```ts{1}
 const first = useRef("Elf");
 const last = useRef("UI");
 
@@ -20,7 +20,7 @@ defineHtml(html`<p>${fullName}</p>`);
 
 ## Writable computed properties
 
-```ts{1,3}
+```ts{1}
 const count = useRef(0);
 
 const doubled = useComputed({

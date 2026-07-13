@@ -4,7 +4,7 @@
 Themes are recommended to be expressed using CSS variables. Variables are read inside the component and injected by the application layer through `theme()` or `useTheme()`.
 :::
 
-```ts{1-2}
+```ts{1}
 import { theme } from "@elfui/core";
 import { ElfButton } from "./Button";
 

@@ -2,7 +2,7 @@
 
 `useComponents()` is used to use imported components in the current component template.
 
-```ts{1-2,6}
+```ts{6}
 import { defineHtml, html, useComponents } from "@elfui/core";
 import { ElfButton } from "./Button";
 

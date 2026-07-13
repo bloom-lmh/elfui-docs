@@ -8,7 +8,7 @@ A route record describes what URL to match and what to render. Use names for loc
 
 ## A practical route table
 
-```ts{1,3,8,12}
+```ts{3}
 import { createRouter, createWebHistory } from "@elfui/router";
 
 export const router = createRouter({
@@ -61,7 +61,7 @@ createRouter({
 
 Child paths are joined to the parent path, and matching a child produces a parent-to-child `route.matched` chain. Parent `meta` is merged into the child route; a child value wins for duplicate keys.
 
-```ts{3,6-7}
+```ts{1}
 {
   path: "/settings",
   component: () => import("../pages/settings-layout"),
@@ -84,7 +84,7 @@ The layout page renders the child outlet with `depth="1"`:
 
 Set `props: true` to forward route parameters. Use an object for fixed props, or a function when the page needs transformed params or query values.
 
-```ts{4-5}
+```ts{1}
 {
   path: "/reports/:year",
   components: {
@@ -109,7 +109,7 @@ Render a named outlet next to the default outlet:
 
 Dynamic routes suit feature flags, plugins, or permissions. `addRoute()` returns a disposer; a newly added route with the same name replaces the old one.
 
-```ts{4}
+```ts{1}
 const removeBilling = router.addRoute({
   path: "/billing",
   name: "billing",
@@ -132,7 +132,7 @@ Pass a parent name to add a nested record: `router.addRoute("settings", { path: 
 
 `scrollBehavior(to, from, savedPosition)` runs after a successful navigation. Return `savedPosition` for back/forward restoration, a `{ top, left }` position for normal navigation, `{ el: "#id" }` for anchors, or `null` to leave scrolling unchanged. A promise is supported.
 
-```ts{1,5-7}
+```ts{1}
 createRouter({
   history: createWebHistory(),
   routes,

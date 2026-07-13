@@ -7,7 +7,7 @@ title: Vite Plugin
 `@elfui/vite-plugin` is responsible for compiling the ordinary `.ts/.tsx` macro component into a runtime render function. It is recommended for new projects to always install and enable it.
 :::
 
-```ts{1-2,4}
+```ts{5}
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 
@@ -22,7 +22,7 @@ export default defineConfig({
 The tag name of the macro component is determined at compile time, so `tagPrefix` can only be configured in the Vite plug-in and cannot be modified through `configure()` at runtime.
 :::
 
-```ts{1-2,4}
+```ts{6}
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 
@@ -35,7 +35,7 @@ export default defineConfig({
 });
 ```
 
-```ts{1,3}
+```ts{3}
 import { defineHtml, html } from "@elfui/core";
 
 export const UserCard = defineHtml(html`<article><slot></slot></article>`);
@@ -53,7 +53,7 @@ The plugin will recognize the exported `defineHtml(...)` component:
 export const Button = defineHtml(html`<button><slot></slot></button>`);
 ```
 
-```ts{1,3}
+```ts{1}
 const Button = defineHtml(html`<button><slot></slot></button>`);
 
 export { Button };

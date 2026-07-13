@@ -2,7 +2,7 @@
 
 ElfUI supports form-associated custom elements. After the component declares `formControl: true`, it can participate in native `<form>` submission, verification and reset.
 
-```ts{1,11}
+```ts{11}
 import { defineHtml, defineOptions, html, useFormControlContext } from "@elfui/core";
 
 defineOptions({ formControl: true });
@@ -27,7 +27,7 @@ When used, put it into the form like a native field and provide `name`:
 
 ## Verification and submission
 
-```ts{1}
+```ts{3}
 form.rules([{ validator: (value) => value.length > 0 || "请输入内容" }]);
 
 const result = await form.validate();

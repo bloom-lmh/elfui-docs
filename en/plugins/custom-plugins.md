@@ -2,7 +2,7 @@
 
 Plugins can be written as functions:
 
-```ts{1,3}
+```ts{3}
 import type { ElfUIAppPluginFn } from "@elfui/core";
 
 export const focusPlugin: ElfUIAppPluginFn = (app) => {
@@ -16,7 +16,7 @@ export const focusPlugin: ElfUIAppPluginFn = (app) => {
 
 It can also be written as an object:
 
-```ts{1,3}
+```ts{3}
 import type { ElfUIAppPluginObject } from "@elfui/core";
 
 export const appPlugin: ElfUIAppPluginObject<{ appName?: string }> = {

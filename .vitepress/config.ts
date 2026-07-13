@@ -3,6 +3,8 @@ import { defineConfig, type DefaultTheme } from "vitepress";
 
 type Sidebar = DefaultTheme.SidebarItem[];
 
+const playgroundUrl = "https://stackblitz.com/fork/github/bloom-lmh/elfui-playground?startScript=dev&title=ElfUI%20Playground";
+
 const section = (text: string, items: [string, string][]): DefaultTheme.SidebarItem => ({
   text,
   collapsed: true,
@@ -276,7 +278,8 @@ const englishTheme: DefaultTheme.Config = {
   ...baseTheme,
   nav: [
     { text: "Home", link: "/en/" },
-    { text: "API", link: "/en/api/core" }
+    { text: "API", link: "/en/api/core" },
+    { text: "Playground", link: playgroundUrl, target: "_blank", rel: "noreferrer" }
   ],
   sidebar: englishSidebar,
   outline: { ...baseTheme.outline, label: "On this page" },
@@ -288,7 +291,8 @@ const chineseTheme: DefaultTheme.Config = {
   ...baseTheme,
   nav: [
     { text: "首页", link: "/zh/" },
-    { text: "API", link: "/zh/API参考/elfui" }
+    { text: "API", link: "/zh/API参考/elfui" },
+    { text: "演练场", link: playgroundUrl, target: "_blank", rel: "noreferrer" }
   ],
   sidebar: zhSidebar,
   outline: { ...baseTheme.outline, label: "本页目录" },
@@ -301,6 +305,9 @@ export default defineConfig({
   description: "A compiler-first framework for native Web Components",
   cleanUrls: true,
   appearance: true,
+  markdown: {
+    lineNumbers: true
+  },
   head: [
     ["link", { rel: "icon", type: "image/png", href: "/logo.png" }],
     ["link", { rel: "apple-touch-icon", href: "/logo.png" }]

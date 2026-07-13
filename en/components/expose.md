@@ -2,7 +2,7 @@
 
 `defineExpose()` exposes methods or properties to the component host, which can be called externally through DOM ref.
 
-```ts{1,5,12}
+```ts{12}
 import { defineExpose, defineHtml, html, useTemplateRef } from "@elfui/core";
 
 const input = useTemplateRef<HTMLInputElement>("input");

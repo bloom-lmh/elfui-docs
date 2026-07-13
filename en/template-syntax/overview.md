@@ -2,7 +2,7 @@
 
 The ElfUI template is declared through `defineHtml(html`...`)`, which will be compiled into a render function that directly operates the DOM during the build period.
 
-```ts{1-2}
+```ts{1-3}
 export const Counter = defineHtml(html`
   <button @click=${inc} :disabled=${disabled}>${count}</button>
 `);

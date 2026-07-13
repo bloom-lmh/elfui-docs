@@ -2,7 +2,7 @@
 
 The ElfUI plug-in is used to register global directives in batches, modify runtime configurations, or encapsulate project conventions.
 
-```ts{1-2,4}
+```ts{4}
 import { createApp } from "@elfui/core";
 import { AppRoot } from "./AppRoot";
 

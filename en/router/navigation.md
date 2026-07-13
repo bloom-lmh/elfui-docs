@@ -8,7 +8,7 @@ Use `<elf-link>` for ordinary navigation. It is an alias of `<elf-router-link>`,
 
 ## Links in templates
 
-```html{3-4}
+```html{1}
 <nav>
   <elf-link to="/">Home</elf-link>
   <elf-link :to=${{ name: "user", params: { id: "42" } }}>Profile</elf-link>
@@ -31,7 +31,7 @@ Use `<elf-link>` for ordinary navigation. It is an alias of `<elf-router-link>`,
 
 `push()` adds an entry, while `replace()` overwrites one. Both resolve a string path, a path object, or a named location and return either `undefined` or a navigation failure.
 
-```ts{1}
+```ts{3}
 import { useRouter } from "@elfui/router";
 
 const router = useRouter();
@@ -77,7 +77,7 @@ const sibling = router?.resolve("../settings");
 Guards can abort a navigation, and a second navigation can cancel a pending first one. Repeating the current URL without `force` is also a failure. These cases do not throw; inspect the returned value.
 :::
 
-```ts{1}
+```ts{3}
 import { isNavigationFailure, NavigationFailureType } from "@elfui/router";
 
 const result = await router?.push("/settings");
@@ -91,7 +91,7 @@ if (isNavigationFailure(result, NavigationFailureType.aborted)) {
 
 `useRoute()` returns a stable, read-only facade. Read its properties inside reactive code rather than replacing it after each navigation.
 
-```ts{1}
+```ts{3}
 import { useRoute } from "@elfui/router";
 
 const route = useRoute();
@@ -114,7 +114,7 @@ stringifyQuery({ page: 2, tag: ["elf", "router"], draft: null });
 
 For a design-system control, use the headless `useLink()` API or the default scoped slot of `<elf-link custom>`. Both expose `href`, active state, and `navigate()`.
 
-```ts{1}
+```ts{3}
 import { useLink } from "@elfui/router";
 
 const link = useLink({ to: { name: "settings" }, replace: true });

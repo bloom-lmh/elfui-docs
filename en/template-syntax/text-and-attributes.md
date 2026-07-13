@@ -4,7 +4,7 @@
 Text interpolation can use `${...}` or `&#123;&#123; ... &#125;&#125;`. It is recommended for new projects to use `${...}` in macro components because it directly references the current TypeScript scope.
 :::
 
-```ts{1,3}
+```ts{3}
 const name = useRef("Elf");
 
 export const Hello = defineHtml(html` <p>Hello ${name}</p> `);

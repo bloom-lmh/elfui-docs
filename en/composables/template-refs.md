@@ -2,7 +2,7 @@
 
 `useTemplateRef()` is used to get the DOM nodes in the template.
 
-```ts{7,9}
+```ts{7-10}
 const input = useTemplateRef<HTMLInputElement>("input");
 
 const focus = (): void => {

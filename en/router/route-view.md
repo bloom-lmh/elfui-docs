@@ -26,7 +26,7 @@ For a nested route, place an outlet in the parent page. Set `depth="1"` explicit
 
 A record with `components` can fill multiple outlets. The unnamed outlet reads `default`; an outlet with `name="aside"` reads `aside`.
 
-```ts{4-5}
+```ts{1}
 {
   path: "/reports",
   components: {

@@ -17,7 +17,7 @@ pnpm create elfui@beta my-app --router --install
 
 Create the route in a standalone module and import it before mounting the application:
 
-```ts{2,4,7-8}
+```ts{4}
 // src/router/index.ts
 import { createRouter } from "@elfui/router";
 
@@ -30,7 +30,7 @@ export const router = createRouter({
 });
 ```
 
-```ts{2-4,6}
+```ts{6}
 // src/main.ts
 import "./router";
 import { createApp } from "@elfui/core";

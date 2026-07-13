@@ -9,7 +9,7 @@ title: Chain
 pnpm add @elfui/chain
 ```
 
-```ts{1,6,8,10}
+```ts{6}
 import { ElfUI, useRef } from "@elfui/chain";
 
 ElfUI.createComponent()

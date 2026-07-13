@@ -5,7 +5,7 @@ title: Introduction
 
 ElfUI is a front-end framework for Web Components. Its main writing method is **macro component**: write TypeScript logic in an ordinary `.ts/.tsx` file, use `defineHtml(html`...`)` to export the component, and use `@elfui/vite-plugin` to precompile the template during construction.
 
-```ts{1,3,6}
+```ts{6}
 import { defineHtml, html, useRef } from "@elfui/core";
 
 const count = useRef(0);
