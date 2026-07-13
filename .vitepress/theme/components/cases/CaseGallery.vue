@@ -21,7 +21,7 @@
         <p>{{ demo.kicker }}</p>
         <h2>{{ demo.title }}</h2>
         <span>{{ demo.description }}</span>
-        <a :href="playgroundLink">{{ isZh ? "在演练场打开" : "Open in Playground" }} ↗</a>
+        <a :href="playgroundHref(demo)">{{ isZh ? "在演练场打开" : "Open in Playground" }} ↗</a>
       </div>
       <pre><code>{{ demo.source }}</code></pre>
     </section>
@@ -33,12 +33,25 @@ import { computed } from "vue";
 import { useData } from "vitepress";
 
 import { playgroundPresets } from "../playground/presets";
+import { createPlaygroundHref } from "../playground/state";
+
+interface PlaygroundDemo {
+  description: string;
+  id: string;
+  kicker: string;
+  source: string;
+  title: string;
+}
 
 const { lang } = useData();
 const isZh = computed(() => lang.value.startsWith("zh"));
-const playgroundLink = computed(() => (isZh.value ? "/zh/演练场" : "/en/playground"));
+const playgroundHref = (demo: PlaygroundDemo): string =>
+  createPlaygroundHref(isZh.value ? "/zh/演练场" : "/en/playground", {
+    presetId: demo.id,
+    source: demo.source
+  });
 
-const demos = computed(() => {
+const demos = computed<PlaygroundDemo[]>(() => {
   const counter = playgroundPresets[0];
   const toggle = playgroundPresets[1];
 

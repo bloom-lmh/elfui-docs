@@ -23,6 +23,7 @@
         >
           {{ preset.title }}
         </button>
+        <button type="button" @click="copyShareLink">{{ shareLabel ?? (isZh ? "复制链接" : "Copy link") }}</button>
         <button type="button" class="run-button" @click="compileNow">
           {{ isZh ? "运行" : "Run" }}
         </button>
@@ -85,23 +86,26 @@ import { useData } from "vitepress";
 
 import type { CompileResponse, PlaygroundDiagnostic, PreviewStatusMessage } from "./protocol";
 import { playgroundPresets } from "./presets";
+import { readPlaygroundState, serializePlaygroundState } from "./state";
 
 const { lang } = useData();
 const isZh = computed(() => lang.value.startsWith("zh"));
 const presets = playgroundPresets;
-const activePreset = ref<(typeof playgroundPresets)[number]["id"]>("counter");
+const activePreset = ref<(typeof playgroundPresets)[number]["id"]>();
 const diagnostics = ref<PlaygroundDiagnostic[]>([]);
 const editorRoot = ref<HTMLElement | null>(null);
 const previewFrame = ref<HTMLIFrameElement | null>(null);
 const previewKey = ref(0);
 const previewOrigin = ref("");
 const status = ref<"compiling" | "error" | "ready">("compiling");
+const shareLabel = ref<string>();
 
 let editor: EditorView | undefined;
 let worker: Worker | undefined;
 let debounce: number | undefined;
 let requestId = 0;
 let pendingPreview: Extract<CompileResponse, { code?: string }> | undefined;
+let loadingPreset = false;
 
 const previewUrl = computed(() => `${previewOrigin.value}${import.meta.env.BASE_URL}en/playground/preview?run=${previewKey.value}`);
 const statusLabel = computed(() => {
@@ -121,6 +125,12 @@ const editorTheme = EditorView.theme({
 });
 
 const source = () => editor?.state.doc.toString() ?? "";
+
+const syncHash = () => {
+  const url = new URL(window.location.href);
+  url.hash = serializePlaygroundState({ presetId: activePreset.value, source: source() });
+  window.history.replaceState({}, "", url);
+};
 
 const scheduleCompile = () => {
   if (debounce) window.clearTimeout(debounce);
@@ -143,8 +153,21 @@ const compileNow = () => {
 const loadPreset = (id: (typeof playgroundPresets)[number]["id"]) => {
   const preset = playgroundPresets.find((candidate) => candidate.id === id);
   if (!preset || !editor) return;
+  loadingPreset = true;
   activePreset.value = id;
   editor.dispatch({ changes: { from: 0, insert: preset.source, to: editor.state.doc.length } });
+  loadingPreset = false;
+};
+
+const copyShareLink = async () => {
+  syncHash();
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    shareLabel.value = isZh.value ? "已复制" : "Copied";
+  } catch {
+    shareLabel.value = isZh.value ? "链接已更新" : "Link updated";
+  }
+  window.setTimeout(() => { shareLabel.value = undefined; }, 1400);
 };
 
 const receiveCompile = async ({ data }: MessageEvent<CompileResponse>) => {
@@ -218,10 +241,16 @@ onMounted(() => {
   });
   window.addEventListener("message", receivePreview);
 
+  const restoredState = readPlaygroundState(window.location.hash);
+  const restoredPreset = restoredState?.presetId
+    ? presets.find((preset) => preset.id === restoredState.presetId && preset.source === restoredState.source)
+    : undefined;
+  activePreset.value = restoredPreset?.id;
+
   editor = new EditorView({
     parent: editorRoot.value ?? undefined,
     state: EditorState.create({
-      doc: playgroundPresets[0].source,
+      doc: restoredState?.source ?? playgroundPresets[0].source,
       extensions: [
         lineNumbers(),
         drawSelection(),
@@ -230,7 +259,10 @@ onMounted(() => {
         keymap.of([...defaultKeymap, indentWithTab]),
         editorTheme,
         EditorView.updateListener.of((update) => {
-          if (update.docChanged) scheduleCompile();
+          if (!update.docChanged) return;
+          if (!loadingPreset) activePreset.value = undefined;
+          syncHash();
+          scheduleCompile();
         })
       ]
     })
