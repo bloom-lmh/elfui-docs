@@ -2,7 +2,7 @@
 
 ElfUI supports form-associated custom elements. After the component declares `formControl: true`, it can participate in native `<form>` submission, verification and reset.
 
-```ts{11}
+```ts{3}
 import { defineHtml, defineOptions, html, useFormControlContext } from "@elfui/core";
 
 defineOptions({ formControl: true });

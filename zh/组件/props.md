@@ -6,7 +6,7 @@ title: Props
 
 Props 是组件的外部输入。宏组件里用 `defineProps()` 声明。
 
-```ts{11-13}
+```ts{3-9}
 import { defineHtml, defineProps, html } from "@elfui/core";
 
 const props = defineProps<{

@@ -38,7 +38,7 @@ When the getter returns `null`/`undefined`, the CSS variable will be removed; `u
 
 `useHostClass()` accepts strings, objects or arrays, and only manages the class it last wrote:
 
-```ts{1}
+```ts{1-4}
 useHostClass(() => ({
   "is-open": open.value,
   disabled: props.disabled

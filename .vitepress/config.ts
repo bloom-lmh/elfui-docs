@@ -321,6 +321,10 @@ export default defineConfig({
     zh: { label: "简体中文", lang: "zh-CN", link: "/zh/", themeConfig: chineseTheme }
   },
   vite: {
+    server: {
+      // Keep the docs server usable when the default port is already occupied.
+      strictPort: false
+    },
     plugins: [elfuiMacroPlugin({ macroImport: "@elfui/core" })],
     resolve: {
       alias: {

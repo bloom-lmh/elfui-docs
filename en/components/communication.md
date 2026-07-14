@@ -46,7 +46,7 @@ When a parent component must call a child component method, the child component 
 This type of communication is an imperative API, suitable for `focus()`, `validate()`, `reset()`, and not suitable for ordinary data flows.
 :::
 
-```ts{10-13}
+```ts{6}
 type SearchInputHost = HTMLElement & {
   focus(): void;
   clear(): void;

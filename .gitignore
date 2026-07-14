@@ -2,6 +2,7 @@ node_modules/
 dist/
 .vitepress/cache/
 .vitepress/dist/
+.vitepress/.temp/
 --port/
 coverage/
 output/

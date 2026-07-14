@@ -2,7 +2,7 @@
 
 `useComponents()` is used to use imported components in the current component template.
 
-```ts{6}
+```ts{4}
 import { defineHtml, html, useComponents } from "@elfui/core";
 import { ElfButton } from "./Button";
 
@@ -13,7 +13,7 @@ export const Toolbar = defineHtml(html` <elf-button>保存</elf-button> `);
 
 You can also set an alias:
 
-```ts{3}
+```ts{1}
 useComponents({ PrimaryAction: ElfButton });
 
 export const Toolbar = defineHtml(html` <primary-action>保存</primary-action> `);

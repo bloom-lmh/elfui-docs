@@ -29,7 +29,7 @@ Used in templates:
 
 Use `defineDirective()` in macro component:
 
-```ts{1}
+```ts{3-7}
 import { defineDirective } from "@elfui/core";
 
 defineDirective("focus", {

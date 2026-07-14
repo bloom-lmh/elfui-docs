@@ -40,7 +40,7 @@ export const Panel = defineHtml(html`
 Web Components do not have native scope slots. ElfUI supports common writing methods through compile-time bridging, and sub-components use `useScopedSlot()` for consumption.
 :::
 
-```ts{5-9}
+```ts{3}
 import { defineHtml, html, useScopedSlot } from "@elfui/core";
 
 const itemSlot = useScopedSlot<{ item: string }>("item");

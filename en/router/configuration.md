@@ -8,7 +8,7 @@ A route record describes what URL to match and what to render. Use names for loc
 
 ## A practical route table
 
-```ts{3}
+```ts{3-20}
 import { createRouter, createWebHistory } from "@elfui/router";
 
 export const router = createRouter({
@@ -48,7 +48,7 @@ const routes = [
 
 Static segments outrank dynamic segments, so `/products/new` is not treated as an `id`. Put a catch-all route last. By default matching is case-insensitive and ignores a trailing slash. Opt in when the distinction matters:
 
-```ts{1}
+```ts{1-6}
 createRouter({
   history: createWebHistory(),
   sensitive: true, // /Users and /users differ
@@ -132,7 +132,7 @@ Pass a parent name to add a nested record: `router.addRoute("settings", { path: 
 
 `scrollBehavior(to, from, savedPosition)` runs after a successful navigation. Return `savedPosition` for back/forward restoration, a `{ top, left }` position for normal navigation, `{ el: "#id" }` for anchors, or `null` to leave scrolling unchanged. A promise is supported.
 
-```ts{1}
+```ts{1-9}
 createRouter({
   history: createWebHistory(),
   routes,

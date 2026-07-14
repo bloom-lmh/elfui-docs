@@ -2,7 +2,7 @@
 
 `v-model` is used to express the bidirectional status between father and son. The macro component uses `defineModel()` internally.
 
-```ts{9}
+```ts{3}
 import { defineHtml, defineModel, html } from "@elfui/core";
 
 const value = defineModel<string>({ default: "" });

@@ -51,7 +51,7 @@ If you need to unify the project prefix, please configure `tagPrefix` in `@elfui
 
 Component-level options use `defineOptions()`:
 
-```ts{9}
+```ts{3-7}
 import { defineHtml, defineOptions, html } from "@elfui/core";
 
 defineOptions({

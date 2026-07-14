@@ -4,7 +4,7 @@ ElfUI provides life cycle encapsulation of ResizeObserver and IntersectionObserv
 
 ## useResizeObserver
 
-```ts{2}
+```ts{1}
 const host = useHost();
 const width = useRef(0);
 
@@ -17,7 +17,7 @@ Suitable for layout, elastic layer positioning, and responsive component size ca
 
 ## useIntersectionObserver
 
-```ts{1}
+```ts{3-7}
 const root = useTemplateRef<HTMLElement>("root");
 
 useIntersectionObserver(root.value, (entry) => {

@@ -6,7 +6,7 @@ title: DOM 事件
 
 `useEventListener()` 会在挂载时添加事件监听，在卸载前自动移除。
 
-```ts{1}
+```ts{1-3}
 useEventListener(window, "resize", () => {
   console.log(window.innerWidth);
 });

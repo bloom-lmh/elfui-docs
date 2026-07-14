@@ -106,8 +106,18 @@
       font-size: clamp(76px, 5.7vw, 112px);
       line-height: .92;
       font-weight: 900;
-      letter-spacing: -.075em;
+      letter-spacing: -.045em;
       text-shadow: 0 18px 54px rgba(0, 0, 0, .42);
+    }
+
+    .title:not(.title-en) {
+      letter-spacing: -.02em;
+    }
+
+    .title:not(.title-en) .line:first-child {
+      display: flex;
+      align-items: baseline;
+      column-gap: .12em;
     }
 
     .title .line {
@@ -271,6 +281,14 @@
         margin-top: 20px;
         font-size: clamp(50px, 15vw, 62px);
         line-height: .94;
+      }
+
+      .title:not(.title-en) {
+        letter-spacing: -.035em;
+      }
+
+      .title:not(.title-en) .line:first-child {
+        column-gap: .08em;
       }
 
       .title .line {

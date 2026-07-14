@@ -23,7 +23,7 @@ Use `peek()` when traceless reading is required in the code; use `.value` when r
 
 ## useReactive
 
-```ts{1}
+```ts{1-4}
 const user = useReactive({
   name: "Elf",
   age: 1

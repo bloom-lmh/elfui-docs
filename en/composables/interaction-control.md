@@ -4,7 +4,7 @@ Interaction control functions are used in pop-ups, drawers, prompts, and accessi
 
 ## ESC close
 
-```ts{1}
+```ts{1-3}
 useEscapeKey(() => {
   open.set(false);
 });

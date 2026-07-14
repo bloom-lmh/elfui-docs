@@ -24,7 +24,7 @@ pnpm create elfui@beta my-app --router --install
 Create `src/router/index.ts`. Route components can be element tag names, Custom Element constructors, or lazy import functions. Lazy functions are recommended for pages because they create a separate bundle.
 :::
 
-```ts{4}
+```ts{4-16}
 // src/router/index.ts
 import { createRouter, createWebHistory } from "@elfui/router";
 

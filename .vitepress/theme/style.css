@@ -179,21 +179,59 @@ body {
   display: none !important;
 }
 
-.elf-language-switcher {
+.elf-nav-actions {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   margin-left: 12px;
+}
+
+.elf-language-switcher,
+.elf-mobile-playground {
   color: var(--vp-c-text-2);
   font-size: 14px;
   font-weight: 600;
+  text-decoration: none;
 }
 
-.elf-language-switcher:hover {
+.elf-language-switcher:hover,
+.elf-mobile-playground:hover {
   color: var(--vp-c-brand-1);
 }
 
+.elf-mobile-playground {
+  display: none;
+}
+
 @media (max-width: 767px) {
-  .elf-language-switcher {
+  .elf-nav-actions {
+    flex-shrink: 0;
+    gap: 6px;
+    margin-left: 0;
+  }
+
+  .elf-language-switcher,
+  .elf-mobile-playground {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 9px;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--vp-c-bg) 72%, transparent);
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .VPNavBarHamburger {
+    flex-shrink: 0;
+    width: 40px !important;
+  }
+}
+
+@media (max-width: 359px) {
+  .VPNavBarSearch {
     display: none;
   }
 }
@@ -323,14 +361,21 @@ body {
 
 .elf-home-page .VPNav {
   color: #f7fbff;
+  border-bottom: 0 !important;
+  box-shadow: none;
 }
 
 .elf-home-page .VPNavBar,
 .elf-home-page .VPNavBar.has-sidebar .content,
 .elf-home-page .VPNavBar.has-sidebar .curtain {
   background: rgba(2, 7, 18, 0.74) !important;
-  border-bottom-color: rgba(255, 255, 255, 0.08);
+  border-bottom: 0 !important;
   backdrop-filter: blur(16px);
+}
+
+.elf-home-page .VPNavBar .divider,
+.elf-home-page .VPNavBar .divider-line {
+  background: transparent !important;
 }
 
 .elf-home-page .VPNavBarTitle .title,
@@ -355,6 +400,30 @@ body {
 
 .elf-home-page .VPSwitchAppearance .check {
   color: #35e6c5;
+}
+
+.elf-home-page .elf-language-switcher,
+.elf-home-page .elf-mobile-playground {
+  color: rgba(247, 251, 255, 0.86);
+}
+
+.elf-home-page .elf-language-switcher:hover,
+.elf-home-page .elf-mobile-playground:hover {
+  color: #35e6c5;
+}
+
+@media (max-width: 767px) {
+  .elf-home-page .elf-language-switcher,
+  .elf-home-page .elf-mobile-playground {
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(5, 15, 30, 0.56);
+  }
+
+  .elf-home-page .VPNavBarHamburger .top,
+  .elf-home-page .VPNavBarHamburger .middle,
+  .elf-home-page .VPNavBarHamburger .bottom {
+    background-color: rgba(247, 251, 255, 0.88) !important;
+  }
 }
 
 .elf-home-page .VPContent,

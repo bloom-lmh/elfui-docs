@@ -12,7 +12,7 @@ Common diagnoses:
 
 ## strict mode
 
-```ts{1}
+```ts{1-4}
 elfuiMacroPlugin({
   strictDiagnostics: true,
   templateTypeCheck: true

@@ -2,7 +2,7 @@
 
 The update phase is used to observe DOM updates triggered by reactive bindings inside the component.
 
-```ts{1}
+```ts{1-3}
 onBeforeUpdate(() => {
   console.log("before update");
 });

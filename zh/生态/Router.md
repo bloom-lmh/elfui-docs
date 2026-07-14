@@ -18,7 +18,7 @@ pnpm create elfui@beta my-app --router --install
 
 在独立模块中创建路由，并在挂载应用前导入它：
 
-```ts{4}
+```ts{4-10}
 // src/router/index.ts
 import { createRouter } from "@elfui/router";
 

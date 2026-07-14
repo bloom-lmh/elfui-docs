@@ -2,7 +2,7 @@
 
 `useEventListener()` will add an event listener when mounting and automatically remove it before uninstalling.
 
-```ts{1}
+```ts{1-3}
 useEventListener(window, "resize", () => {
   console.log(window.innerWidth);
 });

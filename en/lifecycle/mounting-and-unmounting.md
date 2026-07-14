@@ -18,7 +18,7 @@ onUnmount(() => {
 
 ## before hooks
 
-```ts{1}
+```ts{1-3}
 onBeforeMount(() => {
   // 首次渲染前
 });

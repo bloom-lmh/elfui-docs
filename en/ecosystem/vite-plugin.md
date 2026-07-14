@@ -7,7 +7,7 @@ title: Vite Plugin
 `@elfui/vite-plugin` is responsible for compiling the ordinary `.ts/.tsx` macro component into a runtime render function. It is recommended for new projects to always install and enable it.
 :::
 
-```ts{5}
+```ts{5-6}
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 
@@ -22,7 +22,7 @@ export default defineConfig({
 The tag name of the macro component is determined at compile time, so `tagPrefix` can only be configured in the Vite plug-in and cannot be modified through `configure()` at runtime.
 :::
 
-```ts{6}
+```ts{6-10}
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 
@@ -69,7 +69,7 @@ export default defineHtml(html`<button><slot></slot></button>`);
 
 ## Diagnostic options
 
-```ts{1}
+```ts{1-4}
 elfuiMacroPlugin({
   strictDiagnostics: true,
   templateTypeCheck: true
