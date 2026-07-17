@@ -1,30 +1,30 @@
-# observer
+# Observers
 
-ElfUI provides life cycle encapsulation of ResizeObserver and IntersectionObserver.
+ElfUI provides component-scoped wrappers around `ResizeObserver` and `IntersectionObserver`. A target can be an `Element`, a `useRef()` / `useTemplateRef()` result, or a reactive getter. Observation starts after mount, follows target replacement, ignores stale callbacks, and disconnects automatically during teardown.
 
 ## useResizeObserver
 
 ```ts{1}
-const host = useHost();
+const panel = useTemplateRef<HTMLElement>("panel");
 const width = useRef(0);
 
-useResizeObserver(host, (entry) => {
+useResizeObserver(panel, (entry) => {
   width.set(entry.width);
 });
 ```
 
-Suitable for layout, elastic layer positioning, and responsive component size calculation.
+This is suitable for layout, overlay positioning, Canvas/WebGL resizing, and responsive component measurements. Passing the ref itself is important: passing `panel.value` during setup would capture its initial `undefined` value.
 
 ## useIntersectionObserver
 
 ```ts{3-7}
 const root = useTemplateRef<HTMLElement>("root");
 
-useIntersectionObserver(root.value, (entry) => {
+useIntersectionObserver(root, (entry) => {
   if (entry.isIntersecting) {
     visible.set(true);
   }
 });
 ```
 
-Suitable for lazy loading, scroll triggering, and Tour guide positioning.
+This is suitable for lazy loading, scroll-triggered work, and guided-tour positioning. If the browser does not provide the observer API, the helper remains inactive without breaking mount.

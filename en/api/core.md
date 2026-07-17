@@ -1,6 +1,7 @@
 ---
 title: "@elfui/core API"
 ---
+
 # @elfui/core API
 
 `@elfui/core` is the main entrance of the new project, which is for macro components and application startup.
@@ -13,9 +14,11 @@ title: "@elfui/core API"
 
 `useRef`、`useReactive`、`useShallowRef`、`useShallowReactive`、`useComputed`、`computed`、`useEffect`、`watch`、`watchEffect`、`watchPostEffect`、`watchSyncEffect`、`onWatcherCleanup`、`nextTick`
 
-## life cycle
+## Lifecycle
 
-`onBeforeMount`、`onMount`、`onBeforeUpdate`、`onUpdated`、`onBeforeUnmount`、`onUnmount`、`onActivated`、`onDeactivated`、`onAttributeChanged`、`onErrorCaptured`
+`onBeforeMount`, `onMounted`, `onBeforeUpdate`, `onUpdated`, `onBeforeUnmount`, `onUnmounted`, `onActivated`, `onDeactivated`, `onAttributeChanged`, `onErrorCaptured`
+
+`onMount` and `onUnmount` are retained as compatibility aliases.
 
 ## Application and Runtime User API
 

@@ -16,7 +16,9 @@ title: "@elfui/core API"
 
 ## 生命周期
 
-`onBeforeMount`、`onMount`、`onBeforeUpdate`、`onUpdated`、`onBeforeUnmount`、`onUnmount`、`onActivated`、`onDeactivated`、`onAttributeChanged`、`onErrorCaptured`
+`onBeforeMount`、`onMounted`、`onBeforeUpdate`、`onUpdated`、`onBeforeUnmount`、`onUnmounted`、`onActivated`、`onDeactivated`、`onAttributeChanged`、`onErrorCaptured`
+
+`onMount`、`onUnmount` 作为兼容别名保留。
 
 ## 应用与 Runtime 用户 API
 

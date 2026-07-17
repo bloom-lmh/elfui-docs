@@ -30,6 +30,8 @@ export const ElfButton = defineHtml(html`
 | `defineProps<Props>({ ... })`    | 类型 + runtime 选项 |
 | `defineProps({ label: String })` | 从 options 推断类型 |
 
+对于同文件、非泛型的 `Props` 声明，`defineProps<Props>()` 可以为 string、number、boolean、array、object、function 和同类字面量联合生成 runtime converter。需要默认值，或类型来自 import、泛型、混合联合时，应显式提供 runtime options；编译器无法安全推断时会给出诊断，而不会猜测。
+
 ## Attribute 与 property
 
 ElfUI 输出 Custom Element，所以外部既可以写 attribute，也可以写 property：
@@ -44,8 +46,10 @@ el.disabled = true;
 ```
 
 ::: tip
-`String`、`Number`、`Boolean`、`Array`、`Object` 会按 props 选项做基础转换。复杂对象建议通过 property 传递。
+object、array 和 function 应通过 property 传递。ElfUI 保留宿主拥有的原引用，不会把它包装成新的深层响应式 Proxy；整体替换 property 仍会触发响应式更新。
 :::
+
+Boolean attribute 缺失时使用默认值；空值、`"true"` 或与 attribute 同名的值转为 `true`，`"false"` 和其他字符串转为 `false`。动态布尔值优先使用 property，或在值为 false 时移除 attribute。
 
 ## 边界
 

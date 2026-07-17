@@ -1,6 +1,7 @@
 ---
 title: Props
 ---
+
 # Props
 
 Props are external inputs to the component. Declared with `defineProps()` in the macro component.
@@ -23,11 +24,13 @@ export const ElfButton = defineHtml(html`
 
 ## Commonly used writing methods
 
-| Writing | Purpose |
-| -------------------------------- | ------------------- |
-| `defineProps<Props>()` | Only declare type |
-| `defineProps<Props>({ ... })` | type + runtime options |
+| Writing                          | Purpose                 |
+| -------------------------------- | ----------------------- |
+| `defineProps<Props>()`           | Only declare type       |
+| `defineProps<Props>({ ... })`    | type + runtime options  |
 | `defineProps({ label: String })` | Infer type from options |
+
+For local, non-generic `Props` declarations, `defineProps<Props>()` can generate runtime converters for strings, numbers, booleans, arrays, objects, functions, and same-kind literal unions. Use explicit runtime options when defaults are required or when the type is imported, generic, or a mixed union. The compiler reports a diagnostic instead of guessing an unsafe converter.
 
 ## Attribute and property
 
@@ -43,8 +46,10 @@ el.disabled = true;
 ```
 
 ::: tip
-`String`, `Number`, `Boolean`, `Array`, `Object` will perform basic conversion according to props options. It is recommended to pass complex objects through properties.
+Pass objects, arrays, and functions through properties. ElfUI preserves the host-owned reference instead of wrapping it in a new deep reactive Proxy; replacing the whole property remains reactive.
 :::
+
+For Boolean attributes, an absent attribute uses the default. An empty value, `"true"`, or the attribute's own name maps to `true`; `"false"` and other strings map to `false`. Prefer property assignment for dynamic booleans, or remove the attribute when the value is false.
 
 ## boundary
 

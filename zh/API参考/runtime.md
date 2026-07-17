@@ -12,7 +12,9 @@ title: runtime API
 
 ## 生命周期和协作
 
-`onMount`、`onUnmount`、`onUpdated`、`onAttributeChanged`、`onErrorCaptured`、`provide`、`inject`、`hasInjectionContext`、`createInjectionKey`
+`onBeforeMount`、`onMounted`、`onBeforeUpdate`、`onUpdated`、`onBeforeUnmount`、`onUnmounted`、`onActivated`、`onDeactivated`、`onAttributeChanged`、`onErrorCaptured`、`provide`、`inject`、`hasInjectionContext`、`createInjectionKey`
+
+`onMount`、`onUnmount` 作为兼容别名保留。
 
 ## 指令、配置、插件
 

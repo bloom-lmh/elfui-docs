@@ -18,11 +18,11 @@ onDeactivated(() => {
 
 ## 和 mount/unmount 的区别
 
-| 场景           | 触发                      |
-| -------------- | ------------------------- |
-| 首次创建       | `onMount` + `onActivated` |
-| 从缓存恢复     | `onActivated`             |
-| 切走但保留缓存 | `onDeactivated`           |
-| 真正移除缓存   | `onUnmount`               |
+| 场景           | 触发                        |
+| -------------- | --------------------------- |
+| 首次创建       | `onMounted` + `onActivated` |
+| 从缓存恢复     | `onActivated`               |
+| 切走但保留缓存 | `onDeactivated`             |
+| 真正移除缓存   | `onUnmounted`               |
 
 适合缓存路由页、tab 面板、复杂表单或编辑器实例。

@@ -1,6 +1,7 @@
 ---
 title: Runtime API
 ---
+
 # runtime API
 
 `@elfui/runtime` is the entrance for advanced component authors. Business applications can usually be imported from `@elfui/core`.
@@ -11,7 +12,9 @@ title: Runtime API
 
 ## Lifecycle and collaboration
 
-`onMount`、`onUnmount`、`onUpdated`、`onAttributeChanged`、`onErrorCaptured`、`provide`、`inject`、`hasInjectionContext`、`createInjectionKey`
+`onBeforeMount`, `onMounted`, `onBeforeUpdate`, `onUpdated`, `onBeforeUnmount`, `onUnmounted`, `onActivated`, `onDeactivated`, `onAttributeChanged`, `onErrorCaptured`, `provide`, `inject`, `hasInjectionContext`, `createInjectionKey`
+
+`onMount` and `onUnmount` remain compatibility aliases.
 
 ## Instructions, configurations, plug-ins
 

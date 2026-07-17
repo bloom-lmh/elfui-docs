@@ -10,7 +10,9 @@ title: CSP 与体积
 import { defineHtml, html } from "@elfui/core";
 ```
 
-`@elfui/core` 主入口不包含 runtime compiler，当前 gzip 约 10.52 KB。
+`@elfui/core` 主入口不包含 runtime compiler。仓库当前真实应用基线为 gzip 9.50 KB / Brotli 8.57 KB；实际结果会随导入 API 与 bundler 变化。
+
+发布门禁会自动检查真实应用、轻量 consumer、runtime、reactivity 四组 gzip/Brotli 预算，同时验证生产 bundle 已裁掉 DEV 分支，发布 ESM 不会写入全局 `__DEV__` 标记。
 
 ## Chain 的边界
 

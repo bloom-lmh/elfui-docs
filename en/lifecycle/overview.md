@@ -1,37 +1,40 @@
-# Life cycle overview
+# Lifecycle overview
 
-Lifecycle functions can only be called during the component setup synchronization phase, which is the top level of the macro component.
+Lifecycle hooks must be registered synchronously during component setup, which means at the top level of a Macro component.
 
 ```ts{11}
-import { defineHtml, html, onMount, onUnmount } from "@elfui/core";
+import { defineHtml, html, onMounted, onUnmounted } from "@elfui/core";
 
-onMount(() => {
+onMounted(() => {
   console.log("mounted");
 });
 
-onUnmount(() => {
+onUnmounted(() => {
   console.log("unmounted");
 });
 
 export const Demo = defineHtml(html`<p>Demo</p>`);
 ```
 
-## life cycle list
+## Lifecycle hooks
 
-| API | Timing |
-| -------------------- | --------------------- |
-| `onBeforeMount` | Before first mount |
-| `onMount` | After first mount |
-| `onBeforeUpdate` | Before responsive update |
-| `onUpdated` | After responsive update |
-| `onBeforeUnmount` | Before uninstalling |
-| `onUnmount` | After uninstallation |
-| `onActivated` | KeepAlive Activation |
-| `onDeactivated` | KeepAlive deactivated |
-| `onAttributeChanged` | After host attribute change |
+| API                  | Timing                                         |
+| -------------------- | ---------------------------------------------- |
+| `onBeforeMount`      | Before the first render is committed           |
+| `onMounted`          | After final DOM and template refs are ready    |
+| `onBeforeUpdate`     | Before a reactive DOM update                   |
+| `onUpdated`          | After a reactive DOM update                    |
+| `onBeforeUnmount`    | Before resources and DOM are released          |
+| `onUnmounted`        | After the component is fully detached          |
+| `onActivated`        | When a KeepAlive component becomes active      |
+| `onDeactivated`      | When a KeepAlive component becomes inactive    |
+| `onAttributeChanged` | After an observed host attribute changes       |
+| `onErrorCaptured`    | When a descendant or lifecycle operation fails |
 
-Error-related capabilities are placed in "error handling".
+`onMount` and `onUnmount` remain compatible aliases for `onMounted` and `onUnmounted`. New code should use the `-ed` names so the timing reads clearly.
+
+A hook may return a Promise. ElfUI does not delay the mount or unmount sequence while waiting for it, but a rejection is routed through `onErrorCaptured` and the application `errorHandler`.
 
 ::: tip
-`onAttributeChanged((name, oldValue, newValue) => {})` is suitable for compatibility with native attributes that are not declared as props; regular data flows that have declared props preferentially use props and reactive binding.
+`onAttributeChanged((name, oldValue, newValue) => {})` is intended for native attributes that are not declared as props. Prefer props and reactive bindings for the regular declared data flow.
 :::

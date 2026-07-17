@@ -14,11 +14,11 @@ onDeactivated(() => {
 
 ## The difference between mount/unmount
 
-| Scene | Trigger |
-| -------------- | ------------------------- |
-| First creation | `onMount` + `onActivated` |
-| Restore from cache | `onActivated` |
-| Cut away but keep cache | `onDeactivated` |
-| Really remove cache | `onUnmount` |
+| Scene                   | Trigger                     |
+| ----------------------- | --------------------------- |
+| First creation          | `onMounted` + `onActivated` |
+| Restore from cache      | `onActivated`               |
+| Cut away but keep cache | `onDeactivated`             |
+| Really remove cache     | `onUnmounted`               |
 
 Suitable for caching routing pages, tab panels, complex forms or editor instances.

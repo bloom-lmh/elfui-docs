@@ -57,6 +57,10 @@ const englishSidebar: Sidebar = [
     ["Update Phase", "/en/lifecycle/update-phase"],
     ["KeepAlive Lifecycle", "/en/lifecycle/keep-alive"]
   ]),
+  section("Integration", [
+    ["External Tools", "/en/integration/external-tools"],
+    ["Host Frameworks", "/en/integration/host-frameworks"]
+  ]),
   section("Styles", [
     ["Component Styles", "/en/styles/component-styles"],
     ["Shadow DOM", "/en/styles/shadow-dom"],
@@ -168,6 +172,10 @@ const zhSidebar: Sidebar = [
     ["挂载与卸载", "/zh/生命周期/挂载与卸载"],
     ["更新阶段", "/zh/生命周期/更新阶段"],
     ["KeepAlive 生命周期", "/zh/生命周期/KeepAlive生命周期"]
+  ]),
+  section("集成", [
+    ["外部工具", "/zh/集成/外部工具"],
+    ["宿主框架", "/zh/集成/宿主框架"]
   ]),
   section("样式", [
     ["组件样式", "/zh/样式/组件样式"],
