@@ -3,6 +3,7 @@ dist/
 .vitepress/cache/
 .vitepress/dist/
 .vitepress/.temp/
+.playwright-cli/
 --port/
 coverage/
 output/

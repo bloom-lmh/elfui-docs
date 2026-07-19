@@ -1,5 +1,44 @@
-import { elfuiMacroPlugin } from "@elfui/vite-plugin";
+import { existsSync } from "node:fs";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { elfuiMacroPlugin as publishedElfuiMacroPlugin } from "@elfui/vite-plugin";
 import { defineConfig, type DefaultTheme } from "vitepress";
+
+const devtoolsRoot = fileURLToPath(new URL("../../elfui-devtools", import.meta.url));
+const elfuiRoot = fileURLToPath(new URL("../../elfui", import.meta.url));
+const localPluginEntry = `${elfuiRoot}/packages/vite-plugin/dist/index.js`;
+const localDevtoolsEntry = `${devtoolsRoot}/packages/vite/src/index.ts`;
+const useLocalPackages = process.env.ELFUI_USE_LOCAL_PACKAGES !== "false" && existsSync(localPluginEntry);
+
+const elfuiMacroPlugin = useLocalPackages
+  ? (
+      (await import(/* @vite-ignore */ pathToFileURL(localPluginEntry).href)) as typeof import("@elfui/vite-plugin")
+    ).elfuiMacroPlugin
+  : publishedElfuiMacroPlugin;
+
+const vitePlugins = [elfuiMacroPlugin({ macroImport: "@elfui/core" })];
+
+if (useLocalPackages && existsSync(localDevtoolsEntry)) {
+  const { elfuiDevtools } = await import(/* @vite-ignore */ pathToFileURL(localDevtoolsEntry).href);
+  vitePlugins.push(elfuiDevtools());
+}
+
+const localAliases = useLocalPackages
+  ? {
+      "@elfui/core": `${elfuiRoot}/packages/elfui/dist/index.js`,
+      "@elfui/runtime/internal": `${elfuiRoot}/packages/runtime/dist/internal.js`,
+      "@elfui/runtime": `${elfuiRoot}/packages/runtime/dist/index.js`,
+      "@elfui/reactivity": `${elfuiRoot}/packages/reactivity/dist/index.js`,
+      "@elfui/shared": `${elfuiRoot}/packages/shared/dist/index.js`,
+      ...(existsSync(localDevtoolsEntry)
+        ? {
+            "@elfui/devtools-client/auto": `${devtoolsRoot}/packages/client/src/auto.ts`,
+            "@elfui/devtools-client": `${devtoolsRoot}/packages/client/src/index.ts`,
+            "@elfui/devtools-runtime": `${devtoolsRoot}/packages/runtime/src/index.ts`,
+            "@elfui/devtools-shared": `${devtoolsRoot}/packages/shared/src/index.ts`
+          }
+        : {})
+    }
+  : {};
 
 type Sidebar = DefaultTheme.SidebarItem[];
 
@@ -333,10 +372,11 @@ export default defineConfig({
       // Keep the docs server usable when the default port is already occupied.
       strictPort: false
     },
-    plugins: [elfuiMacroPlugin({ macroImport: "@elfui/core" })],
+    plugins: vitePlugins,
     resolve: {
       alias: {
-        elfui: "@elfui/core"
+        elfui: "@elfui/core",
+        ...localAliases
       }
     }
   }
