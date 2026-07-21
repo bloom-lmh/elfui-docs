@@ -153,6 +153,7 @@ const englishSidebar: Sidebar = [
     ["Chain Components", "/en/ecosystem/chain"],
     ["VS Code Plugin", "/en/ecosystem/language-tools"]
   ]),
+  section("Release Notes", [["Changelog", "/en/releases/changelog"]]),
   section("Migration", [
     ["From Vue", "/en/migration/from-vue"],
     ["From Chain to Components", "/en/migration/from-chain"],
@@ -269,6 +270,7 @@ const zhSidebar: Sidebar = [
     ["Chain 链式组件", "/zh/生态/Chain链式组件"],
     ["VS Code 插件", "/zh/生态/VSCode插件"]
   ]),
+  section("版本记录", [["变更日志", "/zh/版本/变更日志"]]),
   section("迁移", [
     ["从 Vue 迁移", "/zh/迁移/从Vue迁移"],
     ["从链式迁移到组件", "/zh/迁移/从链式迁移到组件"],
