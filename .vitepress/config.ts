@@ -24,8 +24,8 @@ if (useLocalPackages && existsSync(localDevtoolsEntry)) {
 
 const localAliases = useLocalPackages
   ? {
-      "@elfui/core/internal": `${elfuiRoot}/packages/elfui/dist/internal.js`,
-      "@elfui/core": `${elfuiRoot}/packages/elfui/dist/index.js`,
+      "@elfui/core/internal": `${elfuiRoot}/packages/core/dist/internal.js`,
+      "@elfui/core": `${elfuiRoot}/packages/core/dist/index.js`,
       "@elfui/runtime/internal": `${elfuiRoot}/packages/runtime/dist/internal.js`,
       "@elfui/runtime": `${elfuiRoot}/packages/runtime/dist/index.js`,
       "@elfui/reactivity": `${elfuiRoot}/packages/reactivity/dist/index.js`,
