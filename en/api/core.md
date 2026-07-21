@@ -4,7 +4,7 @@ title: "@elfui/core API"
 
 # @elfui/core API
 
-`@elfui/core` is the main entrance of the new project, which is for macro components and application startup.
+`@elfui/core` is the standard application-facing runtime entry. It covers macros, reactivity, lifecycle, models, directives, plugins, and built-in rendering capabilities. Normal applications do not directly depend on `@elfui/runtime` or `@elfui/reactivity`.
 
 ## macro component
 
@@ -22,7 +22,7 @@ title: "@elfui/core API"
 
 ## Application and Runtime User API
 
-`createApp`、`registerComponents`、`defineComponent`、`defineCustomElement`、`ensureCustomElement`
+`createApp`, `registerComponents`, `resolveComponentTag`, `defineComponent`, `defineCustomElement`, `ensureCustomElement`, `useModel`
 
 Application-level plug-ins, instructions, and configuration usage:
 
@@ -32,8 +32,18 @@ createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 
 `app.directive()` is isolated by App; `app.component(Component)` only accepts the component constructor and registers the browser global Custom Element according to its established tag.
 
+Core also exports `directive`, `configure`, `getConfig`, and `usePlugin` for process-wide compatibility scenarios. Application code should prefer the isolated `app.directive()`, `app.config`, and `app.use()` APIs.
+
 ## Built-in combined functions
 
 `provide`、`inject`、`hasInjectionContext`、`createInjectionKey`、`useScopedSlot`、`useHost`、`useRenderRoot`、`useShadowRoot`、`useAttrs`、`useAppConfig`、`useTemplateRef`、`defineExpose`、`useEventListener`、`useClickOutside`、`useEscapeKey`、`useScrollLock`、`useFocusTrap`、`useResizeObserver`、`useIntersectionObserver`、`useFormControlContext`
+
+## Built-in rendering capabilities
+
+`teleport`, `transition`, `transitionGroup`, `keepAlive`, `suspense`, `dynamicComponent`, `projectLightDom`
+
+## Internal subpath
+
+`@elfui/core/internal` is reserved for compiler-generated code and is not an application-authoring API. It may change together with the compiler; applications must not import it manually.
 
 Chained builders are not exported in `@elfui/core`. Use `@elfui/chain` when chained API is required.

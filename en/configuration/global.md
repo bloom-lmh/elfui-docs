@@ -48,5 +48,5 @@ defineHtml(html`<p>{{ $app.appName }}</p>`);
 `tagPrefix` does not belong to application configuration. The macro component tag is determined at compile time, and the unified prefix can only be set in `@elfui/vite-plugin`.
 
 ::: warning
-`@elfui/runtime` still reserves `configure/getConfig/resetConfig` for low-level packaging and testing; business applications should not use them from the `@elfui/core` main entry.
+`@elfui/core` also exports `configure()` and `getConfig()` for legacy process-wide configuration and low-level integrations. New applications should prefer isolated `app.config`; `resetConfig()` remains available only from `@elfui/runtime`, primarily for test cleanup.
 :::

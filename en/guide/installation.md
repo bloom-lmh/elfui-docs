@@ -34,6 +34,12 @@ pnpm add @elfui/core
 pnpm add -D @elfui/vite-plugin
 ```
 
+`@elfui/core` is the application's only direct runtime dependency. `@elfui/runtime`, `@elfui/reactivity`, and `@elfui/shared` are installed as framework internals and should not be repeated in a normal application's `dependencies`.
+
+::: warning beta.5 compatibility
+The single-entry contract starts with `v0.1.0-beta.6`. Generated code from beta.5 and earlier may still import `@elfui/runtime/internal` directly. pnpm projects must keep the matching `@elfui/runtime` dependency until Core and the Vite plugin are upgraded together to beta.6.
+:::
+
 ```ts{6-7}
 // vite.config.ts
 import { defineConfig } from "vite";
@@ -58,7 +64,7 @@ export const Hello = defineHtml(html`<p>Hello ElfUI</p>`);
 | --- | --- |
 | `@elfui/router` | The application requires client routing. It is independent of `@elfui/core`. |
 | `@elfui/chain` | Old pages, small demos or no build environments require the Chain component. |
-| `@elfui/reactivity` | Only a responsive system is required. |
-| `@elfui/runtime` | To encapsulate advanced Custom Element runtime capabilities. |
+| `@elfui/reactivity` | Low-level libraries that use reactivity without the component runtime. Normal ElfUI applications import from Core. |
+| `@elfui/runtime` | Framework integrations and low-level Custom Element runtime wrappers. Normal ElfUI applications import from Core. |
 
 For the complete relationship between packages, warehouses and tools, see [Ecological Overview] (/en/ecosystem/overview).

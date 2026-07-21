@@ -17,6 +17,17 @@ defineExpose({
 export const SearchInput = defineHtml(html` <input ref="input" /> `);
 ```
 
+You can also pass a finite-key interface when the public instance contract is shared with type declarations. The interface does not need a string index signature:
+
+```ts
+interface SearchInputExpose {
+  focus(): void;
+  clear(): void;
+}
+
+defineExpose<SearchInputExpose>({ focus, clear });
+```
+
 External use:
 
 ```ts{1}

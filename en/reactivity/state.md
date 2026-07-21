@@ -21,6 +21,13 @@ defineHtml(html`<button>${count}</button>`);
 
 Use `peek()` when traceless reading is required in the code; use `.value` when responsive reading is required.
 
+`set()` performs the write and returns `void`; it is not chainable. Write consecutive updates as separate statements:
+
+```ts
+count.set(1);
+count.set(2);
+```
+
 ## useReactive
 
 ```ts{1-4}

@@ -17,7 +17,15 @@ app.directive("focus", {
 app.mount("#app");
 ```
 
-`app.directive()` is only effective for the current App. Use global `directive()` from `@elfui/runtime` only for chain-compatible or low-level runtime scenarios.
+`app.directive()` is scoped to the current App and is the preferred application API. Chain compatibility or process-wide cross-App scenarios can import global `directive()` from `@elfui/core`; value and element types are inferred from the concrete definition.
+
+```ts
+import { directive, type DirectiveBinding } from "@elfui/core";
+
+directive("numeric", (element: HTMLElement, binding: DirectiveBinding<number>) => {
+  element.dataset.value = binding.value.toFixed();
+});
+```
 
 Used in templates:
 

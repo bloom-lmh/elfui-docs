@@ -6,13 +6,15 @@ title: Events
 
 Components use events when notifying changes to the outside world. Use `defineEmits()` in the macro component to get the `emit` function.
 
-```ts{3-6}
+```ts{3-8}
 import { defineEmits, defineHtml, html } from "@elfui/core";
 
-const emit = defineEmits<{
+interface SearchBoxEmits {
   change: [value: string];
   clear: [];
-}>();
+}
+
+const emit = defineEmits<SearchBoxEmits>(["change", "clear"]);
 
 const onInput = (event: Event): void => {
   const input = event.target as HTMLInputElement;
@@ -54,6 +56,18 @@ const accepted = emit("submit", value);
 ```
 
 `emit()` returns the boolean result of `dispatchEvent()`. It becomes `false` when a cancelable event is prevented by the host.
+
+## Types and runtime event names
+
+Finite-key interfaces and type aliases are both valid `defineEmits` generic arguments. The compiler can extract event names declared in the same file. When the event type is imported from another file, also provide the runtime event-name array:
+
+```ts
+import type { SearchBoxEmits } from "./types";
+
+const emit = defineEmits<SearchBoxEmits>(["change", "clear"]);
+```
+
+The array is constrained by the generic keys, so an unknown event name is a TypeScript error.
 
 ## When to use events
 

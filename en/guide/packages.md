@@ -3,15 +3,13 @@ title: Packages
 ---
 # Packages and entrances
 
-::: warning
-ElfUI separates mainline capabilities and expansion capabilities. New projects start with `@elfui/core`, and chained components only use `@elfui/chain` when needed.
-:::
+ElfUI uses a single user-facing entry while keeping its internal packages separate. New projects declare only `@elfui/core` as a direct runtime dependency; Chain, Router, and build tooling remain optional.
 
 ## Entrance selection
 
 | Scenario | Installation | Import |
 | ------------------ | ------------------------------ | -------------------------------------------------- |
-| New Project / Component Library | `@elfui/core` + `@elfui/vite-plugin` | `import { defineHtml, createApp } from "@elfui/core"` |
+| New Project / Component Library | Runtime `@elfui/core`; dev dependency `@elfui/vite-plugin` | `import { defineHtml, createApp } from "@elfui/core"` |
 | Routing | `@elfui/router` | `import { createRouter } from "@elfui/router"` |
 | Old site embedded / small demo | `@elfui/chain` | `import { ElfUI } from "@elfui/chain"` |
 | Only responsive | `@elfui/reactivity` | `import { useRef } from "@elfui/reactivity"` |
@@ -22,7 +20,7 @@ ElfUI separates mainline capabilities and expansion capabilities. New projects s
 
 | Packages | Responsibilities |
 | -------------------- | ------------------------------------------------ |
-| `@elfui/core` | Macro component and root mount entry, aggregating commonly used reactive and runtime APIs |
+| `@elfui/core` | The standard user-facing runtime entry for stable macro, reactivity, and runtime APIs |
 | `@elfui/vite-plugin` | Vite macro component compilation plug-in |
 | `@elfui/router` | Web Components Routing |
 | `@elfui/chain` | Chained component expansion package, including runtime compiler |
@@ -44,6 +42,8 @@ Current beta volume baseline:
 ## boundary
 
 `@elfui/core` does not export the `createComponent()`, `ElementBuilder`, `compile()` or runtime string template capabilities. When you need a chained API, go to "Ecology/Chain Components".
+
+Generated render helpers import from `@elfui/core/internal`. This subpath is a versioned protocol between the compiler and Core, not an application-authoring API. Applications should not write internal imports or declare `@elfui/runtime` directly.
 
 ::: warning
 `@elfui/router` is a standalone package; only install it if routing is required. For the complete ecology, see [Ecosystem Overview] (/en/ecosystem/overview): Router, Extensions, UI Kit, Language Tools and Create ElfUI are all maintained independently in their respective warehouses.

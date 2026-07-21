@@ -4,7 +4,7 @@ title: "@elfui/core API"
 
 # @elfui/core API
 
-`@elfui/core` 是新项目主入口，面向宏组件和应用启动。
+`@elfui/core` 是应用唯一标准运行时入口，覆盖宏组件、响应式、生命周期、模型、指令、插件和内置渲染能力。普通应用不需要直接依赖 `@elfui/runtime` 或 `@elfui/reactivity`。
 
 ## 宏组件
 
@@ -22,7 +22,7 @@ title: "@elfui/core API"
 
 ## 应用与 Runtime 用户 API
 
-`createApp`、`registerComponents`、`defineComponent`、`defineCustomElement`、`ensureCustomElement`
+`createApp`、`registerComponents`、`resolveComponentTag`、`defineComponent`、`defineCustomElement`、`ensureCustomElement`、`useModel`
 
 应用级插件、指令、配置使用：
 
@@ -32,8 +32,18 @@ createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 
 `app.directive()` 按 App 隔离；`app.component(Component)` 只接受组件构造器，并按其既定 tag 注册浏览器全局 Custom Element。
 
+需要进程级兼容行为时，Core 也导出 `directive`、`configure`、`getConfig` 和 `usePlugin`。应用代码优先使用隔离的 `app.directive()`、`app.config` 和 `app.use()`。
+
 ## 内置组合式函数
 
 `provide`、`inject`、`hasInjectionContext`、`createInjectionKey`、`useScopedSlot`、`useHost`、`useRenderRoot`、`useShadowRoot`、`useAttrs`、`useAppConfig`、`useTemplateRef`、`defineExpose`、`useEventListener`、`useClickOutside`、`useEscapeKey`、`useScrollLock`、`useFocusTrap`、`useResizeObserver`、`useIntersectionObserver`、`useFormControlContext`
+
+## 内置渲染能力
+
+`teleport`、`transition`、`transitionGroup`、`keepAlive`、`suspense`、`dynamicComponent`、`projectLightDom`
+
+## Internal 子路径
+
+`@elfui/core/internal` 只供编译器生成代码使用，不是业务代码 API。它可以随编译器版本同步变化，应用不要手写导入。
 
 链式 builder 不在 `@elfui/core` 中导出。需要链式 API 时使用 `@elfui/chain`。
