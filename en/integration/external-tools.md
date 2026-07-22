@@ -45,7 +45,7 @@ onUnmounted(() => {
   instance = undefined;
 });
 
-export default defineHtml(html`<canvas ref="canvas"></canvas>`);
+export default defineHtml(`<canvas ref="canvas"></canvas>`);
 ```
 
 The package name above is illustrative; ElfUI does not bundle it.

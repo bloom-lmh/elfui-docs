@@ -6,12 +6,12 @@ title: Defining Components
 A macro component file usually contains three parts: import API, top-level setup logic, and export component.
 
 ```ts{6-11}
-import { defineHtml, html, useRef } from "@elfui/core";
+import { defineHtml, useRef } from "@elfui/core";
 
 const active = useRef(false);
 const toggle = (): void => active.set(!active.peek());
 
-export const TogglePanel = defineHtml(html`
+export const TogglePanel = defineHtml(`
   <button @click=${toggle}>toggle</button>
   <section v-show=${active}>
     <slot></slot>
@@ -52,7 +52,7 @@ If you need to unify the project prefix, please configure `tagPrefix` in `@elfui
 Component-level options use `defineOptions()`:
 
 ```ts{3-7}
-import { defineHtml, defineOptions, html } from "@elfui/core";
+import { defineHtml, defineOptions } from "@elfui/core";
 
 defineOptions({
   shadow: "open",
@@ -60,7 +60,7 @@ defineOptions({
   register: false
 });
 
-export const Field = defineHtml(html`<slot></slot>`);
+export const Field = defineHtml(`<slot></slot>`);
 ```
 
 `register: false` is suitable for exporting the constructor inside the component library, and then unifying `registerComponents()` by the entrance.

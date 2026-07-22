@@ -5,7 +5,7 @@ Form controls can use `v-model`.
 ```ts{3-6}
 const text = useRef("");
 
-export const SearchForm = defineHtml(html`
+export const SearchForm = defineHtml(`
   <input v-model=${text} />
   <p>${text}</p>
 `);
@@ -16,7 +16,7 @@ export const SearchForm = defineHtml(html`
 ```ts{3}
 const checked = useRef(false);
 
-defineHtml(html`<input type="checkbox" v-model=${checked} />`);
+defineHtml(`<input type="checkbox" v-model=${checked} />`);
 ```
 
 ## select
@@ -24,7 +24,7 @@ defineHtml(html`<input type="checkbox" v-model=${checked} />`);
 ```ts{3-8}
 const value = useRef("a");
 
-defineHtml(html`
+defineHtml(`
   <select v-model=${value}>
     <option value="a">A</option>
     <option value="b">B</option>

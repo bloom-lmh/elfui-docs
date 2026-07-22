@@ -15,7 +15,7 @@ const fullName = useComputed(() => `${first.value} ${last.value}`);
 Used directly in the template:
 
 ```ts{1}
-defineHtml(html`<p>${fullName}</p>`);
+defineHtml(`<p>${fullName}</p>`);
 ```
 
 ## Writable computed properties

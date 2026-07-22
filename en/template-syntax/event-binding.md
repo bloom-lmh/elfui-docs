@@ -7,7 +7,7 @@ const submit = (event: Event): void => {
   event.preventDefault();
 };
 
-export const FormButton = defineHtml(html` <button @click=${submit}>提交</button> `);
+export const FormButton = defineHtml(` <button @click=${submit}>提交</button> `);
 ```
 
 The framework will pass in the native event as the first parameter of the handler. The custom component event is `CustomEvent`, and the business data is in `event.detail`:
@@ -17,7 +17,7 @@ const select = (event: CustomEvent<{ id: string }>): void => {
   save(event.detail.id);
 };
 
-defineHtml(html`<user-picker @select=${select}></user-picker>`);
+defineHtml(`<user-picker @select=${select}></user-picker>`);
 ```
 
 ## Passing on parameters
@@ -27,7 +27,7 @@ const remove = (id: string): void => {
   items.set(items.peek().filter((item) => item.id !== id));
 };
 
-defineHtml(html` <button @click=${(event) => remove(item.id, event)}>删除</button> `);
+defineHtml(` <button @click=${(event) => remove(item.id, event)}>删除</button> `);
 ```
 
 ## modifier

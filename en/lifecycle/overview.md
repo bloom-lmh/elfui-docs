@@ -3,7 +3,7 @@
 Lifecycle hooks must be registered synchronously during component setup, which means at the top level of a Macro component.
 
 ```ts{11}
-import { defineHtml, html, onMounted, onUnmounted } from "@elfui/core";
+import { defineHtml, onMounted, onUnmounted } from "@elfui/core";
 
 onMounted(() => {
   console.log("mounted");
@@ -13,7 +13,7 @@ onUnmounted(() => {
   console.log("unmounted");
 });
 
-export const Demo = defineHtml(html`<p>Demo</p>`);
+export const Demo = defineHtml(`<p>Demo</p>`);
 ```
 
 ## Lifecycle hooks

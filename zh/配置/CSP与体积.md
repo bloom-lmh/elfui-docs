@@ -7,7 +7,7 @@ title: CSP 与体积
 宏组件主线在构建期编译模板，浏览器运行时不需要 `new Function`，更适合严格 CSP。
 
 ```ts{1}
-import { defineHtml, html } from "@elfui/core";
+import { defineHtml } from "@elfui/core";
 ```
 
 `@elfui/core` 主入口不包含 runtime compiler。仓库当前真实应用基线为 gzip 9.50 KB / Brotli 8.57 KB；实际结果会随导入 API 与 bundler 变化。

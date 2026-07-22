@@ -23,7 +23,7 @@ Macro components:
 const count = useRef(0);
 const inc = (): void => count.set(count.peek() + 1);
 
-export const Counter = defineHtml(html` <button @click=${inc}>${count}</button> `);
+export const Counter = defineHtml(` <button @click=${inc}>${count}</button> `);
 ```
 
 ## Migration rules
@@ -33,8 +33,8 @@ export const Counter = defineHtml(html` <button @click=${inc}>${count}</button> 
 | `.name()` | Export name inference or `defineName()` |
 | `.props()`       | `defineProps()`                        |
 | `.emits()`       | `defineEmits()`                        |
-| `.template()`    | `defineHtml(html`...`)`                |
-| `.style()`       | `defineStyle(css`...`)`                |
+| `.template()`    | `defineHtml(`...`)`                |
+| `.style()`       | `defineStyle(`...`)`                |
 | `.use()`         | `useComponents()`                      |
 | `.formControl()` | `defineOptions({ formControl: true })` |
 

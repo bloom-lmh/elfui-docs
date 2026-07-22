@@ -7,7 +7,7 @@ title: Events
 Components use events when notifying changes to the outside world. Use `defineEmits()` in the macro component to get the `emit` function.
 
 ```ts{3-8}
-import { defineEmits, defineHtml, html } from "@elfui/core";
+import { defineEmits, defineHtml } from "@elfui/core";
 
 interface SearchBoxEmits {
   change: [value: string];
@@ -21,7 +21,7 @@ const onInput = (event: Event): void => {
   emit("change", input.value);
 };
 
-export const SearchBox = defineHtml(html`
+export const SearchBox = defineHtml(`
   <input @input=${onInput} />
   <button @click=${() => emit("clear")}>清空</button>
 `);
@@ -36,7 +36,7 @@ const update = (event: CustomEvent<string>): void => {
   keyword.set(event.detail);
 };
 
-export const Page = defineHtml(html` <search-box @change=${update}></search-box> `);
+export const Page = defineHtml(` <search-box @change=${update}></search-box> `);
 ```
 
 `detail` for single-parameter events is this parameter. Multi-parameter events are put into `detail` as an array.

@@ -27,12 +27,12 @@ Default class:
 `name` is the class prefix, which can write static values ​​or dynamic binding:
 
 ```ts{6-10}
-import { defineHtml, html, useRef } from "elfui";
+import { defineHtml, useRef } from "elfui";
 
 const open = useRef(true);
 const transitionName = useRef("slide");
 
-export const SlidingAside = defineHtml(html`
+export const SlidingAside = defineHtml(`
   <Transition :name=${transitionName} :duration=${{ enter: 180, leave: 260 }}>
     <aside v-if=${open}>内容</aside>
   </Transition>

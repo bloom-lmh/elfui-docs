@@ -53,9 +53,9 @@ export default defineConfig({
 As long as the ordinary TypeScript module exports `defineHtml(...)`, the plug-in will compile it into an ElfUI Macro component:
 
 ```ts{3}
-import { defineHtml, html } from "@elfui/core";
+import { defineHtml } from "@elfui/core";
 
-export const Hello = defineHtml(html`<p>Hello ElfUI</p>`);
+export const Hello = defineHtml(`<p>Hello ElfUI</p>`);
 ```
 
 ## Optional packages

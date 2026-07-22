@@ -3,7 +3,7 @@
 The macro component mainline compiles the template during the build period, and does not require `new Function` when the browser is running, which is more suitable for strict CSP.
 
 ```ts{1}
-import { defineHtml, html } from "@elfui/core";
+import { defineHtml } from "@elfui/core";
 ```
 
 The main `@elfui/core` entry does not include the runtime compiler. The repository's current real-application baseline is 9.50 KB gzip / 8.57 KB Brotli; the exact output depends on the imported APIs and bundler.

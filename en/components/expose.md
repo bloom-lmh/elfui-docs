@@ -3,7 +3,7 @@
 `defineExpose()` exposes methods or properties to the component host, which can be called externally through DOM ref.
 
 ```ts{5-10}
-import { defineExpose, defineHtml, html, useTemplateRef } from "@elfui/core";
+import { defineExpose, defineHtml, useTemplateRef } from "@elfui/core";
 
 const input = useTemplateRef<HTMLInputElement>("input");
 
@@ -14,7 +14,7 @@ defineExpose({
   }
 });
 
-export const SearchInput = defineHtml(html` <input ref="input" /> `);
+export const SearchInput = defineHtml(` <input ref="input" /> `);
 ```
 
 You can also pass a finite-key interface when the public instance contract is shared with type declarations. The interface does not need a string index signature:

@@ -10,6 +10,15 @@ title: "@elfui/core API"
 
 `defineHtml`、`html`、`css`、`defineProps`、`defineEmits`、`defineModel`、`defineSlots`、`defineStyle`、`defineOptions`、`defineDirective`、`defineName`、`useComponents`
 
+Pass inline template literals directly to the macros:
+
+```ts
+export default defineHtml(`<button>${label}</button>`);
+defineStyle(`:host { display: block; }`);
+```
+
+`defineStyle(styleA, styleB)` combines multiple imported CSS strings. The legacy `defineHtml(html\`...\`)` and `defineStyle(css\`...\`)` forms remain compatible. `defineHtml()` does not accept arbitrary runtime-generated strings; its template must be statically analyzable by the compiler.
+
 ## Responsive
 
 `useRef`、`useReactive`、`useShallowRef`、`useShallowReactive`、`useComputed`、`computed`、`useEffect`、`watch`、`watchEffect`、`watchPostEffect`、`watchSyncEffect`、`onWatcherCleanup`、`nextTick`

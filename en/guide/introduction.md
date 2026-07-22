@@ -3,15 +3,15 @@ title: Introduction
 ---
 # Introduction
 
-ElfUI is a front-end framework for Web Components. Its main writing method is **macro component**: write TypeScript logic in an ordinary `.ts/.tsx` file, use `defineHtml(html`...`)` to export the component, and use `@elfui/vite-plugin` to precompile the template during construction.
+ElfUI is a front-end framework for Web Components. Its main writing method is **macro component**: write TypeScript logic in an ordinary `.ts/.tsx` file, use `defineHtml(`...`)` to export the component, and use `@elfui/vite-plugin` to precompile the template during construction.
 
 ```ts{6}
-import { defineHtml, html, useRef } from "@elfui/core";
+import { defineHtml, useRef } from "@elfui/core";
 
 const count = useRef(0);
 const inc = (): void => count.set(count.peek() + 1);
 
-export const Counter = defineHtml(html` <button @click=${inc}>点了 ${count} 次</button> `);
+export const Counter = defineHtml(` <button @click=${inc}>点了 ${count} 次</button> `);
 ```
 
 The core approach of ElfUI is compile-time fine-grained responsiveness. The text, attributes, events, conditions and lists in the template will be compiled into runtime helpers that directly update the DOM. Each dynamic point only subscribes to the state it actually reads.
@@ -34,7 +34,7 @@ ElfUI draws on Vue’s template experience, Lit’s Web Components output, and S
 | Dimensions | ElfUI |
 | -------- | ---------------------------------------- |
 | Component file | Common `.ts/.tsx` |
-| Template | ``defineHtml(html`...`)`` template declaration, compiled during build time |
+| Template | ``defineHtml(`...`)`` template declaration, compiled during build time |
 | Responsive | `useRef` / `useReactive` / `useComputed` |
 | Output | Standard Custom Elements |
 | Chain component | Placed in `@elfui/chain` ecological extension |

@@ -16,7 +16,7 @@ count.set(count.peek() + 1);
 The template can be read directly:
 
 ```ts{1}
-defineHtml(html`<button>${count}</button>`);
+defineHtml(`<button>${count}</button>`);
 ```
 
 Use `peek()` when traceless reading is required in the code; use `.value` when responsive reading is required.

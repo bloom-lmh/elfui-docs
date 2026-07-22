@@ -11,6 +11,15 @@ This page records user-visible changes in the synchronized ElfUI framework packa
 ElfUI is still in beta. Keep `@elfui/core` and `@elfui/vite-plugin` on the same exact version. When a
 release changes the compiler/runtime protocol, mixed versions are unsupported.
 
+## v0.1.0-beta.7 (in development) — 2026-07-22
+
+### Less repetitive macro syntax
+
+- Added `defineHtml(\`...\`)`; `${...}` holes continue to compile as reactive expressions.
+- Added `defineStyle(\`...\`)` and `defineStyle(styleA, styleB)` for combining imported styles.
+- Existing `defineHtml(html\`...\`)`, `defineStyle(css\`...\`)`, and generated component output remain compatible.
+- Arbitrary runtime-generated HTML strings remain unsupported, so this change adds no runtime template compiler.
+
 ## v0.1.0-beta.6 — 2026-07-21
 
 ### Unified application entry

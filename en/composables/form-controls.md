@@ -3,7 +3,7 @@
 ElfUI supports form-associated custom elements. After the component declares `formControl: true`, it can participate in native `<form>` submission, verification and reset.
 
 ```ts{3}
-import { defineHtml, defineOptions, html, useFormControlContext } from "@elfui/core";
+import { defineHtml, defineOptions, useFormControlContext } from "@elfui/core";
 
 defineOptions({ formControl: true });
 
@@ -13,7 +13,7 @@ const onInput = (event: Event): void => {
   form.setValue((event.target as HTMLInputElement).value);
 };
 
-export const ElfInput = defineHtml(html` <input @input=${onInput} /> `);
+export const ElfInput = defineHtml(` <input @input=${onInput} /> `);
 ```
 
 When used, put it into the form like a native field and provide `name`:

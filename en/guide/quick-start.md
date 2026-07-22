@@ -27,12 +27,12 @@ Do not want to set up a local environment first? [Open the ElfUI Playground](htt
 
 ```ts{7-9}
 // Counter.ts
-import { defineHtml, html, useRef } from "@elfui/core";
+import { defineHtml, useRef } from "@elfui/core";
 
 const count = useRef(0);
 const inc = (): void => count.set(count.peek() + 1);
 
-export const Counter = defineHtml(html`
+export const Counter = defineHtml(`
   <button class="counter" @click=${inc}>Count: ${count}</button>
 `);
 ```
@@ -76,9 +76,9 @@ If you need to customize a single component name, you can use `defineName()`; if
 ## Add style
 
 ```ts{3-9}
-import { css, defineHtml, defineStyle, html, useRef } from "@elfui/core";
+import { defineHtml, defineStyle, useRef } from "@elfui/core";
 
-defineStyle(css`
+defineStyle(`
   .counter {
     border: 0;
     border-radius: 8px;
@@ -89,7 +89,7 @@ defineStyle(css`
 const count = useRef(0);
 const inc = (): void => count.set(count.peek() + 1);
 
-export const Counter = defineHtml(html`
+export const Counter = defineHtml(`
   <button class="counter" @click=${inc}>Count: ${count}</button>
 `);
 ```

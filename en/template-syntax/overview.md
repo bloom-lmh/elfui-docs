@@ -1,9 +1,9 @@
 # Template syntax overview
 
-The ElfUI template is declared through `defineHtml(html`...`)`, which will be compiled into a render function that directly operates the DOM during the build period.
+The ElfUI template is declared through `defineHtml(`...`)`, which will be compiled into a render function that directly operates the DOM during the build period.
 
 ```ts{1-3}
-export const Counter = defineHtml(html`
+export const Counter = defineHtml(`
   <button @click=${inc} :disabled=${disabled}>${count}</button>
 `);
 ```
@@ -22,7 +22,7 @@ Ordinary dynamic binding uses `${...}` first:
 :::
 
 ```ts{1}
-defineHtml(html`<button @click=${submit} :disabled=${loading}>提交</button>`);
+defineHtml(`<button @click=${submit} :disabled=${loading}>提交</button>`);
 ```
 
 ::: tip

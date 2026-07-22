@@ -3,13 +3,13 @@
 Dynamic components are used to switch the components to be rendered at runtime.
 
 ```ts{7}
-import { defineHtml, html, useRef } from "@elfui/core";
+import { defineHtml, useRef } from "@elfui/core";
 import { UserCard } from "./UserCard";
 import { TeamCard } from "./TeamCard";
 
 const current = useRef<typeof UserCard | typeof TeamCard>(UserCard);
 
-export const Dashboard = defineHtml(html` <component :is=${current}></component> `);
+export const Dashboard = defineHtml(` <component :is=${current}></component> `);
 ```
 
 `:is` can be a component constructor or a registered tag name.

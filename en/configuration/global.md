@@ -38,7 +38,7 @@ const appName = useAppConfig().globalProperties.appName;
 Template string expressions still respect TypeScript scoping; pure template expressions read `$app`:
 
 ```ts{1}
-defineHtml(html`<p>{{ $app.appName }}</p>`);
+defineHtml(`<p>{{ $app.appName }}</p>`);
 ```
 
 `globalProperties` itself is not a reactive container. When runtime updates are required, put the return value of `useRef()` or `useReactive()` into it.

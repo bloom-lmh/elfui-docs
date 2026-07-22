@@ -36,9 +36,9 @@ export default defineConfig({
 ```
 
 ```ts{3}
-import { defineHtml, html } from "@elfui/core";
+import { defineHtml } from "@elfui/core";
 
-export const UserCard = defineHtml(html`<article><slot></slot></article>`);
+export const UserCard = defineHtml(`<article><slot></slot></article>`);
 ```
 
 ::: tip
@@ -50,17 +50,17 @@ The above component will compile to `acme-user-card`. `tagPrefix: "acme-"` will 
 The plugin will recognize the exported `defineHtml(...)` component:
 
 ```ts{1}
-export const Button = defineHtml(html`<button><slot></slot></button>`);
+export const Button = defineHtml(`<button><slot></slot></button>`);
 ```
 
 ```ts{1}
-const Button = defineHtml(html`<button><slot></slot></button>`);
+const Button = defineHtml(`<button><slot></slot></button>`);
 
 export { Button };
 ```
 
 ```ts{1}
-export default defineHtml(html`<button><slot></slot></button>`);
+export default defineHtml(`<button><slot></slot></button>`);
 ```
 
 ::: tip

@@ -3,16 +3,16 @@ title: Components
 ---
 # Component overview
 
-ElfUI's components are standard Custom Elements. The main line of writing is macro components: the top-level TypeScript is responsible for logic, and `defineHtml(html`...`)` is responsible for declaring templates and component boundaries.
+ElfUI's components are standard Custom Elements. The main line of writing is macro components: the top-level TypeScript is responsible for logic, and `defineHtml(`...`)` is responsible for declaring templates and component boundaries.
 
 ```ts{7}
-import { defineHtml, defineProps, html } from "@elfui/core";
+import { defineHtml, defineProps } from "@elfui/core";
 
 const props = defineProps<{ label: string }>({
   label: { type: String, default: "保存" }
 });
 
-export const SaveButton = defineHtml(html` <button>${props.label}</button> `);
+export const SaveButton = defineHtml(` <button>${props.label}</button> `);
 ```
 
 ## Component capabilities

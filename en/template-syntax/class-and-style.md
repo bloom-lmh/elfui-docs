@@ -5,17 +5,17 @@
 ## class
 
 ```ts{1}
-defineHtml(html`<button :class=${{ active: open, disabled }}></button>`);
+defineHtml(`<button :class=${{ active: open, disabled }}></button>`);
 ```
 
 ```ts{1}
-defineHtml(html`<button :class=${["btn", open && "is-open"]}></button>`);
+defineHtml(`<button :class=${["btn", open && "is-open"]}></button>`);
 ```
 
-`defineHtml(html`...`)` uses TypeScript tagged template; the content without `${...}` is just an HTML string. Therefore, the following unquoted object/array writing method is not supported, and the attribute value will be truncated by HTML parsing at spaces:
+`defineHtml(`...`)` uses TypeScript tagged template; the content without `${...}` is just an HTML string. Therefore, the following unquoted object/array writing method is not supported, and the attribute value will be truncated by HTML parsing at spaces:
 
 ```ts{1}
-defineHtml(html`<button :class={ active: open, disabled }></button>`); // 不支持
+defineHtml(`<button :class={ active: open, disabled }></button>`); // 不支持
 ```
 
 ::: tip
@@ -25,13 +25,13 @@ When compatible with the Vue style, you can write the quoted template expression
 ## style
 
 ```ts{1}
-defineHtml(html` <div :style=${{ width: `${width}px`, display: visible ? "" : "none" }}></div> `);
+defineHtml(` <div :style=${{ width: `${width}px`, display: visible ? "" : "none" }}></div> `);
 ```
 
 Static classes will be merged with dynamic classes:
 
 ```ts{1}
-defineHtml(html`<button class="btn" :class=${{ active }}></button>`);
+defineHtml(`<button class="btn" :class=${{ active }}></button>`);
 ```
 
 ## Component style

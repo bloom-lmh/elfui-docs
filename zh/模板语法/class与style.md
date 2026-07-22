@@ -9,17 +9,17 @@ title: class 与 style
 ## class
 
 ```ts{1}
-defineHtml(html`<button :class=${{ active: open, disabled }}></button>`);
+defineHtml(`<button :class=${{ active: open, disabled }}></button>`);
 ```
 
 ```ts{1}
-defineHtml(html`<button :class=${["btn", open && "is-open"]}></button>`);
+defineHtml(`<button :class=${["btn", open && "is-open"]}></button>`);
 ```
 
-`defineHtml(html`...`)` 使用 TypeScript tagged template；未加 `${...}` 的内容只是 HTML 字符串。因此下面这种无引号对象/数组写法不支持，属性值会在空格处被 HTML 解析截断：
+`defineHtml(`...`)` 使用 TypeScript tagged template；未加 `${...}` 的内容只是 HTML 字符串。因此下面这种无引号对象/数组写法不支持，属性值会在空格处被 HTML 解析截断：
 
 ```ts{1}
-defineHtml(html`<button :class={ active: open, disabled }></button>`); // 不支持
+defineHtml(`<button :class={ active: open, disabled }></button>`); // 不支持
 ```
 
 ::: tip
@@ -29,13 +29,13 @@ defineHtml(html`<button :class={ active: open, disabled }></button>`); // 不支
 ## style
 
 ```ts{1}
-defineHtml(html` <div :style=${{ width: `${width}px`, display: visible ? "" : "none" }}></div> `);
+defineHtml(` <div :style=${{ width: `${width}px`, display: visible ? "" : "none" }}></div> `);
 ```
 
 静态 class 会和动态 class 合并：
 
 ```ts{1}
-defineHtml(html`<button class="btn" :class=${{ active }}></button>`);
+defineHtml(`<button class="btn" :class=${{ active }}></button>`);
 ```
 
 ## 组件样式

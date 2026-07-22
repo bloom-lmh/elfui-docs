@@ -7,7 +7,7 @@ title: Props
 Props 是组件的外部输入。宏组件里用 `defineProps()` 声明。
 
 ```ts{3-9}
-import { defineHtml, defineProps, html } from "@elfui/core";
+import { defineHtml, defineProps } from "@elfui/core";
 
 const props = defineProps<{
   label: string;
@@ -17,7 +17,7 @@ const props = defineProps<{
   disabled: { type: Boolean, default: false }
 });
 
-export const ElfButton = defineHtml(html`
+export const ElfButton = defineHtml(`
   <button :disabled=${props.disabled}>${props.label}</button>
 `);
 ```

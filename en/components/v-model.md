@@ -3,7 +3,7 @@
 `v-model` is used to express the bidirectional status between father and son. The macro component uses `defineModel()` internally.
 
 ```ts{3}
-import { defineHtml, defineModel, html } from "@elfui/core";
+import { defineHtml, defineModel } from "@elfui/core";
 
 const value = defineModel<string>({ default: "" });
 
@@ -11,7 +11,7 @@ const onInput = (event: Event): void => {
   value.set((event.target as HTMLInputElement).value);
 };
 
-export const TextField = defineHtml(html` <input .value=${value} @input=${onInput} /> `);
+export const TextField = defineHtml(` <input .value=${value} @input=${onInput} /> `);
 ```
 
 Parent component uses:
@@ -19,7 +19,7 @@ Parent component uses:
 ```ts{3-6}
 const name = useRef("");
 
-export const Page = defineHtml(html`
+export const Page = defineHtml(`
   <text-field v-model=${name}></text-field>
   <p>${name}</p>
 `);

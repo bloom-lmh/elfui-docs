@@ -7,13 +7,13 @@ Text interpolation can use `${...}` or `&#123;&#123; ... &#125;&#125;`. It is re
 ```ts{3}
 const name = useRef("Elf");
 
-export const Hello = defineHtml(html` <p>Hello ${name}</p> `);
+export const Hello = defineHtml(` <p>Hello ${name}</p> `);
 ```
 
 ## Property binding
 
 ```ts{1}
-defineHtml(html`<button :disabled=${disabled}>保存</button>`);
+defineHtml(`<button :disabled=${disabled}>保存</button>`);
 ```
 
 Boolean properties are removed with values ​​`false`, `null`, `undefined`.
@@ -23,7 +23,7 @@ Boolean properties are removed with values ​​`false`, `null`, `undefined`.
 Use `.prop` when you need to set DOM properties:
 
 ```ts{1}
-defineHtml(html`<input .value=${value} />`);
+defineHtml(`<input .value=${value} />`);
 ```
 
 ::: tip
