@@ -41,7 +41,7 @@ createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 
 `app.directive()` is isolated by App; `app.component(Component)` only accepts the component constructor and registers the browser global Custom Element according to its established tag.
 
-Use `defineDirective()` for a directive local to one macro component and `app.directive()` for an application-wide directive. Core no longer exposes a process-global directive registry. `configure`, `getConfig`, and `usePlugin` remain available for low-level compatibility; application code should prefer `app.config` and `app.use()`.
+Use `const name = defineDirective(definition)` for a directive local to one macro component; the variable name becomes the kebab-case template directive name. Use `app.directive()` for an application-wide directive. Core no longer exposes a process-global directive registry. `configure`, `getConfig`, and `usePlugin` remain available for low-level compatibility; application code should prefer `app.config` and `app.use()`.
 
 ## Built-in combined functions
 

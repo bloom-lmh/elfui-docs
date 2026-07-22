@@ -11,6 +11,13 @@ This page records user-visible changes in the synchronized ElfUI framework packa
 ElfUI is still in beta. Keep `@elfui/core` and `@elfui/vite-plugin` on the same exact version. When a
 release changes the compiler/runtime protocol, mixed versions are unsupported.
 
+## v0.1.0-beta.9 — 2026-07-22
+
+- Fixed macro codegen so `RenderContext.directives` reaches `resolveDirective()` in both root templates and derived `v-for` contexts.
+- Consolidated `defineDirective` on the single-argument form `const loading = defineDirective(definition)`. The variable name is normalized to a kebab-case template name; the legacy two-argument form is no longer supported.
+- Component-local directives continue to take precedence over same-name directives registered by the current App.
+- Component unmount now releases live `v-if`/`v-for` detached scopes so directive cleanup hooks run reliably.
+
 ## v0.1.0-beta.8 — 2026-07-22
 
 ### Lifecycle ownership and API consolidation

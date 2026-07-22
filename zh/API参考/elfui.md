@@ -41,7 +41,7 @@ createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 
 `app.directive()` 按 App 隔离；`app.component(Component)` 只接受组件构造器，并按其既定 tag 注册浏览器全局 Custom Element。
 
-组件局部指令使用 `defineDirective()`，应用级指令使用 `app.directive()`。Core 不再公开进程级全局指令注册表。`configure`、`getConfig` 和 `usePlugin` 仍用于底层兼容场景；应用代码优先使用 `app.config` 和 `app.use()`。
+组件局部指令使用 `const name = defineDirective(definition)`，变量名会转换为 kebab-case 模板名；应用级指令使用 `app.directive()`。Core 不再公开进程级全局指令注册表。`configure`、`getConfig` 和 `usePlugin` 仍用于底层兼容场景；应用代码优先使用 `app.config` 和 `app.use()`。
 
 ## 内置组合式函数
 

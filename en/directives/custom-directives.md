@@ -32,23 +32,24 @@ Use `defineDirective()` in macro component:
 ```ts{3-7}
 import { defineDirective } from "@elfui/core";
 
-defineDirective("focus", {
+const focus = defineDirective<unknown, HTMLInputElement>({
   mounted(el) {
-    (el as HTMLElement).focus();
+    el.focus();
   }
 });
 ```
 
-The component compiler resolves `defineDirective()` definitions before the containing App's directive registry. Use it when the behavior belongs to one component implementation.
+`defineDirective()` must be assigned to a local variable. The variable becomes the template directive name; camelCase is normalized to kebab-case, so `const autoFocus` matches `v-auto-focus`. The component compiler resolves local definitions before the containing App's directive registry. Use it when the behavior belongs to one component implementation.
 
 ## life cycle
 
 Command support:
 
-| Hook | Timing |
-| ----------- | ------------ |
-| `mounted` | After the element is mounted |
-| `updated` | After the binding value is updated |
-| `unmounted` | When the element is unloaded |
+| Hook            | Timing                             |
+| --------------- | ---------------------------------- |
+| `mounted`       | After the element is mounted       |
+| `updated`       | After the binding value is updated |
+| `beforeUnmount` | Before the element is unloaded     |
+| `unmounted`     | When the element is unloaded       |
 
 If the behavior involves component state, give priority to built-in composition functions; if the behavior only cares about a certain DOM element, directives are more appropriate.
