@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev --host 0.0.0.0",
+    "dev": "node scripts/dev.mjs",
     "build": "vitepress build",
     "preview": "vitepress preview",
     "sync:english-examples": "node scripts/sync-english-examples.mjs",
@@ -12,11 +12,11 @@
     "beautify:vitepress": "node scripts/beautify-vitepress.mjs"
   },
   "dependencies": {
-    "@elfui/core": "0.1.0-beta.6",
+    "@elfui/core": "0.1.0-beta.7",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@elfui/vite-plugin": "0.1.0-beta.6",
+    "@elfui/vite-plugin": "0.1.0-beta.7",
     "vitepress": "^1.6.4",
     "vue": "^3"
   },

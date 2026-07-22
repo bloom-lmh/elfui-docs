@@ -11,14 +11,34 @@ This page records user-visible changes in the synchronized ElfUI framework packa
 ElfUI is still in beta. Keep `@elfui/core` and `@elfui/vite-plugin` on the same exact version. When a
 release changes the compiler/runtime protocol, mixed versions are unsupported.
 
-## v0.1.0-beta.7 (in development) — 2026-07-22
+## v0.1.0-beta.7 — 2026-07-22
 
 ### Less repetitive macro syntax
 
 - Added `defineHtml(\`...\`)`; `${...}` holes continue to compile as reactive expressions.
 - Added `defineStyle(\`...\`)` and `defineStyle(styleA, styleB)` for combining imported styles.
-- Existing `defineHtml(html\`...\`)`, `defineStyle(css\`...\`)`, and generated component output remain compatible.
+- Removed the public exports, source implementations, and legacy compiler branches for `html`, `css`, and `MacroHtmlTemplate`; this is a breaking beta.7 change.
+- Removed obsolete compiler-diagnostic paths for `useName`, `useProps`, `useEmit`, and `useStyle`, and cleaned stale `useState` examples from source comments.
 - Arbitrary runtime-generated HTML strings remain unsupported, so this change adds no runtime template compiler.
+
+### Migration
+
+Upgrade Core and the Vite plug-in together:
+
+```bash
+pnpm up @elfui/core@0.1.0-beta.7 @elfui/vite-plugin@0.1.0-beta.7
+```
+
+Remove `html` and `css` imports, then move each tagged template directly into its macro call:
+
+```ts
+import { defineHtml, defineStyle } from "@elfui/core";
+
+defineStyle(`:host { display: block; }`);
+export const Button = defineHtml(`<button><slot></slot></button>`);
+```
+
+Imported styles still work with `defineStyle(baseStyle, themeStyle)`. Old imports now produce a TypeScript or bundler error.
 
 ## v0.1.0-beta.6 — 2026-07-21
 

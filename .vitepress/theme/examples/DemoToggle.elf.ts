@@ -1,8 +1,8 @@
-import { css, defineHtml, defineName, defineStyle, html, useComputed, useRef } from "@elfui/core";
+import { defineHtml, defineName, defineStyle, useComputed, useRef } from "@elfui/core";
 
 defineName("elf-demo-toggle");
 
-defineStyle(css`
+defineStyle(`
   :host { display: block; }
 
   .toggle {
@@ -43,7 +43,7 @@ const toggle = (): void => {
   enabled.set(!enabled.peek());
 };
 
-export const DemoToggle = defineHtml(html`
+export const DemoToggle = defineHtml(`
   <section class="toggle" aria-label="Interactive ElfUI toggle">
     <p class="state">${state}</p>
     <button type="button" @click=${toggle}>Toggle state</button>

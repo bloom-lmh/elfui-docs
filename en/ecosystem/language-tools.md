@@ -19,7 +19,7 @@ Each version tag also comes with installable VSIX in [Language Tools Releases](h
 
 - HTML tags, ElfUI component tags, props, events, instructions, `${...}` expressions and `v-for` local variable completion.
 - Compiler-consistent diagnostics for templates, props, emits, slots, models, and local component registrations.
-- HTML/CSS formatting, CSS completion, hover and CSS variable suggestions in `html\`...\``、`css\`...\``.
+- HTML/CSS formatting, completion, hover, and CSS variable suggestions in `defineHtml(\`...\`)` and `defineStyle(\`...\`)`.
 - Jump to definitions, references, renaming, documentation links, code snippets, component highlighting, and workspace component indexing.
 
 After opening an ElfUI project that has `@elfui/vite-plugin` configured, the extension automatically discovers the project configuration.

@@ -17,7 +17,6 @@ ElfUI does not need a framework-specific adapter for every chart, editor, render
 ```ts
 import {
   defineHtml,
-  html,
   onBeforeUnmount,
   onMounted,
   onUnmounted,

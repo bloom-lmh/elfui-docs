@@ -41,6 +41,10 @@ export const Counter = defineHtml(`
 
 The top-level code is the component’s setup logic. `${count}` in the template will be compiled into responsive text binding, and `@click=${inc}` will become an event listener.
 
+::: tip Current recommended syntax
+Use `defineHtml(\`...\`)` and `defineStyle(\`...\`)` directly. Beta.7 removes the `html` and `css` tagged-template helpers; new projects and scaffold output use only the direct forms.
+:::
+
 ## Mount application
 
 ```ts{5}

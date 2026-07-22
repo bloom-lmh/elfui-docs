@@ -19,14 +19,14 @@
             <span></span><span></span><span></span>
             <b>Counter.ts</b>
           </div>
-          <pre><code><span class="pink">import</span> { defineHtml, html, useRef }
+          <pre><code><span class="pink">import</span> { defineHtml, useRef }
   <span class="pink">from</span> <span class="string">"@elfui/core"</span>;
 
 <span class="blue">const</span> count = useRef(<span class="number">0</span>);
 <span class="blue">const</span> increment = () =>
   count.set(count.peek() + <span class="number">1</span>);
 
-<span class="pink">export const</span> Counter = defineHtml(html<span class="string">`</span>
+<span class="pink">export const</span> Counter = defineHtml(<span class="string">`</span>
   &lt;button @click=${increment}&gt;
     Count: ${count}
   &lt;/button&gt;

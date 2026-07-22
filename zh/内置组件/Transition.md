@@ -31,7 +31,7 @@ title: Transition
 `name` 就是 class 前缀，可写静态值或动态绑定：
 
 ```ts{6-10}
-import { defineHtml, useRef } from "elfui";
+import { defineHtml, useRef } from "@elfui/core";
 
 const open = useRef(true);
 const transitionName = useRef("slide");

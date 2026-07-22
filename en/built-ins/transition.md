@@ -27,7 +27,7 @@ Default class:
 `name` is the class prefix, which can write static values ​​or dynamic binding:
 
 ```ts{6-10}
-import { defineHtml, useRef } from "elfui";
+import { defineHtml, useRef } from "@elfui/core";
 
 const open = useRef(true);
 const transitionName = useRef("slide");

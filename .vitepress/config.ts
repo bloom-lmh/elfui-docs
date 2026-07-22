@@ -372,7 +372,8 @@ export default defineConfig({
   },
   vite: {
     server: {
-      // Keep the docs server usable when the default port is already occupied.
+      // scripts/dev.mjs preselects a free port; direct VitePress usage starts at 5173.
+      port: Number(process.env.ELFUI_DOCS_PORT ?? 5173),
       strictPort: false
     },
     plugins: vitePlugins,

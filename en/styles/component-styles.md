@@ -27,6 +27,8 @@ defineStyle(stateStyle);
 // Equivalent: defineStyle(baseStyle, stateStyle);
 ```
 
+Beta.7 removes the `css` tagged-template helper. Components use `defineStyle(\`...\`)` directly.
+
 ## Dynamic styles
 
 Component state changes are first mapped to class, attribute or CSS variables, and then processed by CSS.

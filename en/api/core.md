@@ -8,7 +8,7 @@ title: "@elfui/core API"
 
 ## macro component
 
-`defineHtml`、`html`、`css`、`defineProps`、`defineEmits`、`defineModel`、`defineSlots`、`defineStyle`、`defineOptions`、`defineDirective`、`defineName`、`useComponents`
+`defineHtml`、`defineProps`、`defineEmits`、`defineModel`、`defineSlots`、`defineStyle`、`defineOptions`、`defineDirective`、`defineName`、`useComponents`
 
 Pass inline template literals directly to the macros:
 
@@ -17,7 +17,7 @@ export default defineHtml(`<button>${label}</button>`);
 defineStyle(`:host { display: block; }`);
 ```
 
-`defineStyle(styleA, styleB)` combines multiple imported CSS strings. The legacy `defineHtml(html\`...\`)` and `defineStyle(css\`...\`)` forms remain compatible. `defineHtml()` does not accept arbitrary runtime-generated strings; its template must be statically analyzable by the compiler.
+`defineStyle(styleA, styleB)` combines multiple imported CSS strings. Beta.7 removes `html`, `css`, and `MacroHtmlTemplate`; pass inline templates directly. `defineHtml()` does not accept arbitrary runtime-generated strings because its template must be statically analyzable by the compiler.
 
 ## Responsive
 

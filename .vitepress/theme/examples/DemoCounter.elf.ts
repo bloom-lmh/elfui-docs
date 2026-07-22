@@ -1,8 +1,8 @@
-import { css, defineHtml, defineName, defineStyle, html, useComputed, useRef } from "@elfui/core";
+import { defineHtml, defineName, defineStyle, useComputed, useRef } from "@elfui/core";
 
 defineName("elf-demo-counter");
 
-defineStyle(css`
+defineStyle(`
   :host {
     display: block;
     color: var(--vp-c-text-1, #0f172a);
@@ -125,7 +125,7 @@ const reset = (): void => {
   count.set(0);
 };
 
-export const DemoCounter = defineHtml(html`
+export const DemoCounter = defineHtml(`
   <section class="demo" aria-label="Interactive ElfUI counter">
     <div class="preview">
       <div class="chip">native ElfUI component</div>
@@ -138,7 +138,7 @@ export const DemoCounter = defineHtml(html`
     <div class="meta">
       <h3>Run a native ElfUI component</h3>
       <p>
-        This is a native Custom Element compiled from <code>defineHtml(html)</code>. The docs page
+        This is a native Custom Element compiled from <code>defineHtml(&#96;...&#96;)</code>. The docs page
         only renders an <code>&lt;elf-demo-counter&gt;</code> tag.
       </p>
       <button class="reset" type="button" @click=${reset}>Reset</button>

@@ -20,7 +20,7 @@ code --install-extension SWUST-WEBLAB-LMH.elfui-language-features
 
 - HTML 标签、ElfUI 组件标签、props、事件、指令、`${...}` 表达式与 `v-for` 局部变量补全。
 - 与编译器一致的模板、props、emits、slots、model 与局部组件注册诊断。
-- `html\`...\``、`css\`...\`` 中的 HTML/CSS 格式化、CSS 补全、悬停与 CSS 变量建议。
+- `defineHtml(\`...\`)`、`defineStyle(\`...\`)` 中的 HTML/CSS 格式化、CSS 补全、悬停与 CSS 变量建议。
 - 跳转定义、引用、重命名、文档链接、代码片段、组件高亮和工作区组件索引。
 
 打开已配置 `@elfui/vite-plugin` 的 ElfUI 项目后，扩展会自动发现项目配置。
