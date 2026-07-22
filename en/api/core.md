@@ -35,7 +35,7 @@ defineStyle(`:host { display: block; }`);
 
 Application-level plug-ins, instructions, and configuration usage:
 
-```ts{1}
+```ts
 createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 ```
 

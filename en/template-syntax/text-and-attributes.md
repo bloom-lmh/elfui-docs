@@ -4,15 +4,14 @@
 Text interpolation can use `${...}` or `&#123;&#123; ... &#125;&#125;`. It is recommended for new projects to use `${...}` in macro components because it directly references the current TypeScript scope.
 :::
 
-```ts{3}
+```ts
 const name = useRef("Elf");
-
 export const Hello = defineHtml(` <p>Hello ${name}</p> `);
 ```
 
 ## Property binding
 
-```ts{1}
+```ts
 defineHtml(`<button :disabled=${disabled}>保存</button>`);
 ```
 
@@ -22,7 +21,7 @@ Boolean properties are removed with values ​​`false`, `null`, `undefined`.
 
 Use `.prop` when you need to set DOM properties:
 
-```ts{1}
+```ts
 defineHtml(`<input .value=${value} />`);
 ```
 

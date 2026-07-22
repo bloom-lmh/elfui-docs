@@ -30,11 +30,11 @@ defineExpose<SearchInputExpose>({ focus, clear });
 
 External use:
 
-```ts{1}
+```ts{5}
 const el = document.querySelector("search-input") as HTMLElement & {
   focus(): void;
 };
-
+// 外部可以调用暴露的方法
 el.focus();
 ```
 

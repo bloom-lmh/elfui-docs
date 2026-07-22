@@ -40,7 +40,7 @@ pnpm add -D @elfui/vite-plugin
 The single-entry contract starts with `v0.1.0-beta.6`. Generated code from beta.5 and earlier may still import `@elfui/runtime/internal` directly. pnpm projects must keep the matching `@elfui/runtime` dependency until Core and the Vite plugin are upgraded together to beta.6.
 :::
 
-```ts{6-7}
+```ts{6}
 // vite.config.ts
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";

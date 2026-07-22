@@ -22,7 +22,7 @@ const current = useRef("elf-user-card");
 
 When you need to cache the instance, use `<KeepAlive>` to wrap the dynamic component:
 
-```html{1}
+```html
 <KeepAlive>
   <component :is="current"></component>
 </KeepAlive>

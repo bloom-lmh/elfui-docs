@@ -22,20 +22,20 @@ export default defineConfig({
 The tag name of the macro component is determined at compile time, so `tagPrefix` can only be configured in the Vite plug-in and cannot be modified through `configure()` at runtime.
 :::
 
-```ts{6-10}
+```ts
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 
 export default defineConfig({
   plugins: [
     elfuiMacroPlugin({
-      tagPrefix: "acme"
-    })
-  ]
+      tagPrefix: "acme",
+    }),
+  ],
 });
 ```
 
-```ts{3}
+```ts
 import { defineHtml } from "@elfui/core";
 
 export const UserCard = defineHtml(`<article><slot></slot></article>`);
@@ -49,17 +49,17 @@ The above component will compile to `acme-user-card`. `tagPrefix: "acme-"` will 
 
 The plugin will recognize the exported `defineHtml(...)` component:
 
-```ts{1}
+```ts
 export const Button = defineHtml(`<button><slot></slot></button>`);
 ```
 
-```ts{1}
+```ts
 const Button = defineHtml(`<button><slot></slot></button>`);
 
 export { Button };
 ```
 
-```ts{1}
+```ts
 export default defineHtml(`<button><slot></slot></button>`);
 ```
 
@@ -69,10 +69,10 @@ export default defineHtml(`<button><slot></slot></button>`);
 
 ## Diagnostic options
 
-```ts{1-4}
+```ts
 elfuiMacroPlugin({
   strictDiagnostics: true,
-  templateTypeCheck: true
+  templateTypeCheck: true,
 });
 ```
 

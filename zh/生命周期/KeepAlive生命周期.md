@@ -6,7 +6,7 @@ title: KeepAlive 生命周期
 
 被 `<KeepAlive>` 缓存的动态组件不会在切换时销毁，而是在激活和失活之间切换。
 
-```ts{1-3}
+```ts
 onActivated(() => {
   console.log("active again");
 });

@@ -23,20 +23,20 @@ export default defineConfig({
 宏组件的 tag 名称在编译期确定，因此 `tagPrefix` 只能配置在 Vite 插件里，不能通过运行时 `configure()` 修改。
 :::
 
-```ts{6-10}
+```ts
 import { defineConfig } from "vite";
 import { elfuiMacroPlugin } from "@elfui/vite-plugin";
 
 export default defineConfig({
   plugins: [
     elfuiMacroPlugin({
-      tagPrefix: "acme"
-    })
-  ]
+      tagPrefix: "acme",
+    }),
+  ],
 });
 ```
 
-```ts{3}
+```ts
 import { defineHtml } from "@elfui/core";
 
 export const UserCard = defineHtml(`<article><slot></slot></article>`);
@@ -50,17 +50,17 @@ export const UserCard = defineHtml(`<article><slot></slot></article>`);
 
 插件会识别导出的 `defineHtml(...)` 组件：
 
-```ts{1}
+```ts
 export const Button = defineHtml(`<button><slot></slot></button>`);
 ```
 
-```ts{1}
+```ts
 const Button = defineHtml(`<button><slot></slot></button>`);
 
 export { Button };
 ```
 
-```ts{1}
+```ts
 export default defineHtml(`<button><slot></slot></button>`);
 ```
 
@@ -70,10 +70,10 @@ export default defineHtml(`<button><slot></slot></button>`);
 
 ## 诊断选项
 
-```ts{1-4}
+```ts
 elfuiMacroPlugin({
   strictDiagnostics: true,
-  templateTypeCheck: true
+  templateTypeCheck: true,
 });
 ```
 

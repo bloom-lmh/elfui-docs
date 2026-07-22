@@ -4,7 +4,7 @@ Slots allow parent components to pass content to child components. ElfUI exports
 
 ## Default slot
 
-```ts{1-5}
+```ts{3}
 export const Card = defineHtml(`
   <article class="card">
     <slot></slot>
@@ -18,7 +18,7 @@ export const Card = defineHtml(`
 
 ## named slot
 
-```ts{1-5}
+```ts{2,4}
 export const Panel = defineHtml(`
   <header><slot name="title"></slot></header>
   <main><slot></slot></main>
@@ -54,7 +54,7 @@ export const ListBox = defineHtml(`
 
 The parent component provides the rendering function with `<template #name="...">` with scope parameters:
 
-```ts{1-8}
+```ts{3-6}
 export const UserListPage = defineHtml(`
   <user-list>
     <template #item="{ item, index }">

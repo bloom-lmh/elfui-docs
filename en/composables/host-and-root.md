@@ -2,7 +2,7 @@
 
 The outer element of Custom Element is host. The component internally uses `useHost()` to get it; `useRenderRoot()` returns `ShadowRoot` when Shadow DOM is enabled and host otherwise; `useShadowRoot()` returns `null` when `shadow: false` is used.
 
-```ts{1}
+```ts
 const host = useHost<HTMLElement>();
 const root = useRenderRoot();
 const shadow = useShadowRoot();
@@ -12,7 +12,7 @@ const shadow = useShadowRoot();
 
 `useHostAttr(name, getter)` synchronizes status to attribute. The attribute will be removed when returning `null`, `undefined` or `false`; `true` is written as an empty attribute, suitable for ARIA:
 
-```ts{1}
+```ts
 useHostAttr("aria-expanded", () => open.value);
 ```
 
@@ -20,14 +20,14 @@ useHostAttr("aria-expanded", () => open.value);
 
 `useHostFlag()` only expresses whether the attribute exists, suitable for CSS state selectors:
 
-```ts{1}
+```ts
 useHostFlag("data-open", () => open.value);
 // elf-menu[data-open] { ... }
 ```
 
 ## CSS variables and inline styles
 
-```ts{1}
+```ts
 useHostCssVar("--panel-width", () => width.value);
 useHostStyle("maxWidth", () => `${width.value}px`);
 ```

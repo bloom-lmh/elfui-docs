@@ -2,7 +2,7 @@
 
 `TransitionGroup` is used for list enter/leave and keyed reflow animations.
 
-```html{1}
+```html
 <TransitionGroup name="list" tag="ul">
   <li v-for="item in items" :key="item.id">{{ item.name }}</li>
 </TransitionGroup>
@@ -12,7 +12,7 @@
 
 The move class is applied when the list is reordered:
 
-```css{1}
+```css
 .list-move {
   transition: transform 0.2s ease;
 }

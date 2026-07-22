@@ -5,11 +5,11 @@ title: Chain
 
 `@elfui/chain` is an ecological expansion package, oriented to progressive embedding of old sites, small demos, and low construction constraint pages. It retains the chained builder and has a built-in runtime compiler, thus supporting `.template()`.
 
-```bash{1}
+```bash
 pnpm add @elfui/chain
 ```
 
-```ts{6}
+```ts
 import { ElfUI, useRef } from "@elfui/chain";
 
 ElfUI.createComponent()

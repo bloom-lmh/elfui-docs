@@ -2,7 +2,7 @@
 
 Dynamic components cached by `<KeepAlive>` are not destroyed on switch, but switch between activation and deactivation.
 
-```ts{1-3}
+```ts
 onActivated(() => {
   console.log("active again");
 });

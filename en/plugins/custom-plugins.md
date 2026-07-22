@@ -2,21 +2,21 @@
 
 Plugins can be written as functions:
 
-```ts{3}
+```ts
 import type { ElfUIAppPluginFn } from "@elfui/core";
 
 export const focusPlugin: ElfUIAppPluginFn = (app) => {
   app.directive("focus", {
     mounted(el) {
       (el as HTMLElement).focus();
-    }
+    },
   });
 };
 ```
 
 It can also be written as an object:
 
-```ts{3}
+```ts
 import type { ElfUIAppPluginObject } from "@elfui/core";
 
 export const appPlugin: ElfUIAppPluginObject<{ appName?: string }> = {
@@ -24,7 +24,7 @@ export const appPlugin: ElfUIAppPluginObject<{ appName?: string }> = {
     if (options?.appName) {
       app.config.globalProperties.appName = options.appName;
     }
-  }
+  },
 };
 ```
 

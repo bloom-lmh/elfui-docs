@@ -5,7 +5,7 @@ title: Effects
 
 `useEffect()` is used to run logic that produces side effects and automatically track dependencies.
 
-```ts{1}
+```ts
 const count = useRef(0);
 
 useEffect(() => {
@@ -19,7 +19,7 @@ When `count` changes, the effect will be re-executed.
 
 Effects can return cleanup functions:
 
-```ts{1-4}
+```ts
 useEffect(() => {
   const id = window.setInterval(tick, 1000);
   return () => window.clearInterval(id);
@@ -32,7 +32,7 @@ The cleanup function will be executed before the next rerun, and will also be ex
 
 Both `useEffect()` and `watchEffect()` automatically track the dependencies read in the function, execute them immediately, and support `flush`. New projects take precedence over `useEffect()`; `watchEffect()` retains Vue-style `onCleanup` parameters and `onWatcherCleanup()`.
 
-```ts{1-5}
+```ts
 watchEffect((onCleanup) => {
   const controller = new AbortController();
   void loadData(controller.signal);

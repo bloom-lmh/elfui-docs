@@ -2,7 +2,7 @@
 
 The ElfUI template is declared through `defineHtml(`...`)`, which will be compiled into a render function that directly operates the DOM during the build period.
 
-```ts{1-3}
+```ts{2}
 export const Counter = defineHtml(`
   <button @click=${inc} :disabled=${disabled}>${count}</button>
 `);
@@ -21,7 +21,7 @@ Template syntax is divided into two categories:
 Ordinary dynamic binding uses `${...}` first:
 :::
 
-```ts{1}
+```ts
 defineHtml(`<button @click=${submit} :disabled=${loading}>提交</button>`);
 ```
 
@@ -29,7 +29,7 @@ defineHtml(`<button @click=${submit} :disabled=${loading}>提交</button>`);
 Scenarios that require template local variables use string expressions, such as `v-for`:
 :::
 
-```html{1}
+```html
 <li v-for="item in list" :key="item.id">{{ item.name }}</li>
 ```
 

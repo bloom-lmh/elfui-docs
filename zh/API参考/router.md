@@ -8,7 +8,7 @@ title: router API
 
 ## 创建与 history
 
-```ts{1}
+```ts
 createRouter(options): Router
 createWebHistory(base?): RouterHistory
 createWebHashHistory(base?): RouterHistory
@@ -23,16 +23,16 @@ getActiveRouter(): Router | null
 
 ## Router 实例
 
-| 成员 | 说明 |
-| --- | --- |
-| `current`、`currentRoute` | 包含当前 `RouteLocation` 的响应式 ref。 |
-| `push(to)`、`replace(to)` | 导航；结果为 `void` 或 `NavigationFailure`。 |
-| `back()`、`forward()`、`go(delta)` | 在 history 中移动。 |
-| `resolve(to, currentLocation?)` | 只解析，不导航。 |
-| `beforeEach`、`beforeResolve`、`afterEach`、`onError` | 注册钩子；每个都会返回注销函数。 |
-| `addRoute`、`removeRoute`、`clearRoutes`、`hasRoute`、`getRoutes` | 修改或检查路由记录。 |
-| `isReady()` | 在首次导航、守卫与懒页面加载完成后 resolve。 |
-| `listening` | 是否监听浏览器 history 事件。 |
+| 成员                                                              | 说明                                         |
+| ----------------------------------------------------------------- | -------------------------------------------- |
+| `current`、`currentRoute`                                         | 包含当前 `RouteLocation` 的响应式 ref。      |
+| `push(to)`、`replace(to)`                                         | 导航；结果为 `void` 或 `NavigationFailure`。 |
+| `back()`、`forward()`、`go(delta)`                                | 在 history 中移动。                          |
+| `resolve(to, currentLocation?)`                                   | 只解析，不导航。                             |
+| `beforeEach`、`beforeResolve`、`afterEach`、`onError`             | 注册钩子；每个都会返回注销函数。             |
+| `addRoute`、`removeRoute`、`clearRoutes`、`hasRoute`、`getRoutes` | 修改或检查路由记录。                         |
+| `isReady()`                                                       | 在首次导航、守卫与懒页面加载完成后 resolve。 |
+| `listening`                                                       | 是否监听浏览器 history 事件。                |
 
 ## 元素与组合式 API
 

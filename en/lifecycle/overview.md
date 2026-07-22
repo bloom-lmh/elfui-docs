@@ -2,7 +2,7 @@
 
 Lifecycle hooks must be registered synchronously during component setup, which means at the top level of a Macro component.
 
-```ts{11}
+```ts
 import { defineHtml, onMounted, onUnmounted } from "@elfui/core";
 
 onMounted(() => {

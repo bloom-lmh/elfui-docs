@@ -8,7 +8,7 @@ Use `<elf-link>` for ordinary navigation. It is an alias of `<elf-router-link>`,
 
 ## Links in templates
 
-```html{1}
+```html
 <nav>
   <elf-link to="/">Home</elf-link>
   <elf-link :to=${{ name: "user", params: { id: "42" } }}>Profile</elf-link>
@@ -21,10 +21,8 @@ Use `<elf-link>` for ordinary navigation. It is an alias of `<elf-router-link>`,
 
 `replace` replaces the current history entry. `active-class` and `exact-active-class` override the router defaults, while `aria-current-value` controls the active link's `aria-current` value (default: `page`). A parent link is active on child routes; exact active also requires the same route record and params.
 
-```html{1}
-<elf-link to="/settings" active-class="selected" exact-active-class="selected-exact">
-  Settings
-</elf-link>
+```html
+<elf-link to="/settings" active-class="selected" exact-active-class="selected-exact"> Settings </elf-link>
 ```
 
 ## Navigate in component code
@@ -55,7 +53,7 @@ router?.go(-2);
 
 `state` is persisted with the browser history entry and can be read as `history.state`. It is not included in the URL. To deliberately rerun the current route's guards and lazy resolution, set `force: true`:
 
-```ts{1}
+```ts
 await router?.push({ path: "/reports", force: true });
 ```
 
@@ -63,9 +61,9 @@ await router?.push({ path: "/reports", force: true });
 
 `resolve()` does not change the current route. Use it to inspect a location, make a precomputed anchor, or resolve a relative string against the current route.
 
-```ts{1}
+```ts
 const preview = router?.resolve({ name: "user", params: { id: "7" } });
-console.log(preview?.href);     // /console/users/7 when the base is /console
+console.log(preview?.href); // /console/users/7 when the base is /console
 console.log(preview?.fullPath); // /users/7
 
 const sibling = router?.resolve("../settings");
@@ -77,7 +75,7 @@ const sibling = router?.resolve("../settings");
 Guards can abort a navigation, and a second navigation can cancel a pending first one. Repeating the current URL without `force` is also a failure. These cases do not throw; inspect the returned value.
 :::
 
-```ts{3}
+```ts{5-7}
 import { isNavigationFailure, NavigationFailureType } from "@elfui/router";
 
 const result = await router?.push("/settings");
@@ -91,7 +89,7 @@ if (isNavigationFailure(result, NavigationFailureType.aborted)) {
 
 `useRoute()` returns a stable, read-only facade. Read its properties inside reactive code rather than replacing it after each navigation.
 
-```ts{3}
+```ts
 import { useRoute } from "@elfui/router";
 
 const route = useRoute();
@@ -100,7 +98,7 @@ const route = useRoute();
 
 Query values are strings, `null` (a key with no `=`), or arrays for repeated keys. `parseQuery()` and `stringifyQuery()` expose the same URL rules for non-router code.
 
-```ts{1}
+```ts
 import { parseQuery, stringifyQuery } from "@elfui/router";
 
 parseQuery("?tag=elf&tag=router&draft");

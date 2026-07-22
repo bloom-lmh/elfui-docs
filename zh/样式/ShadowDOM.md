@@ -6,9 +6,9 @@ title: Shadow DOM
 
 ElfUI 组件默认使用 Shadow DOM，让样式和 DOM 结构有明确边界。
 
-```ts{1-3}
+```ts
 defineOptions({
-  shadow: "open"
+  shadow: "open",
 });
 ```
 

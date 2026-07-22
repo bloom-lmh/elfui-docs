@@ -2,7 +2,7 @@
 
 `Suspense` is used to undertake asynchronous setup or asynchronous content, providing three states of pending, resolved, and error.
 
-```html{1}
+```html
 <Suspense>
   <template #default>
     <async-panel></async-panel>

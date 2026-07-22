@@ -4,17 +4,17 @@
 
 ## class
 
-```ts{1}
+```ts
 defineHtml(`<button :class=${{ active: open, disabled }}></button>`);
 ```
 
-```ts{1}
+```ts
 defineHtml(`<button :class=${["btn", open && "is-open"]}></button>`);
 ```
 
 `defineHtml(`...`)` uses TypeScript tagged template; the content without `${...}` is just an HTML string. Therefore, the following unquoted object/array writing method is not supported, and the attribute value will be truncated by HTML parsing at spaces:
 
-```ts{1}
+```ts
 defineHtml(`<button :class={ active: open, disabled }></button>`); // 不支持
 ```
 
@@ -24,13 +24,13 @@ When compatible with the Vue style, you can write the quoted template expression
 
 ## style
 
-```ts{1}
+```ts
 defineHtml(` <div :style=${{ width: `${width}px`, display: visible ? "" : "none" }}></div> `);
 ```
 
 Static classes will be merged with dynamic classes:
 
-```ts{1}
+```ts
 defineHtml(`<button class="btn" :class=${{ active }}></button>`);
 ```
 

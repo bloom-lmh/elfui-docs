@@ -6,11 +6,11 @@ title: Chain 链式组件
 
 `@elfui/chain` 是生态扩展包，面向旧站渐进嵌入、小 demo、低构建约束页面。它保留链式 builder，并内置 runtime compiler，因此支持 `.template()`。
 
-```bash{1}
+```bash
 pnpm add @elfui/chain
 ```
 
-```ts{6}
+```ts
 import { ElfUI, useRef } from "@elfui/chain";
 
 ElfUI.createComponent()

@@ -6,7 +6,7 @@ title: KeepAlive
 
 `KeepAlive` 缓存动态组件实例，切换时保留内部状态。
 
-```html{1}
+```html
 <KeepAlive>
   <component :is="current"></component>
 </KeepAlive>
@@ -14,7 +14,7 @@ title: KeepAlive
 
 ## include / exclude / max
 
-```html{1}
+```html
 <KeepAlive :include="['user-page']" :max="10">
   <component :is="current"></component>
 </KeepAlive>

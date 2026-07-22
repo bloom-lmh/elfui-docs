@@ -4,7 +4,7 @@ ElfUI provides component-scoped wrappers around `ResizeObserver` and `Intersecti
 
 ## useResizeObserver
 
-```ts{1}
+```ts
 const panel = useTemplateRef<HTMLElement>("panel");
 const width = useRef(0);
 
@@ -17,7 +17,7 @@ This is suitable for layout, overlay positioning, Canvas/WebGL resizing, and res
 
 ## useIntersectionObserver
 
-```ts{3-7}
+```ts
 const root = useTemplateRef<HTMLElement>("root");
 
 useIntersectionObserver(root, (entry) => {

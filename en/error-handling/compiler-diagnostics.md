@@ -12,10 +12,10 @@ Common diagnoses:
 
 ## strict mode
 
-```ts{1-4}
+```ts
 elfuiMacroPlugin({
   strictDiagnostics: true,
-  templateTypeCheck: true
+  templateTypeCheck: true,
 });
 ```
 

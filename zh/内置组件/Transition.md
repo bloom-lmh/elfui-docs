@@ -6,7 +6,7 @@ title: Transition
 
 `Transition` 给单个子节点提供 enter/leave 过渡。
 
-```html{1}
+```html
 <Transition name="fade">
   <div v-if="open">内容</div>
 </Transition>
@@ -14,7 +14,7 @@ title: Transition
 
 默认 class：
 
-```css{1}
+```css
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
@@ -30,7 +30,7 @@ title: Transition
 
 `name` 就是 class 前缀，可写静态值或动态绑定：
 
-```ts{6-10}
+```ts{7}
 import { defineHtml, useRef } from "@elfui/core";
 
 const open = useRef(true);
@@ -51,7 +51,7 @@ export const SlidingAside = defineHtml(`
 
 ## appear
 
-```html{1}
+```html
 <Transition name="fade" appear>
   <div>首次挂载也过渡</div>
 </Transition>

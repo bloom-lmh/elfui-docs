@@ -35,7 +35,7 @@ defineStyle(`:host { display: block; }`);
 
 应用级插件、指令、配置使用：
 
-```ts{1}
+```ts
 createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 ```
 

@@ -10,13 +10,13 @@ title: Route View
 
 The root application normally contains the default view at depth `0`:
 
-```html{1}
+```html
 <elf-router-view></elf-router-view>
 ```
 
 For a nested route, place an outlet in the parent page. Set `depth="1"` explicitly when the layout itself is not rendered by the root outlet:
 
-```html{2}
+```html{3}
 <!-- settings-layout -->
 <nav>...</nav>
 <elf-router-view depth="1"></elf-router-view>
@@ -26,7 +26,7 @@ For a nested route, place an outlet in the parent page. Set `depth="1"` explicit
 
 A record with `components` can fill multiple outlets. The unnamed outlet reads `default`; an outlet with `name="aside"` reads `aside`.
 
-```ts{1}
+```ts
 {
   path: "/reports",
   components: {
@@ -36,7 +36,7 @@ A record with `components` can fill multiple outlets. The unnamed outlet reads `
 }
 ```
 
-```html{1}
+```html
 <main><elf-router-view></elf-router-view></main>
 <aside><elf-router-view name="aside"></elf-router-view></aside>
 ```
@@ -45,10 +45,10 @@ A record with `components` can fill multiple outlets. The unnamed outlet reads `
 
 The default scoped slot receives `Component` (also available as `component`), `route`, `record`, `props`, `depth`, and `name`. This is useful when a shell needs to render a loading/error boundary or choose its own element wrapper.
 
-```html{1}
+```html
 <elf-router-view>
   <template #default="{ Component, route, props }">
-    <section class="page" :data-route=${route.name}>
+    <section class="page" :data-route="${route.name}">
       <Component ...${props}></Component>
     </section>
   </template>
@@ -61,13 +61,19 @@ Use normal route `props` configuration to supply page properties; the same props
 
 Set `transition` and an optional duration on the outlet. On replacement, the router adds enter/leave classes using the transition name.
 
-```html{1}
+```html
 <elf-router-view transition="fade" duration="200"></elf-router-view>
 ```
 
-```css{1}
-.fade-enter-active, .fade-leave-active { transition: opacity .2s ease; }
-.fade-enter-from, .fade-leave-to { opacity: 0; }
+```css
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 ```
 
 Lazy route modules are cached across route views. They may default-export a page component or export exactly one identifiable component.

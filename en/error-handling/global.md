@@ -2,7 +2,7 @@
 
 Errors and warnings are configured on the instance returned by `createApp()` and should be completed before `mount()`:
 
-```ts{3}
+```ts
 import { createApp } from "@elfui/core";
 
 const app = createApp(App);

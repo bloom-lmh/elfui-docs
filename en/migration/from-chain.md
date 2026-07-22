@@ -6,7 +6,7 @@ Chained components are still available, but the new project thread is macro comp
 
 Chain:
 
-```ts{4}
+```ts
 ElfUI.createComponent()
   .name("elf-counter")
   .setup(() => {
@@ -19,7 +19,7 @@ ElfUI.createComponent()
 
 Macro components:
 
-```ts{4}
+```ts
 const count = useRef(0);
 const inc = (): void => count.set(count.peek() + 1);
 

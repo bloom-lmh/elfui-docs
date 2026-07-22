@@ -2,7 +2,7 @@
 
 Event modifiers are used to express common DOM event options and interception behaviors.
 
-```html{1}
+```html
 <button @click.stop="select">选择</button>
 <form @submit.prevent="submit"></form>
 <button @click.once="init">初始化一次</button>

@@ -2,7 +2,7 @@
 
 Form controls can use `v-model`.
 
-```ts{3-6}
+```ts
 const text = useRef("");
 
 export const SearchForm = defineHtml(`
@@ -13,7 +13,7 @@ export const SearchForm = defineHtml(`
 
 ## checkbox
 
-```ts{3}
+```ts
 const checked = useRef(false);
 
 defineHtml(`<input type="checkbox" v-model=${checked} />`);
@@ -21,7 +21,7 @@ defineHtml(`<input type="checkbox" v-model=${checked} />`);
 
 ## select
 
-```ts{3-8}
+```ts
 const value = useRef("a");
 
 defineHtml(`
@@ -36,7 +36,7 @@ defineHtml(`
 
 When the custom component supports `v-model`, use `defineModel()` in the subcomponent:
 
-```ts{1}
+```ts
 const value = defineModel<string>({ default: "" });
 ```
 

@@ -2,7 +2,7 @@
 
 `useEventListener()` will add an event listener when mounting and automatically remove it before uninstalling.
 
-```ts{1-3}
+```ts
 useEventListener(window, "resize", () => {
   console.log(window.innerWidth);
 });
@@ -10,7 +10,7 @@ useEventListener(window, "resize", () => {
 
 ## click outside
 
-```ts{1}
+```ts
 const host = useHost();
 
 useClickOutside(host, () => {

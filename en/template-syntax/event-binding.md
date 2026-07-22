@@ -2,7 +2,7 @@
 
 Event binding uses `@event=${handler}`.
 
-```ts{5}
+```ts{1-3}
 const submit = (event: Event): void => {
   event.preventDefault();
 };
@@ -12,7 +12,7 @@ export const FormButton = defineHtml(` <button @click=${submit}>提交</button> 
 
 The framework will pass in the native event as the first parameter of the handler. The custom component event is `CustomEvent`, and the business data is in `event.detail`:
 
-```ts{5}
+```ts
 const select = (event: CustomEvent<{ id: string }>): void => {
   save(event.detail.id);
 };
@@ -22,7 +22,7 @@ defineHtml(`<user-picker @select=${select}></user-picker>`);
 
 ## Passing on parameters
 
-```ts{5}
+```ts
 const remove = (id: string): void => {
   items.set(items.peek().filter((item) => item.id !== id));
 };
@@ -34,7 +34,7 @@ defineHtml(` <button @click=${(event) => remove(item.id, event)}>删除</button>
 
 Common event modifiers are placed in "Instructions/Event Modifiers":
 
-```html{1}
+```html
 <form @submit.prevent="submit"></form>
 <button @click.stop="select"></button>
 ```

@@ -2,9 +2,9 @@
 
 ElfUI components use Shadow DOM by default, allowing clear boundaries between styles and DOM structures.
 
-```ts{1-3}
+```ts
 defineOptions({
-  shadow: "open"
+  shadow: "open",
 });
 ```
 

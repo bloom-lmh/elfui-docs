@@ -10,21 +10,21 @@ Guards run before the route becomes current. A guard may return nothing to conti
 
 Keep authorization policy in route metadata and enforce it in one global guard:
 
-```ts{1}
+```ts
 router.beforeEach(async (to) => {
   if (!to.meta.requiresAuth) return;
   if (auth.session.value) return;
 
   return {
     name: "login",
-    query: { redirect: to.fullPath }
+    query: { redirect: to.fullPath },
   };
 });
 ```
 
 Register a callback to remove a guard later:
 
-```ts{1}
+```ts
 const stopAuthGuard = router.beforeEach(checkSession);
 stopAuthGuard();
 ```
@@ -33,7 +33,7 @@ stopAuthGuard();
 
 `beforeEach` is for policy and redirects. `beforeResolve` runs after the target's lazy page components have been loaded, making it appropriate for data that the page requires. `afterEach` observes both successful and failed attempts. `onError` receives thrown errors, including redirect loops.
 
-```ts{1}
+```ts
 router.beforeResolve(async (to) => {
   if (to.name === "dashboard") await dashboardStore.load();
 });
@@ -42,7 +42,7 @@ router.afterEach((to, from, failure) => {
   if (!failure) analytics.page(to.fullPath, from.fullPath);
 });
 
-router.onError(error => reportError(error));
+router.onError((error) => reportError(error));
 ```
 
 ## Per-record guards
@@ -51,7 +51,7 @@ router.onError(error => reportError(error));
 `beforeEnter` only belongs to the record being entered. It accepts one guard or an array, which is helpful for routing-local validation.
 :::
 
-```ts{1}
+```ts
 {
   path: "/admin",
   component: () => import("../pages/admin-page"),
@@ -63,7 +63,7 @@ router.onError(error => reportError(error));
 
 Call component guard composables while a route component is being set up. They automatically unregister when the element unmounts.
 
-```ts{3}
+```ts
 import { onBeforeRouteLeave, onBeforeRouteUpdate, useRoute } from "@elfui/router";
 
 const route = useRoute();

@@ -6,7 +6,7 @@ title: CSP 与体积
 
 宏组件主线在构建期编译模板，浏览器运行时不需要 `new Function`，更适合严格 CSP。
 
-```ts{1}
+```ts
 import { defineHtml } from "@elfui/core";
 ```
 
@@ -18,7 +18,7 @@ import { defineHtml } from "@elfui/core";
 
 `@elfui/chain` 支持：
 
-```ts{1}
+```ts
 ElfUI.createComponent().template(`<button>{{ count }}</button>`);
 ```
 

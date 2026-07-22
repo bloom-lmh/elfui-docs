@@ -2,7 +2,7 @@
 
 `onMounted` runs after the component's final DOM and template refs are available. This is the safe point for Canvas charts, editors, WebGL renderers, overlays, observers, and other DOM-owning tools.
 
-```ts{1}
+```ts
 const canvas = useTemplateRef<HTMLCanvasElement>("canvas");
 let chart: { destroy(): void } | undefined;
 
@@ -13,7 +13,7 @@ onMounted(() => {
 
 Use `onUnmounted` to release every resource created by the integration:
 
-```ts{1}
+```ts
 onUnmounted(() => {
   chart?.destroy();
   chart = undefined;
@@ -24,7 +24,7 @@ Do not initialize a DOM-owning tool at module or setup time: the element may not
 
 ## before hooks
 
-```ts{1-3}
+```ts
 onBeforeMount(() => {
   // Before the first render is committed.
 });

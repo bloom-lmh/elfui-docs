@@ -2,7 +2,7 @@
 
 Configuration belongs to the application instance, not process-level global state. Create the app first, and then write the configuration before mounting:
 
-```ts{4}
+```ts
 import { createApp } from "@elfui/core";
 import { App } from "./App";
 
@@ -29,7 +29,7 @@ app.mount("#app");
 
 When you need to read the configuration in TypeScript logic in the macro component, use `useAppConfig()`:
 
-```ts{3}
+```ts
 import { useAppConfig } from "@elfui/core";
 
 const appName = useAppConfig().globalProperties.appName;
@@ -37,7 +37,7 @@ const appName = useAppConfig().globalProperties.appName;
 
 Template string expressions still respect TypeScript scoping; pure template expressions read `$app`:
 
-```ts{1}
+```ts
 defineHtml(`<p>{{ $app.appName }}</p>`);
 ```
 

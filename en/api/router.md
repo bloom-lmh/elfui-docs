@@ -8,7 +8,7 @@ This page is an index of the public `@elfui/router` API. See the Router guide fo
 
 ## Creation and history
 
-```ts{1}
+```ts
 createRouter(options): Router
 createWebHistory(base?): RouterHistory
 createWebHashHistory(base?): RouterHistory

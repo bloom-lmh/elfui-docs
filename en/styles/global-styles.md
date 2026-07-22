@@ -2,7 +2,7 @@
 
 Global styles are injected using `globalStyle()`.
 
-```ts{1}
+```ts
 import { globalStyle } from "@elfui/core";
 
 globalStyle(
@@ -11,7 +11,7 @@ globalStyle(
     --elf-color-primary: #14d8a6;
   }
 `,
-  { id: "app-theme" }
+  { id: "app-theme" },
 );
 ```
 
@@ -19,7 +19,7 @@ When stable `id` is passed in, subsequent calls with the same id will overwrite 
 
 ## clean up
 
-```ts{1}
+```ts
 const dispose = globalStyle(`body { margin: 0; }`);
 
 dispose();
@@ -27,7 +27,7 @@ dispose();
 
 Test or hot update scenarios can use:
 
-```ts{1}
+```ts
 import { resetGlobalStyles } from "@elfui/core";
 
 resetGlobalStyles();

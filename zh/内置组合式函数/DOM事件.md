@@ -6,7 +6,7 @@ title: DOM 事件
 
 `useEventListener()` 会在挂载时添加事件监听，在卸载前自动移除。
 
-```ts{1-3}
+```ts
 useEventListener(window, "resize", () => {
   console.log(window.innerWidth);
 });
@@ -14,7 +14,7 @@ useEventListener(window, "resize", () => {
 
 ## 点击外部
 
-```ts{1}
+```ts
 const host = useHost();
 
 useClickOutside(host, () => {

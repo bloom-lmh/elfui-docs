@@ -4,7 +4,7 @@ Conditions and lists belong to control flow, and instructions are used to make t
 
 ## Conditional rendering
 
-```html{1}
+```html
 <p v-if="loading">加载中</p>
 <p v-else-if="error">加载失败</p>
 <p v-else>完成</p>
@@ -12,13 +12,13 @@ Conditions and lists belong to control flow, and instructions are used to make t
 
 `v-if` creates and destroys nodes. Just use `v-show` when toggling visibility.
 
-```html{1}
+```html
 <section v-show="open">内容</section>
 ```
 
 ## List rendering
 
-```html{1}
+```html
 <li v-for="item in items" :key="item.id">{{ item.name }}</li>
 ```
 
@@ -28,7 +28,7 @@ List recommendations always provide stable `key`. ElfUI will use keyed list upda
 
 ## template group
 
-```html{1}
+```html
 <template v-if="ready">
   <h2>标题</h2>
   <p>正文</p>

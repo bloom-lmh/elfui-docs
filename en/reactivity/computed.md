@@ -5,7 +5,7 @@ title: Computed Values
 
 `useComputed()` is used to declare derived values. It automatically tracks reactive dependencies read in getters.
 
-```ts{1}
+```ts
 const first = useRef("Elf");
 const last = useRef("UI");
 
@@ -14,18 +14,18 @@ const fullName = useComputed(() => `${first.value} ${last.value}`);
 
 Used directly in the template:
 
-```ts{1}
+```ts
 defineHtml(`<p>${fullName}</p>`);
 ```
 
 ## Writable computed properties
 
-```ts{1}
+```ts
 const count = useRef(0);
 
 const doubled = useComputed({
   get: () => count.value * 2,
-  set: (value: number) => count.set(value / 2)
+  set: (value: number) => count.set(value / 2),
 });
 ```
 
@@ -33,7 +33,7 @@ const doubled = useComputed({
 
 `computed` is an alias of `useComputed`, which reduces migration costs for Vue users:
 
-```ts{1}
+```ts
 import { computed } from "@elfui/core";
 ```
 

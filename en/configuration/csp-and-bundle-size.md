@@ -2,7 +2,7 @@
 
 The macro component mainline compiles the template during the build period, and does not require `new Function` when the browser is running, which is more suitable for strict CSP.
 
-```ts{1}
+```ts
 import { defineHtml } from "@elfui/core";
 ```
 
@@ -14,7 +14,7 @@ Release checks enforce four automated gzip/Brotli budgets: a real application, a
 
 `@elfui/chain` supports:
 
-```ts{1}
+```ts
 ElfUI.createComponent().template(`<button>{{ count }}</button>`);
 ```
 

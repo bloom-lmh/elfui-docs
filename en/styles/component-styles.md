@@ -21,7 +21,7 @@ The style will enter the Shadow DOM along with the component definition, without
 
 `defineStyle()` can be called multiple times or receive multiple imported style strings in one call.
 
-```ts{1}
+```ts
 defineStyle(baseStyle);
 defineStyle(stateStyle);
 // Equivalent: defineStyle(baseStyle, stateStyle);

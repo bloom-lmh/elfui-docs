@@ -7,7 +7,7 @@ ElfUI beta mainline uses `useRef()` and `useReactive()`. Use `useRef` for basic 
 
 ## useRef
 
-```ts{1}
+```ts
 const count = useRef(0);
 
 count.set(count.peek() + 1);
@@ -15,7 +15,7 @@ count.set(count.peek() + 1);
 
 The template can be read directly:
 
-```ts{1}
+```ts
 defineHtml(`<button>${count}</button>`);
 ```
 
@@ -30,10 +30,10 @@ count.set(2);
 
 ## useReactive
 
-```ts{1-4}
+```ts
 const user = useReactive({
   name: "Elf",
-  age: 1
+  age: 1,
 });
 
 user.name = "ElfUI";
