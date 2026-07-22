@@ -11,7 +11,7 @@ This page records user-visible changes in the synchronized ElfUI framework packa
 ElfUI is still in beta. Keep `@elfui/core` and `@elfui/vite-plugin` on the same exact version. When a
 release changes the compiler/runtime protocol, mixed versions are unsupported.
 
-## v0.1.0-beta.8 — in development
+## v0.1.0-beta.8 — 2026-07-22
 
 ### Lifecycle ownership and API consolidation
 
