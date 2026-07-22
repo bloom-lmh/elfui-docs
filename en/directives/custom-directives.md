@@ -17,15 +17,7 @@ app.directive("focus", {
 app.mount("#app");
 ```
 
-`app.directive()` is scoped to the current App and is the preferred application API. Chain compatibility or process-wide cross-App scenarios can import global `directive()` from `@elfui/core`; value and element types are inferred from the concrete definition.
-
-```ts
-import { directive, type DirectiveBinding } from "@elfui/core";
-
-directive("numeric", (element: HTMLElement, binding: DirectiveBinding<number>) => {
-  element.dataset.value = binding.value.toFixed();
-});
-```
+`app.directive()` is scoped to the current App. ElfUI deliberately has no public process-global directive registry, so directives cannot leak across independent applications.
 
 Used in templates:
 
@@ -46,6 +38,8 @@ defineDirective("focus", {
   }
 });
 ```
+
+The component compiler resolves `defineDirective()` definitions before the containing App's directive registry. Use it when the behavior belongs to one component implementation.
 
 ## life cycle
 

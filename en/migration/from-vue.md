@@ -7,7 +7,7 @@ ElfUI retains a lot of the template mentality familiar to Vue users, but the com
 | SFC | Common `.ts/.tsx` macro component |
 | `ref()`         | `useRef()`                      |
 | `reactive()`    | `useReactive()`                 |
-| `computed()` | `useComputed()` or `computed()` |
+| `computed()` | `useComputed()` |
 | `emit()`        | `defineEmits()`                 |
 | `defineModel()` | `defineModel()`                 |
 | Vue Component | Custom Element |

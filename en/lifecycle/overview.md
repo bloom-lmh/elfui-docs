@@ -31,9 +31,16 @@ export const Demo = defineHtml(`<p>Demo</p>`);
 | `onAttributeChanged` | After an observed host attribute changes       |
 | `onErrorCaptured`    | When a descendant or lifecycle operation fails |
 
-`onMount` and `onUnmount` remain compatible aliases for `onMounted` and `onUnmounted`. New code should use the `-ed` names so the timing reads clearly.
+`onMounted` may return a cleanup callback. The cleanup runs in last-in-first-out order during unmount, after `onBeforeUnmount` and before component DOM and scopes are released:
 
-A hook may return a Promise. ElfUI does not delay the mount or unmount sequence while waiting for it, but a rejection is routed through `onErrorCaptured` and the application `errorHandler`.
+```ts
+onMounted(() => {
+  const resource = createResource();
+  return () => resource.destroy();
+});
+```
+
+A hook may return a Promise. ElfUI does not delay the mount or unmount sequence while waiting for it, but a rejection is routed through `onErrorCaptured` and the application `errorHandler`. An asynchronous `onMounted` may resolve to a cleanup callback; if unmount already happened, ElfUI invokes that cleanup immediately.
 
 ::: tip
 `onAttributeChanged((name, oldValue, newValue) => {})` is intended for native attributes that are not declared as props. Prefer props and reactive bindings for the regular declared data flow.

@@ -1,7 +1,7 @@
 # theme
 
 ::: tip
-Themes are recommended to be expressed using CSS variables. Variables are read inside the component and injected by the application layer through `theme()` or `useTheme()`.
+Themes are recommended to be expressed using CSS variables. Variables are read inside the component and injected by the application layer through `theme()`.
 :::
 
 ```ts
@@ -18,13 +18,7 @@ theme(
 );
 ```
 
-Macro component reuse scenarios can also use `useTheme()`:
-
-```ts
-import { useTheme } from "@elfui/core";
-
-useTheme(ElfButton, `--elf-button-radius: 8px;`);
-```
+`theme()` is the single public theme-registration API. It injects component theme CSS and is not a setup-context state getter.
 
 ## suggestion
 

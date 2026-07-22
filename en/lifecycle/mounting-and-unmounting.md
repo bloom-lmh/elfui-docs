@@ -4,19 +4,20 @@
 
 ```ts
 const canvas = useTemplateRef<HTMLCanvasElement>("canvas");
-let chart: { destroy(): void } | undefined;
 
 onMounted(() => {
-  chart = createChart(canvas.value!);
+  const chart = createChart(canvas.value!);
+  return () => chart.destroy();
 });
 ```
 
-Use `onUnmounted` to release every resource created by the integration:
+Returning cleanup from `onMounted` keeps resource creation and ownership together. Cleanup runs after `onBeforeUnmount` and before ElfUI releases component DOM and scopes. It also works when an asynchronous mounted hook resolves after the component has already unmounted.
+
+Use `onUnmounted` when teardown is not naturally owned by one mounted operation:
 
 ```ts
 onUnmounted(() => {
-  chart?.destroy();
-  chart = undefined;
+  analytics.record("component-unmounted");
 });
 ```
 

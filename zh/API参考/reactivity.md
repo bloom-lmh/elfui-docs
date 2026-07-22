@@ -16,7 +16,9 @@ title: reactivity API
 
 ### 派生与副作用
 
-`useComputed`、`useEffect`、`watch`、`watchEffect`、`watchPostEffect`、`watchSyncEffect`、`onWatcherCleanup`
+`useComputed`、`useEffect`、`watch`、`onWatcherCleanup`
+
+自动追踪副作用使用 `useEffect()`；需要明确数据源、新旧值、`deep` 或 `immediate` 时使用 `watch()`。
 
 ### 调度
 

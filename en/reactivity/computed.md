@@ -29,14 +29,4 @@ const doubled = useComputed({
 });
 ```
 
-## computed alias
-
-`computed` is an alias of `useComputed`, which reduces migration costs for Vue users:
-
-```ts
-import { computed } from "@elfui/core";
-```
-
-::: tip
-It is recommended to unify a naming style in the project.
-:::
+`useComputed` is the only public computed-value constructor, keeping ElfUI's composition APIs consistent and avoiding two names for the same behavior.

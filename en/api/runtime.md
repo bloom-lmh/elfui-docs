@@ -14,11 +14,13 @@ title: Runtime API
 
 `onBeforeMount`, `onMounted`, `onBeforeUpdate`, `onUpdated`, `onBeforeUnmount`, `onUnmounted`, `onActivated`, `onDeactivated`, `onAttributeChanged`, `onErrorCaptured`, `provide`, `inject`, `hasInjectionContext`, `createInjectionKey`
 
-`onMount` and `onUnmount` remain compatibility aliases.
+`onMounted()` may return a cleanup callback. It runs during unmount before component DOM and scopes are released.
 
 ## Instructions, configurations, plug-ins
 
-`directive`、`resetDirectives`、`configure`、`getConfig`、`resetConfig`、`resolveAppConfig`、`warn`、`usePlugin`
+`configure`、`getConfig`、`resetConfig`、`resolveAppConfig`、`warn`、`usePlugin`
+
+Application directives belong to `app.directive()`; macro-component-local directives belong to `defineDirective()` from `@elfui/core`. The process-global directive registry is internal.
 
 ## Host and DOM
 

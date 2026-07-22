@@ -17,6 +17,14 @@ title: 废弃 API
 | `defineTyped`                        | `defineHtml<Props, Emits, Slots>`      |
 | `defineHtml(html\`...\`)`            | `defineHtml(\`...\`)`                 |
 | `defineStyle(css\`...\`)`            | `defineStyle(\`...\`)`                |
+| `onMount`                            | `onMounted`                            |
+| `onUnmount`                          | `onUnmounted`                          |
+| `computed`                           | `useComputed`                          |
+| `watchEffect(fn)`                    | `useEffect(fn, { flush: "pre" })`     |
+| `watchPostEffect(fn)`                | `useEffect(fn, { flush: "post" })`    |
+| `watchSyncEffect(fn)`                | `useEffect(fn, { flush: "sync" })`    |
+| `useTheme`                           | `theme`                                |
+| 全局 `directive`                    | `defineDirective` / `app.directive`    |
 | legacy `ElfUI.createComponent`       | `@elfui/chain`                         |
 
 ## Setter 返回值
@@ -25,4 +33,8 @@ title: 废弃 API
 
 ::: warning
 beta.7 已从公开类型和编译器中删除这些入口。升级 Core 与 Vite 插件后，应同步迁移源码；继续导入旧 API 会直接产生 TypeScript 或打包错误。
+:::
+
+::: warning
+beta.8 删除上表中的生命周期、计算属性、自动追踪副作用、主题与进程级全局指令别名。自动追踪副作用使用 `useEffect`，需要明确数据源和新旧值时使用 `watch`。
 :::

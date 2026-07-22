@@ -22,24 +22,16 @@ watch(
 );
 ```
 
-## watchEffect
-
-`watchEffect()` will automatically track the reactive dependencies read in the function:
+`onWatcherCleanup()` can register cleanup during the synchronous execution of a `watch()` callback:
 
 ```ts
-watchEffect(() => {
-  console.log(user.name, count.value);
-});
-```
-
-`onWatcherCleanup()` can register the same round of cleaning tasks in the synchronization callback of `watch()` or `watchEffect()`:
-
-```ts
-watchEffect(() => {
+watch(search, () => {
   const timer = window.setTimeout(refresh, 300);
   onWatcherCleanup(() => window.clearTimeout(timer));
 });
 ```
+
+For automatically tracked effects, use `useEffect()`. It accepts the same `sync`, `pre`, and `post` flush modes and uses a returned function for cleanup.
 
 ## flush mode
 
@@ -53,4 +45,4 @@ watch(source, callback, { flush: "post" });
 | `post` | DOM updated queue |
 | `sync` | Synchronous execution |
 
-When you need to clean up asynchronous tasks, use `onCleanup` in the callback.
+When you need to clean up asynchronous tasks, use the callback's `onCleanup` parameter or `onWatcherCleanup()`.

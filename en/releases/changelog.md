@@ -11,6 +11,33 @@ This page records user-visible changes in the synchronized ElfUI framework packa
 ElfUI is still in beta. Keep `@elfui/core` and `@elfui/vite-plugin` on the same exact version. When a
 release changes the compiler/runtime protocol, mixed versions are unsupported.
 
+## v0.1.0-beta.8 — in development
+
+### Lifecycle ownership and API consolidation
+
+- `onMounted()` can return a synchronous or asynchronous cleanup callback. Cleanups run in LIFO order after `onBeforeUnmount` and before component DOM and scopes are released; a late asynchronous cleanup runs immediately.
+- The canonical public surface includes `onMounted`, `onUnmounted`, `useComputed`, `useEffect`, explicit-source `watch`, `theme`, `defineDirective`, and `app.directive`.
+- Removed the beta aliases `onMount`, `onUnmount`, `computed`, `watchEffect`, `watchPostEffect`, `watchSyncEffect`, and `useTheme`, plus the process-global public `directive()` registry. Local directives use `defineDirective()`; application-wide directives use `app.directive()`.
+- Added lifecycle cleanup regression coverage and public API boundary checks. The remaining performance work is tracked separately and must pass benchmarks before release.
+
+### Performance
+
+- Same-length lists with unchanged key order now update item/index state without allocating the full keyed-diff structures or moving DOM.
+- Macro-generated components lazily cache and clone larger pure-static native HTML/SVG subtrees. Directives, refs, components, custom elements, slots, and dynamic boundaries remain on the normal code path.
+
+### Migration
+
+Update imports directly. When an external resource is created in `onMounted`, prefer returning its cleanup:
+
+```ts
+onMounted(() => {
+  const chart = createChart(canvas.value!);
+  return () => chart.destroy();
+});
+```
+
+Migrate `watchEffect(fn)` to `useEffect(fn, { flush: "pre" })` to preserve its former default scheduling. Use `flush: "post"` and `flush: "sync"` for the removed shortcut variants.
+
 ## v0.1.0-beta.7 — 2026-07-22
 
 ### Less repetitive macro syntax

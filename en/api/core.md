@@ -21,13 +21,13 @@ defineStyle(`:host { display: block; }`);
 
 ## Responsive
 
-`useRef`、`useReactive`、`useShallowRef`、`useShallowReactive`、`useComputed`、`computed`、`useEffect`、`watch`、`watchEffect`、`watchPostEffect`、`watchSyncEffect`、`onWatcherCleanup`、`nextTick`
+`useRef`、`useReactive`、`useShallowRef`、`useShallowReactive`、`useComputed`、`useEffect`、`watch`、`onWatcherCleanup`、`nextTick`
 
 ## Lifecycle
 
 `onBeforeMount`, `onMounted`, `onBeforeUpdate`, `onUpdated`, `onBeforeUnmount`, `onUnmounted`, `onActivated`, `onDeactivated`, `onAttributeChanged`, `onErrorCaptured`
 
-`onMount` and `onUnmount` are retained as compatibility aliases.
+`onMounted()` may return a cleanup callback. ElfUI runs it during unmount before releasing component DOM and scopes.
 
 ## Application and Runtime User API
 
@@ -41,7 +41,7 @@ createApp(App).directive("focus", focusDirective).use(plugin).mount("#app");
 
 `app.directive()` is isolated by App; `app.component(Component)` only accepts the component constructor and registers the browser global Custom Element according to its established tag.
 
-Core also exports `directive`, `configure`, `getConfig`, and `usePlugin` for process-wide compatibility scenarios. Application code should prefer the isolated `app.directive()`, `app.config`, and `app.use()` APIs.
+Use `defineDirective()` for a directive local to one macro component and `app.directive()` for an application-wide directive. Core no longer exposes a process-global directive registry. `configure`, `getConfig`, and `usePlugin` remain available for low-level compatibility; application code should prefer `app.config` and `app.use()`.
 
 ## Built-in combined functions
 

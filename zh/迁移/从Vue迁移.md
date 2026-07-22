@@ -11,7 +11,7 @@ ElfUI 保留了很多 Vue 用户熟悉的模板心智，但组件模型和运行
 | SFC             | 普通 `.ts/.tsx` 宏组件          |
 | `ref()`         | `useRef()`                      |
 | `reactive()`    | `useReactive()`                 |
-| `computed()`    | `useComputed()` 或 `computed()` |
+| `computed()`    | `useComputed()`                 |
 | `emit()`        | `defineEmits()`                 |
 | `defineModel()` | `defineModel()`                 |
 | Vue 组件        | Custom Element                  |

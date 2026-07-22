@@ -17,31 +17,18 @@ ElfUI does not need a framework-specific adapter for every chart, editor, render
 ```ts
 import {
   defineHtml,
-  onBeforeUnmount,
   onMounted,
-  onUnmounted,
   useTemplateRef,
 } from "@elfui/core";
 
 const canvas = useTemplateRef<HTMLCanvasElement>("canvas");
-let instance: { destroy(): void; update(data: unknown): void } | undefined;
-let generation = 0;
 
 onMounted(async () => {
-  const current = ++generation;
   const { createRenderer } = await import("some-dom-tool");
 
-  if (current !== generation || !canvas.value?.isConnected) return;
-  instance = createRenderer(canvas.value);
-});
-
-onBeforeUnmount(() => {
-  generation++;
-});
-
-onUnmounted(() => {
-  instance?.destroy();
-  instance = undefined;
+  if (!canvas.value?.isConnected) return;
+  const instance = createRenderer(canvas.value);
+  return () => instance.destroy();
 });
 
 export default defineHtml(`<canvas ref="canvas"></canvas>`);
@@ -71,7 +58,7 @@ Both helpers disconnect with the owning component and ignore callbacks from an o
 
 | Resource                        | Create                        | Release                                           |
 | ------------------------------- | ----------------------------- | ------------------------------------------------- |
-| Chart/editor/renderer instance  | `onMounted`                   | Tool-specific `destroy()` in `onUnmounted`        |
+| Chart/editor/renderer instance  | `onMounted`                   | Return tool-specific `destroy()` cleanup           |
 | Global DOM listener             | `useEventListener` or mounted | Automatic helper cleanup or `removeEventListener` |
 | Resize/intersection observer    | Observer composable           | Automatic                                         |
 | Portal/overlay root             | `onMounted`                   | Remove listeners and the empty portal node        |
@@ -79,7 +66,7 @@ Both helpers disconnect with the owning component and ignore callbacks from an o
 | Timer/animation frame           | Mounted or owned effect       | `clearTimeout` / `cancelAnimationFrame`           |
 | Async import/request/WASM setup | Mounted generation/token      | Invalidate or abort before teardown               |
 
-A synchronous same-turn DOM move preserves the component instance. A real detach releases its resources; reconnecting later creates a fresh instance and runs `onMounted` again. KeepAlive deactivation is not the same as unmount: pause expensive work in `onDeactivated`, resume it in `onActivated`, and perform final destruction in `onUnmounted`.
+A synchronous same-turn DOM move preserves the component instance. A real detach releases its resources; reconnecting later creates a fresh instance and runs `onMounted` again. If an asynchronous mounted hook resolves after unmount, ElfUI immediately runs its returned cleanup. KeepAlive deactivation is not the same as unmount: pause expensive work in `onDeactivated`, resume it in `onActivated`, and perform final destruction through mounted cleanup or `onUnmounted`.
 
 ## What the release gate covers
 

@@ -13,7 +13,9 @@ title: Reactivity API
 
 ### Derivations and side effects
 
-`useComputed`、`useEffect`、`watch`、`watchEffect`、`watchPostEffect`、`watchSyncEffect`、`onWatcherCleanup`
+`useComputed`、`useEffect`、`watch`、`onWatcherCleanup`
+
+Use `useEffect()` for automatically tracked effects and `watch()` for explicit sources, old/new values, `deep`, or `immediate` behavior.
 
 ### Scheduling
 

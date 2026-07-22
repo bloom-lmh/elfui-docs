@@ -14,11 +14,13 @@ title: runtime API
 
 `onBeforeMount`、`onMounted`、`onBeforeUpdate`、`onUpdated`、`onBeforeUnmount`、`onUnmounted`、`onActivated`、`onDeactivated`、`onAttributeChanged`、`onErrorCaptured`、`provide`、`inject`、`hasInjectionContext`、`createInjectionKey`
 
-`onMount`、`onUnmount` 作为兼容别名保留。
+`onMounted()` 可以返回清理函数；它会在卸载期间、释放组件 DOM 和作用域之前执行。
 
 ## 指令、配置、插件
 
-`directive`、`resetDirectives`、`configure`、`getConfig`、`resetConfig`、`resolveAppConfig`、`warn`、`usePlugin`
+`configure`、`getConfig`、`resetConfig`、`resolveAppConfig`、`warn`、`usePlugin`
+
+应用级指令归 `app.directive()` 管理；宏组件局部指令使用 `@elfui/core` 的 `defineDirective()`。进程级全局指令注册表属于内部实现。
 
 ## Host 和 DOM
 

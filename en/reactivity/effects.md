@@ -28,20 +28,16 @@ useEffect(() => {
 
 The cleanup function will be executed before the next rerun, and will also be executed when the scope is destroyed.
 
-## The difference between watchEffect and watchEffect
-
-Both `useEffect()` and `watchEffect()` automatically track the dependencies read in the function, execute them immediately, and support `flush`. New projects take precedence over `useEffect()`; `watchEffect()` retains Vue-style `onCleanup` parameters and `onWatcherCleanup()`.
+## Scheduling
 
 ```ts
-watchEffect((onCleanup) => {
-  const controller = new AbortController();
-  void loadData(controller.signal);
-  onCleanup(() => controller.abort());
-});
+useEffect(updateImmediately); // default: sync
+useEffect(updateBeforePatch, { flush: "pre" });
+useEffect(readUpdatedDom, { flush: "post" });
 ```
 
-The two are not two updated models. Use `watch()` when old and new values ​​are required, `deep`, or when specifying a data source.
+`useEffect()` is the single automatically tracked effect API. Beta.8 removes `watchEffect`, `watchPostEffect`, and `watchSyncEffect`; their scheduling behavior is available through the explicit `flush` option.
 
 ## The difference between watch
 
-`useEffect()` is suitable for the side effect of "subscribe what you read". When you need to clarify the old and new values ​​and control immediate/deep/flush, use `watch()`.
+`useEffect()` is suitable for the side effect of "subscribe to what is read". When you need explicit sources, old and new values, `immediate`, or `deep`, use `watch()`.
