@@ -18,12 +18,16 @@ release changes the compiler/runtime protocol, mixed versions are unsupported.
 - `onMounted()` can return a synchronous or asynchronous cleanup callback. Cleanups run in LIFO order after `onBeforeUnmount` and before component DOM and scopes are released; a late asynchronous cleanup runs immediately.
 - The canonical public surface includes `onMounted`, `onUnmounted`, `useComputed`, `useEffect`, explicit-source `watch`, `theme`, `defineDirective`, and `app.directive`.
 - Removed the beta aliases `onMount`, `onUnmount`, `computed`, `watchEffect`, `watchPostEffect`, `watchSyncEffect`, and `useTheme`, plus the process-global public `directive()` registry. Local directives use `defineDirective()`; application-wide directives use `app.directive()`.
-- Added lifecycle cleanup regression coverage and public API boundary checks. The remaining performance work is tracked separately and must pass benchmarks before release.
+- Added lifecycle cleanup regression coverage and public API boundary checks.
 
 ### Performance
 
 - Same-length lists with unchanged key order now update item/index state without allocating the full keyed-diff structures or moving DOM.
 - Macro-generated components lazily cache and clone larger pure-static native HTML/SVG subtrees. Directives, refs, components, custom elements, slots, and dynamic boundaries remain on the normal code path.
+- Components without lifecycle hooks share frozen empty hook tables and detach a list only when its first hook is registered, avoiding eleven unconditional empty arrays per instance.
+- Dynamic style bindings reuse two declaration buffers, so repeated updates no longer allocate a `Map` per update or per string fragment.
+- The complete Core facade is now attributed by workspace package. Its aggregate budget is gzip 16.5 KB / Brotli 14.9 KB, while the real tree-shaken application budget remains gzip 9.8 KB / Brotli 8.9 KB.
+- `verify:release` now enforces size budgets and relative real-Chromium performance checks in addition to external-tool, host-framework, multi-runtime, and packed-consumer verification.
 
 ### Migration
 

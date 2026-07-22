@@ -6,9 +6,9 @@ The macro component mainline compiles the template during the build period, and 
 import { defineHtml } from "@elfui/core";
 ```
 
-The main `@elfui/core` entry does not include the runtime compiler. The repository's current real-application baseline is 9.50 KB gzip / 8.57 KB Brotli; the exact output depends on the imported APIs and bundler.
+The main `@elfui/core` entry does not include the runtime compiler. The repository's current real tree-shaken application result is 9.72 KB gzip / 8.78 KB Brotli; the exact output depends on the imported APIs and bundler.
 
-Release checks enforce four automated gzip/Brotli budgets: a real application, a light consumer, runtime, and reactivity. The build also verifies that production bundles remove DEV branches and that published ESM does not write a global `__DEV__` flag.
+Release checks enforce four automated gzip/Brotli budgets: a real application, the complete Core facade, runtime, and reactivity. The real-application budget is 9.8 KB gzip / 8.9 KB Brotli. The Core facade intentionally includes every stable export to track the total public surface; its 16.5 KB gzip / 14.9 KB Brotli budget is not a typical application's download size. The build also verifies that production bundles remove DEV branches and that published ESM does not write a global `__DEV__` flag.
 
 ## Chain boundaries
 
